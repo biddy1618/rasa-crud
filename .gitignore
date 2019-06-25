@@ -1,0 +1,8 @@
+# ignore virtual environment files
+venv/
+
+# ignore visual studio files
+.vscode/
+
+# ignore python files
+__pycache__/
