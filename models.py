@@ -20,7 +20,18 @@ t_active_user_count_30_days = Table(
 )
 
 
-class Agent(db.Model):
+# Add db.Model, Serializer class to serialize models
+class Serializer(object):
+
+    def serialize(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
+    def update(self, data):
+        for k, v in data.items():
+            setattr(self, k, v)
+
+
+class Agent(db.Model, Serializer):
     __tablename__ = 'agents'
 
     agent_id = Column(Integer, primary_key=True, server_default=text("nextval('agents_agent_id_seq'::regclass)"))
@@ -36,21 +47,7 @@ class Agent(db.Model):
     rasa_nlu_language = Column(String, server_default=text("'en'::character varying"))
     rasa_nlu_fixed_model_name = Column(String)
 
-    def serialize(self):
-        return {
-            'agent_id': self.agent_id,
-            'agent_name': self.agent_name,
-            'endpoint_enabled': self.endpoint_enabled,
-            'rasa_core_enabled': self.rasa_core_enabled,
-            'endpoint_url': self.endpoint_url,
-            'basic_auth_username': self.basic_auth_username,
-            'basic_auth_password': self.basic_auth_password,
-            'client_secret_key': self.client_secret_key,
-            'story_details': self.story_details,
-            'rasa_nlu_pipeline': self.rasa_nlu_pipeline,
-            'rasa_nlu_language': self.rasa_nlu_language,
-            'rasa_nlu_fixed_model_name': self.rasa_nlu_fixed_model_name
-        }
+    
 
 
 t_avg_nlu_response_times_30_days = Table(
@@ -128,7 +125,7 @@ t_messages_expressions = Table(
     Column('agent_id', Integer),
     Column('agent_name', String),
     Column('messages_id', Integer),
-    Column('timestamp', DateTime),
+    Column('timestampc', DateTime),
     Column('user_id', String),
     Column('user_name', String),
     Column('message_text', String),
@@ -140,7 +137,7 @@ t_messages_expressions = Table(
 )
 
 
-class NluLog(db.Model):
+class NluLog(db.Model, Serializer):
     __tablename__ = 'nlu_log'
 
     log_id = Column(Integer, primary_key=True, server_default=text("nextval('nlu_log_log_id_seq'::regclass)"))
@@ -149,7 +146,7 @@ class NluLog(db.Model):
     query = Column(String)
     event_data = Column(String)
     event_type = Column(String)
-
+   
 
 t_request_usage_total = Table(
     'request_usage_total', db.metadata,
@@ -157,13 +154,13 @@ t_request_usage_total = Table(
 )
 
 
-class ResponseType(db.Model):
+class ResponseType(db.Model, Serializer):
     __tablename__ = 'response_type'
 
     response_type_id = Column(Integer, primary_key=True, server_default=text("nextval('response_type_response_type_id_seq'::regclass)"))
     response_type_text = Column(String)
 
-
+    
 t_settings = Table(
     'settings', db.metadata,
     Column('setting_name', String),
@@ -178,17 +175,17 @@ t_unique_intent_entities = Table(
 )
 
 
-class Action(db.Model):
+class Action(db.Model, Serializer):
     __tablename__ = 'actions'
 
     action_name = Column(String, nullable=False)
     agent_id = Column(ForeignKey('agents.agent_id', ondelete='CASCADE'))
     action_id = Column(Integer, primary_key=True, server_default=text("nextval('actions_action_id_seq'::regclass)"))
-
+    
     agent = relationship('Agent')
 
 
-class Entity(db.Model):
+class Entity(db.Model, Serializer):
     __tablename__ = 'entities'
 
     entity_id = Column(Integer, primary_key=True, server_default=text("nextval('entities_entity_id_seq'::regclass)"))
@@ -199,7 +196,7 @@ class Entity(db.Model):
     agent = relationship('Agent')
 
 
-class Intent(db.Model):
+class Intent(db.Model, Serializer):
     __tablename__ = 'intents'
 
     intent_name = Column(String, nullable=False)
@@ -208,9 +205,9 @@ class Intent(db.Model):
     intent_id = Column(Integer, primary_key=True, server_default=text("nextval('intents_intent_id_seq'::regclass)"))
 
     agent = relationship('Agent')
+    
 
-
-class Regex(db.Model):
+class Regex(db.Model, Serializer):
     __tablename__ = 'regex'
 
     regex_id = Column(Integer, primary_key=True, server_default=text("nextval('regex_id_seq'::regclass)"))
@@ -220,8 +217,8 @@ class Regex(db.Model):
 
     agent = relationship('Agent')
 
-
-class Synonym(db.Model):
+    
+class Synonym(db.Model, Serializer):
     __tablename__ = 'synonyms'
 
     synonym_id = Column(Integer, primary_key=True, server_default=text("nextval('synonyms_synonym_id_seq'::regclass)"))
@@ -230,8 +227,8 @@ class Synonym(db.Model):
 
     agent = relationship('Agent')
 
-
-class Expression(db.Model):
+    
+class Expression(db.Model, Serializer):
     __tablename__ = 'expressions'
 
     intent_id = Column(ForeignKey('intents.intent_id', ondelete='CASCADE'), nullable=False)
@@ -242,7 +239,7 @@ class Expression(db.Model):
     intent = relationship('Intent')
 
 
-class Message(db.Model):
+class Message(db.Model, Serializer):
     __tablename__ = 'messages'
 
     messages_id = Column(Integer, primary_key=True, server_default=text("nextval('messages_messages_id_seq'::regclass)"))
@@ -259,7 +256,7 @@ class Message(db.Model):
     intent = relationship('Intent')
 
 
-class Response(db.Model):
+class Response(db.Model, Serializer):
     __tablename__ = 'responses'
 
     response_id = Column(Integer, primary_key=True, server_default=text("nextval('responses_response_id_seq'::regclass)"))
@@ -274,8 +271,8 @@ class Response(db.Model):
     intent = relationship('Intent')
     response_type1 = relationship('ResponseType')
 
-
-class SynonymVariant(db.Model):
+    
+class SynonymVariant(db.Model, Serializer):
     __tablename__ = 'synonym_variant'
 
     synonym_variant_id = Column(Integer, primary_key=True, server_default=text("nextval('synonym_variant_synonym_id_seq'::regclass)"))
@@ -284,8 +281,8 @@ class SynonymVariant(db.Model):
 
     synonym = relationship('Synonym')
 
-
-class CoreParseLog(db.Model):
+    
+class CoreParseLog(db.Model, Serializer):
     __tablename__ = 'core_parse_log'
 
     core_parse_log_id = Column(Integer, primary_key=True, server_default=text("nextval('core_parse_log_core_parse_log_id_seq'::regclass)"))
@@ -298,8 +295,8 @@ class CoreParseLog(db.Model):
 
     messages = relationship('Message')
 
-
-class MessagesEntity(db.Model):
+    
+class MessagesEntity(db.Model, Serializer):
     __tablename__ = 'messages_entities'
 
     message_id = Column(ForeignKey('messages.messages_id', ondelete='CASCADE'), primary_key=True, nullable=False)
@@ -313,7 +310,7 @@ class MessagesEntity(db.Model):
     message = relationship('Message')
 
 
-class NluParseLog(db.Model):
+class NluParseLog(db.Model, Serializer):
     __tablename__ = 'nlu_parse_log'
 
     parse_log_id = Column(Integer, primary_key=True, server_default=text("nextval('parse_log_parse_log_id_seq'::regclass)"))
@@ -327,8 +324,8 @@ class NluParseLog(db.Model):
 
     messages = relationship('Message')
 
-
-class Parameter(db.Model):
+    
+class Parameter(db.Model, Serializer):
     __tablename__ = 'parameters'
 
     parameter_required = Column(Boolean)
@@ -341,3 +338,5 @@ class Parameter(db.Model):
 
     entity = relationship('Entity')
     expression = relationship('Expression')
+
+    
