@@ -20,7 +20,6 @@ t_active_user_count_30_days = Table(
 )
 
 
-# Add db.Model, Serializer class to serialize models
 class Serializer(object):
 
     def serialize(self):

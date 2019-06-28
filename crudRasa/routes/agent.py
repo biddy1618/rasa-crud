@@ -4,15 +4,15 @@ import utils
 from app import db
 from db import models
 
-agent = Blueprint('agent', __name__)
+agent=Blueprint('agent', __name__)
 
 @agent.route("/agents", methods=['GET', 'POST'])
 def agents():
-    if request.method == 'POST':
+    if request.method=='POST':
         try:
-            data = request.get_json()
+            data=request.get_json()
             db.session.add(models\
-                .Agent(agent_name = data['agent_name']))
+                .Agent(agent_name=data['agent_name']))
             db.session.commit()
             return utils.result('success', 'Inserted')
         except Exception as e:
@@ -27,7 +27,7 @@ def agents():
 
 @agent.route("/agents/<agent_id>", methods=['GET', 'PUT', 'DELETE'])
 def agentsID(agent_id):
-    if request.method == 'PUT':
+    if request.method=='PUT':
         try:
             data=request.get_json()
             agent=db.session.query(models.Agent)\
@@ -39,7 +39,7 @@ def agentsID(agent_id):
             db.session.rollback()
             return(str(e))
     
-    if request.method == 'DELETE':
+    if request.method=='DELETE':
         try:
             db.session.query(models.Intent)\
                 .filter_by(agent_id=agent_id).delete()
@@ -62,7 +62,7 @@ def agentsID(agent_id):
 	    return(str(e))
 
 
-@agent.route('/agentStory', methods = ['POST'])
+@agent.route('/agentStory', methods=['POST'])
 def agentStory():
     try:
         data=request.get_json()

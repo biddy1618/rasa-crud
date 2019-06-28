@@ -4,12 +4,12 @@ import utils
 from app import db
 from db import models
 
-intent = Blueprint('intent', __name__)
+intent=Blueprint('intent', __name__)
 
 @intent.route("/intents", methods=['POST'])
 def intents():
     try:
-        data = request.get_json()
+        data=request.get_json()
         db.session.add(models.Intent(
             intent_name = data['intent_name'],
             agent_id = data['agent_id']
@@ -22,7 +22,7 @@ def intents():
 
 @intent.route("/intents/<intent_id>", methods=['GET', 'PUT', 'DELETE'])
 def intentID(intent_id):
-    if request.method == 'PUT':
+    if request.method=='PUT':
         try:
             data=request.get_json()
             intent=db.session.query(models.Intent)\
@@ -34,7 +34,7 @@ def intentID(intent_id):
             db.session.rollback()
             return(str(e))
     
-    if request.method == 'DELETE':
+    if request.method=='DELETE':
         try:
             db.session.query(models.Intent)\
                 .filter_by(intent_id=intent_id).delete()
@@ -54,9 +54,9 @@ def intentID(intent_id):
 
 @intent.route('/agents/<agent_id>/intents', methods=['GET', 'POST'])
 def agentIntents(agent_id):
-    if request.method == 'POST':
+    if request.method=='POST':
         try:
-            data = request.get_json()
+            data=request.get_json()
             db.session.add(models.Intent(
                 intent_name = data['intent_name'],
                 agent_id = data['agent_id']

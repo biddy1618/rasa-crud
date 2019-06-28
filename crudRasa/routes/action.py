@@ -5,11 +5,11 @@ from app import db
 from db import models
 
 
-action = Blueprint('action', __name__)
+action=Blueprint('action', __name__)
 
 @action.route("/actions/<action_id>", methods=['GET', 'PUT', 'DELETE'])
 def actionID(action_id):
-    if request.method == 'PUT':
+    if request.method=='PUT':
         try:
             data=request.get_json()
             action=db.session.query(models.Action)\
@@ -21,7 +21,7 @@ def actionID(action_id):
             db.session.rollback()
             return(str(e))
     
-    if request.method == 'DELETE':
+    if request.method=='DELETE':
         try:
             db.session.query(models.Action)\
                 .filter_by(action_id=action_id).delete()
@@ -41,10 +41,10 @@ def actionID(action_id):
 @action.route("/actions", methods=['POST'])
 def actions():
     try:
-        data = request.get_json()
+        data=request.get_json()
         db.session.add(models.Action(
-            action_name = data['action_name'],
-            agent_id = data['agent_id']
+            action_name=data['action_name'],
+            agent_id=data['agent_id']
         ))
         db.session.commit()
         return utils.result('success', 'Inserted')
