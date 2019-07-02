@@ -10,7 +10,9 @@ expression=Blueprint('expression', __name__)
 def intentExpressionQuery():
     try:
         data=request.query.intent_ids
-        expressions=models.Expression.query.filter_by(\
+        print(data)
+        print(type(data))
+        expressions=models.Expression.query.filter(\
             models.Expression.intent_id.in_(data)).all()
         return jsonify([e.serialize() for e in expressions])
     except Exception as e:
@@ -32,7 +34,7 @@ def expressionID(expression_id):
             data=request.get_json()
             expression=db.session.query(models.Expression)\
                 .filter_by(expression_id=expression_id).first_or_404()
-            data['expression_lemmatized'] = data['expression_text']
+            data['expression_lemmatized'] = utils.lemmatize(data['expression_text'])
             expression.update(data)
             db.session.commit()
             return utils.result('success', 'Updated expression')
@@ -65,7 +67,9 @@ def createExpression():
         db.session.add(models.Expression(
             intent_id=data['intent_id'],
             expression_text=data['expression_text'],
-            expression_lemmatized=data['expression_text']
+            expression_lemmatized=utils.lemmatize(
+                data['expression_text']
+            )
         ))
         db.session.commit()
         return utils.result('success', 'Inserted')

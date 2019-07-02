@@ -75,4 +75,10 @@ def agentIntents(agent_id):
 
 @intent.route('/intents/<intent_id>/unique_intent_entities', methods=['GET'])
 def intentUnique(intent_id):
-    pass
+    try:
+        intents=db.session.query(models.t_unique_intent_entities)\
+            .filter_by(intent_id=intent_id).all()
+        return jsonify([models.Serializer\
+            .serializeStatic(i) for i in intents])
+    except Exception as e:
+        return(str(e))

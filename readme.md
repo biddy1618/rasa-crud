@@ -26,5 +26,12 @@ Base = db.Model
 metadata = db.metadata
 ```
 
+# Database relations
+
+![dbRelations](./schema.png)
+
+# Database operations
+
+![dbOperations](./CRUDOperations.png)
 
 

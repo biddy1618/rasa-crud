@@ -28,6 +28,11 @@ class Serializer(object):
     def update(self, data):
         for k, v in data.items():
             setattr(self, k, v)
+    
+    @staticmethod
+    def serializeStatic(row):
+        return {c: getattr(row, c) for c in row.keys()}        
+    
 
 
 class Agent(db.Model, Serializer):
@@ -113,7 +118,7 @@ t_intent_usage_total = Table(
 t_intents_most_used = Table(
     'intents_most_used', db.metadata,
     Column('intent_name', String),
-    Column('agent_id', Integer),
+    Column('agent_isetting_valued', Integer),
     Column('agent_name', String),
     Column('grp_intent_count', BigInteger)
 )
