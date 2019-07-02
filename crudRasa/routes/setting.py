@@ -20,7 +20,17 @@ def settingsAll():
 @setting.route('/settings/<setting_name>', methods=['GET', 'PUT'])
 def settingsName(setting_name):
     if request.method=='PUT':
-        pass
+        try:
+            data=request.get_json()
+            setting=db.session.query(models.t_settings)\
+                .filter_by(setting_name=setting_name).first_or_404()
+            setting.setting_value=data['setting_value']
+            db.session.commit()
+            return utils.result('success', 'Inserted')
+        except Exception as e:
+            db.session.rollback()
+            return(str(e))
+        
     try:
         setting=db.session.query(models.t_settings)\
             .filter_by(setting_name=setting_name).first_or_404()

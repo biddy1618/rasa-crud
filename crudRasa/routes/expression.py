@@ -9,11 +9,10 @@ expression=Blueprint('expression', __name__)
 @expression.route("/intent_expressions", methods=['GET'])
 def intentExpressionQuery():
     try:
-        data=request.query.intent_ids
-        print(data)
-        print(type(data))
+        data=request.args.get('intent_ids')
+        params=utils.makeList(data)
         expressions=models.Expression.query.filter(\
-            models.Expression.intent_id.in_(data)).all()
+            models.Expression.intent_id.in_(params)).all()
         return jsonify([e.serialize() for e in expressions])
     except Exception as e:
         return(str(e))

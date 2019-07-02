@@ -50,6 +50,11 @@ def variantID(variant_id):
 
 @variant.route('/synonymvariants', methods=['GET'])
 def variantAll():
+    '''
+    The query is as follows:
+    "select synonym_reference as value, '[' || string_agg('\'' || synonym_value || '\'', ', ') || ']' 
+        as synonyms from entity_synonym_variants group by 1"
+    '''
     pass
 
 

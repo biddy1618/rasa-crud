@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql.expression import func
 import os
 
 from dotenv import load_dotenv
