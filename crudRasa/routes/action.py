@@ -1,7 +1,7 @@
 from flask import request, jsonify, Blueprint
 
 from app import db
-from models import models, utils
+from orm import models, utils
 
 
 action=Blueprint('action', __name__)

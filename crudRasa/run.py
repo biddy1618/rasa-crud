@@ -13,6 +13,7 @@ from routes.synonym import synonym
 from routes.variant import variant
 from routes.setting import setting
 from routes.response import response
+from routes.parameter import parameter
 
 app.register_blueprint(action)
 app.register_blueprint(intent)
@@ -24,6 +25,7 @@ app.register_blueprint(regex)
 app.register_blueprint(synonym)
 app.register_blueprint(setting)
 app.register_blueprint(response)
+app.register_blueprint(parameter)
 
 '''
 Route arguments:

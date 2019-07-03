@@ -26,7 +26,9 @@ def result(status, message):
     })
 
 def makeList(urlParams):
-    
-    params = urlParams.split(',')
+    if urlParams is None:
+        params = []
+    else:
+        params = urlParams.split(',')
     
     return params
