@@ -1,8 +1,7 @@
 from flask import request, jsonify, Blueprint
 
-import utils
 from app import db
-from db import models
+from models import models, utils
 
 intent=Blueprint('intent', __name__)
 
@@ -78,7 +77,7 @@ def intentUnique(intent_id):
     try:
         intents=db.session.query(models.t_unique_intent_entities)\
             .filter_by(intent_id=intent_id).all()
-        return jsonify([models.Serializer\
+        return jsonify([models.Helper\
             .serializeStatic(i) for i in intents])
     except Exception as e:
         return(str(e))

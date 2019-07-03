@@ -249,9 +249,9 @@ TABLESPACE pg_default;
 
 CREATE TABLE settings
 (
-  setting_name character varying COLLATE pg_catalog."default" NOT NULL,
+  setting_name character varying COLLATE pg_catalog."default" NOT NULL ,
   setting_value character varying COLLATE pg_catalog."default",
-  CONSTRAINT setting_pkey PRIMARY KEY (setting_name),
+  CONSTRAINT setting_pkey PRIMARY KEY (setting_name)
 )
 WITH (
   OIDS = FALSE

@@ -1,3 +1,11 @@
+## Setting up the database schema
+
+From the postgres terminal download the schema file `dbcreate.sql` (modified file of original RasaUI database).
+```
+postgresTerminal:~$ wget https://raw.githubusercontent.com/biddy1618/rasaCrud/master/crudRasa/static/dbcreate.sql
+```
+Then create the database by running the downloaded script.
+
 
 ## Environment variables for the Flask application and database connection are set with `python-dotenv` package.
 
@@ -14,19 +22,9 @@ pip install psycopg2
 pip install sqlacodegen
 ```
 Then following cript should be executed to form ORM models in Python language
-
-`sqlacodegen postgresql://postgres:admin@localhost:5432/rasaui > db/models.py`
-
-One needs to change the 
 ```
-Base = declarative_base()
-metadata = Base.metadata
-```
-to
-```
-from app import db
-Base = db.Model
-metadata = db.metadata
+sqlacodegen postgresql://postgres:admin@localhost:5432/rasaui > models.py
+mv models.py ./crudRasa/models/models.py
 ```
 
 # Database relations
@@ -51,14 +49,7 @@ variant
 
 ---
 
-`utils.py` - scripts that are used throughout the project:
-* `utils.lemmatize(text)` returns lemmatized text of the input `text`.
-* `utils.result(status, message)` returns the status along with message (`status` and `message` parameters respectively) of DB operation in JSON suitable format.
-* `utils.makeList(urlParams)` returns python list of strings of the parameters `urlParams`. Get URL-encoded parameters that are given in the form of the string list `...?a=i1,i2,i3...`.
-
----
-
-`db` folder - holds ORM models for the database. `db.Serializer` class implements serialization of the ORM results into JSON format, also implements the update operation for ORM models.
+`models` folder - holds ORM models for the database. `models.Helper` class implements serialization of the ORM results into JSON format, also implements the update operation for ORM models.
 
 ---
 
