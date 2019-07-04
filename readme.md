@@ -65,7 +65,7 @@ One can't do ORM operations with `sqlalchemy.Table`.
 
 One cannot use the Table objects to do proper ORM. When user queries a Table object (via `session.query(query)`) he/she will get the results returned to you as read-only namedtuple-like objects. Setting their attributes makes no sense this way makes no sense.
 
-## TODO
+---
 
 Alter the database, so that `Settings` table has a primary key. Tables need to have primary key in order to map a particular table.
 
@@ -76,4 +76,5 @@ Alter the database, so that `Settings` table has a primary key. Tables need to h
 > Note:
 > > It’s important to note that we’re only talking about the SQLAlchemy ORM; an application which builds on Core and deals only with `Table` objects, `select()` constructs and the like, does not need any primary key to be present on or associated with a table in any way (though again, in SQL, all tables should really have some kind of primary key, lest you need to actually update or delete specific rows).
 
+## TODO
 

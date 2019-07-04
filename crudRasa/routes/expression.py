@@ -32,7 +32,7 @@ def expressionID(expression_id):
             data=request.get_json()
             expression=db.session.query(models.Expression)\
                 .filter_by(expression_id=expression_id).first_or_404()
-            data['expression_lemmatized'] = utils.lemmatize(data['expression_text'])
+            data['lemmatized_text'] = utils.lemmatize(data['expression_text'])
             expression.update(data)
             db.session.commit()
             return utils.result('success', 'Updated expression')
@@ -65,7 +65,7 @@ def createExpression():
         db.session.add(models.Expression(
             intent_id=data['intent_id'],
             expression_text=data['expression_text'],
-            expression_lemmatized=utils.lemmatize(
+            lemmatized_text=utils.lemmatize(
                 data['expression_text']
             )
         ))

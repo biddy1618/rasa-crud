@@ -27,16 +27,6 @@ app.register_blueprint(setting)
 app.register_blueprint(response)
 app.register_blueprint(parameter)
 
-'''
-Route arguments:
-
-string  (default) accepts any text without a slash
-int	    accepts positive integers
-float	accepts positive floating point values
-path	like string but also accepts slashes
-uuid	accepts UUID strings
-'''
-
 @app.route("/")
 def hello():
     return "Hello World!"

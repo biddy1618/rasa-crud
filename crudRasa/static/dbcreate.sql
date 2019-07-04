@@ -322,9 +322,8 @@ CREATE TABLE expressions
 
   /* 
   New field for the lemmatized content.
-  Unsuccessfull, go to ./server/db/expressions.js file
   */
-  expression_lemmatized character varying COLLATE pg_catalog."default" NOT NULL,
+  lemmatized_text character varying COLLATE pg_catalog."default" NOT NULL,
   
   expression_id integer NOT NULL DEFAULT nextval('expressions_expression_id_seq'::regclass),
   CONSTRAINT expression_pkey PRIMARY KEY (expression_id),
