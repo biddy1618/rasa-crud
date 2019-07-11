@@ -63,11 +63,11 @@ def parameterID(parameter_id):
 @parameter.route('/intent/<intent_id>/parameters', methods=['GET'])
 def parameterIntent(intent_id):
     try:
-        parameters=models.t_expression_parameters.query\
+        parameters=db.session.query(models.t_expression_parameters)\
             .filter_by(intent_id=intent_id).all()
         return jsonify([p.serialize() for p in parameters])
     except Exception as e:
-        reutrn(str(e))
+        return(str(e))
 
 @parameter.route('/parameters', methods=['POST'])
 def parameters():

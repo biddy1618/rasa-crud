@@ -77,8 +77,9 @@ def responseIntentRandom():
             .filter(models.Intent.intent_name==param)\
             .order_by(func.random()).limit(1)\
             .with_entities(models.Response.response_text).all()
-            
-        return jsonify({'response_text': data[0][0]})
+        result = None if len(data)==0 else data[0][0]
+
+        return jsonify({'response_text': result})
     except Exception as e:
         return(str(e))
 

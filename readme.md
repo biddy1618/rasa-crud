@@ -76,5 +76,22 @@ Alter the database, so that `Settings` table has a primary key. Tables need to h
 > Note:
 > > It’s important to note that we’re only talking about the SQLAlchemy ORM; an application which builds on Core and deals only with `Table` objects, `select()` constructs and the like, does not need any primary key to be present on or associated with a table in any way (though again, in SQL, all tables should really have some kind of primary key, lest you need to actually update or delete specific rows).
 
+---
+
+__TESTING POSTGRES__:
+
+To allow remote connections to PostgreSQL server, change the line in file _/etc/postgresql/9.5/main/postgresql.conf_:
+
+`listen_addresses = 'localhost'` to `listen_addresses = '*'`
+
+and add entry in file _/etc/postgresql/9.5/main/pg\_hba.conf_:
+```
+# TYPE  DATABASE        USER    CIDR-ADDRESS    METHOD
+local   all     all     md5
+host    all     all     0.0.0.0/0       md5
+```
 ## TODO
 
+Read about the query types: `models.Entity.query` and `db.session.query(models.Entity)`. The advantage of the later one is that if ORM table `models.Entity` has column `query`, then `models.Entity.query` will return `sqlalchemy.orm.attributes.InstrumentedAttribute` where as `db.session.query(models.Entity)` will return actual Query object `flask_sqlalchemy.BaseQuery`. Thus, if entity has column `query` then it is better to use the latter one. 
+
+Example: `routes/log.py` where `NluLogs` entity has column named `query`.

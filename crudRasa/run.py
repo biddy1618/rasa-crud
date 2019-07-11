@@ -14,6 +14,12 @@ from routes.variant import variant
 from routes.setting import setting
 from routes.response import response
 from routes.parameter import parameter
+from routes.log import log
+from routes.nlu_router import nlu_router
+from routes.middleware import middleware
+from routes.rasa_events import rasa_events
+from routes.messages import messages
+from routes.auth import auth
 
 app.register_blueprint(action)
 app.register_blueprint(intent)
@@ -26,10 +32,16 @@ app.register_blueprint(synonym)
 app.register_blueprint(setting)
 app.register_blueprint(response)
 app.register_blueprint(parameter)
+app.register_blueprint(log)
+app.register_blueprint(nlu_router)
+app.register_blueprint(middleware)
+app.register_blueprint(rasa_events)
+app.register_blueprint(messages)
+app.register_blueprint(auth)
 
 @app.route("/")
 def hello():
     return "Hello World!"
 
 if __name__ == '__main__':
-    app.run(port=5010)
+    app.run(host='0.0.0.0', port=5010)
