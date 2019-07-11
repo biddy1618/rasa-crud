@@ -51,10 +51,24 @@ def variantID(variant_id):
 def variantAll():
     '''
     The query is as follows:
-    "select synonym_reference as value, '[' || string_agg('\'' || synonym_value || '\'', ', ') || ']' 
-        as synonyms from entity_synonym_variants group by 1"
+    "SELECT synonym_reference AS value, '[' || string_agg('\'' || synonym_value || '\'', ', ') || ']' 
+    AS synonyms FROM entity_synonym_variants GROUP BY 1"
     '''
-    pass
+    try:
+        sql_statement=(
+            "SELECT synonym_reference AS value, '[' || string_agg('\'' || synonym_value || '\'', ', ') || ']'"
+            "AS synonyms FROM entity_synonym_variants GROUP BY 1"
+        )
+        results=db.session.execute(sql_statement)
+        
+        print(results)
+        return jsonify([{
+            'value': e[0],
+            'synonyms': e[1]
+        } for e in results])
+    except Exception as e:
+        return(str(e))
+    
 
 
 @variant.route('/variants', methods=['POST'])

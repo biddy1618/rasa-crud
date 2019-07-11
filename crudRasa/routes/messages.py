@@ -304,7 +304,20 @@ WHERE core_parse_log.messages_id=$1
 '''
 @messages.route('/messages/operation11', methods=['GET'])
 def operation11():
-    pass
+    try:
+        messages_id=request.args.get('messages_id')
+
+        sql_query=("SELECT * FROM core_parse_log FULL JOIN nlu_parse_log "
+                    "ON core_parse_log.messages_id=nlu_parse_log.messages_id "
+                    "WHERE core_parse_log.messages_id=:messages_id")
+        
+        results=db.session.execute(sql_query, {'messages_id': messages_id})
+        
+        results=[{i[0]: i[1] for i in r.items()} for r in results]
+
+        return jsonify(results)
+    except Exception as e:
+        return(str(e))
 
 
 '''

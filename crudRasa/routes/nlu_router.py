@@ -124,7 +124,38 @@ intents.agent_id=agents.agent_id
 '''
 @nlu_router.route("/nlu_router/operation5", methods=['GET'])
 def operation5():
-    pass
+    try:
+        intent_name=request.args.get('intent_name')
+        project_name=request.args.get('project_name')
+
+        agents=models.Agent
+        intents=models.Intent
+
+        results=db.session.query(
+            agents.endpoint_enabled.label('agent_endpoint'),
+            agents.endpoint_url,
+            agents.basic_auth_username,
+            agents.basic_auth_password,
+            intents.endpoint_enabled.label('intent_endpoint'),
+            intents.intent_id,
+            intents.intent_name
+        ).filter(
+            agents.agent_name==project_name,
+            intents.intent_name==intent_name,
+            intents.agent_id==agents.agent_id
+        ).all()
+
+        return jsonify([{
+            'agent_endpoint': e[0],
+            'endpoint_url': e[1],
+            'basic_auth_username': e[2],
+            'basic_auth_password': e[3],
+            'intent_endpoint': e[4],
+            'intent_id': e[5],
+            'intent_name': e[6]
+        } for e in results])
+    except Exception as e:
+        return(str(e))
 
 
 '''

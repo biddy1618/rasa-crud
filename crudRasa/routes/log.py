@@ -73,11 +73,39 @@ def nluParseLog(agent_id):
 @log.route('/agentByIntentConfidencePct/<agent_id>', methods=['GET'])
 def agentByIntentConfidencePct(agent_id):
     '''
-    select count(*),intent_confidence_pct, agents.agent_id, agents.agent_name from nlu_parse_log, agents, messages
-    where messages.agent_id = agents.agent_id and messages.messages_id=nlu_parse_log.messages_id
-    and agents.agent_id=$1 group by intent_confidence_pct, agents.agent_id, agents.agent_name
+    SELECT COUNT(*),intent_confidence_pct, agents.agent_id, agents.agent_name FROM nlu_parse_log, agents, messages
+    WHERE messages.agent_id = agents.agent_id AND messages.messages_id=nlu_parse_log.messages_id
+    AND agents.agent_id=$1 GROUP BY intent_confidence_pct, agents.agent_id, agents.agent_name
     '''
-    pass
+    try:
+        agents=models.Agent
+        nluParseLog=models.NluParseLog
+        messages=models.Message
+
+        results=db.session.query(func.count('*'), 
+            nluParseLog.intent_confidence_pct, 
+            agents.agent_id, 
+            agents.agent_name
+        ).filter(
+            messages.agent_id==agents.agent_id,
+            messages.messages_id==nluParseLog.messages_id,
+            agents.agent_id==agent_id
+        ).group_by(
+            nluParseLog.intent_confidence_pct,
+            agents.agent_id,
+            agents.agent_name
+        ).all()
+
+        print(results)
+
+        return jsonify([{
+            'count': e[0],
+            'intent_confidence_pct': e[1],
+            'agent_id': e[2],
+            'agent_name': e[3]
+        } for e in results])
+    except Exception as e:
+        return(str(e))
 
 @log.route('/intentsMostUsed/<agent_id>', methods=['GET'])
 def intentsMostUsed(agent_id):
