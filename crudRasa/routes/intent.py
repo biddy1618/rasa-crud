@@ -35,10 +35,11 @@ def intentID(intent_id):
     
     if request.method=='DELETE':
         try:
-            db.session.query(models.Intent)\
+            result=db.session.query(models.Intent)\
                 .filter_by(intent_id=intent_id).delete()
             db.session.commit()
-            return utils.result('success', f'Removed intent {intent_id}')
+            return jsonify({'rowCount':str(result)})
+            # return utils.result('success', f'Removed intent {intent_id}')
         except Exception as e:
             db.session.rollback()
             return(str(e))

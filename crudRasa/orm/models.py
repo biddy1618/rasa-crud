@@ -231,7 +231,7 @@ class Expression(db.Model, Helper):
 
     intent_id = Column(ForeignKey('intents.intent_id', ondelete='CASCADE'), nullable=False)
     expression_text = Column(String, nullable=False)
-    expression_lemmatized = Column(String, nullable=False)
+    lemmatized_text = Column(String, nullable=False)
     expression_id = Column(Integer, primary_key=True, server_default=text("nextval('expressions_expression_id_seq'::regclass)"))
 
     intent = relationship('Intent')

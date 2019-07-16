@@ -62,15 +62,16 @@ def expressionID(expression_id):
 def createExpression():
     try:
         data=request.get_json()
-        db.session.add(models.Expression(
+        expression=models.Expression(
             intent_id=data['intent_id'],
             expression_text=data['expression_text'],
             lemmatized_text=utils.lemmatize(
                 data['expression_text']
             )
-        ))
+        )
+        db.session.add(expression)
         db.session.commit()
-        return utils.result('success', 'Inserted')
+        return jsonify([expression.serialize()])
     except Exception as e:
         db.session.rollback()
         return(str(e))
