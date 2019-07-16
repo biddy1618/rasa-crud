@@ -59,6 +59,23 @@ variant
 
 `static` folder - holds static files.
 
+## Docker
+
+Very basic tutorial on __Docker__ is [here](https://jonnylangefeld.github.io/learning/Docker/How%2Bto%2BDocker.html)
+
+
+Also check out this [post](https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/) regarding removal of containers, images, docker objects, etc.
+
+Very good reference to __Docker__ commands in this [Medium post](https://towardsdatascience.com/15-docker-commands-you-should-know-970ea5203421)
+
+* `docker images -a` - list all images.
+* `docker ps -a` - list all containers.
+* `docker system prune` - remove all stopped containers, all dangling images, and all unused networks.
+* `docker exec -ti CONTAINER /bin/bash` - start Unix shell in the container.
+* `docker image|container rm IMAGE_ID|CONTAINER_ID` - remove image or container
+* `docker build --t name:tag .` - to build image from Dockerfile
+
+
 ## Notes
 
 One can't do ORM operations with `sqlalchemy.Table`. 
