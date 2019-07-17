@@ -3,6 +3,7 @@ from sqlalchemy import BigInteger, Boolean, Column, DateTime, ForeignKey, Intege
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import relationship
 from app import db
+from decimal import Decimal as D
 
 class Helper(object):
 
@@ -15,7 +16,12 @@ class Helper(object):
     
     @staticmethod
     def serializeStatic(row):
-        return {c: getattr(row, c) for c in row.keys()}        
+        return {c: Helper.checkDecimal(getattr(row, c)) 
+                for c in row.keys()}
+    
+    @staticmethod
+    def checkDecimal(val):
+        return str(val) if isinstance(val, D) else val
 
 t_active_user_count_12_months = Table(
     'active_user_count_12_months', db.metadata,

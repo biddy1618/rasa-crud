@@ -73,7 +73,7 @@ Very good reference to __Docker__ commands in this [Medium post](https://towards
 * `docker system prune` - remove all stopped containers, all dangling images, and all unused networks.
 * `docker exec -ti CONTAINER /bin/bash` - start Unix shell in the container.
 * `docker image|container rm IMAGE_ID|CONTAINER_ID` - remove image or container.
-* `docker build --t name:tag .` - to build image from Dockerfile.
+* `docker build -t name:tag .` - to build image from Dockerfile.
 * `docker run -p DOCKER_HOST_PORT:CONTAINER_PORT name:tag` - run container. `-p` (`--publish`) to publish container's port to the host, `-d` (`--detach`) to run container in background.
 
 

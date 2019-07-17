@@ -98,7 +98,7 @@ def operation3():
         
         return jsonify([{
             'user_id': e[0], 
-            'user_id': e[1]
+            'recent_active': e[1]
             } for e in results])
     except Exception as e:
         return(str(e))

@@ -96,8 +96,6 @@ def agentByIntentConfidencePct(agent_id):
             agents.agent_name
         ).all()
 
-        print(results)
-
         return jsonify([{
             'count': e[0],
             'intent_confidence_pct': e[1],

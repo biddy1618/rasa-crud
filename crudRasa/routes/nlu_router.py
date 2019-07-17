@@ -166,9 +166,7 @@ intents.intent_id = $1 order by random() LIMIT 1'
 '''
 @nlu_router.route("/nlu_router/operation6", methods=['GET'])
 def operation6():
-    print('daurne')
     try:
-        print('daurne')
         intent_id=request.args.get('intent_id')
         
         data=models.Response.query.join(models.Intent,

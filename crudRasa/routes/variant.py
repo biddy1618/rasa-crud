@@ -61,7 +61,6 @@ def variantAll():
         )
         results=db.session.execute(sql_statement)
         
-        print(results)
         return jsonify([{
             'value': e[0],
             'synonyms': e[1]

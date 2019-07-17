@@ -65,7 +65,9 @@ def parameterIntent(intent_id):
     try:
         parameters=db.session.query(models.t_expression_parameters)\
             .filter_by(intent_id=intent_id).all()
-        return jsonify([p.serialize() for p in parameters])
+        
+        return jsonify([models.Helper\
+            .serializeStatic(p) for p in parameters])
     except Exception as e:
         return(str(e))
 
