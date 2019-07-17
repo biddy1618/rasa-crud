@@ -68,7 +68,9 @@ def agentStory():
         agent=db.session.query(models.Agent)\
             .filter_by(agent_id=data['agent_id']).first_or_404()
         agent.update(data)
+
         db.session.commit()
+        
         return utils.result('success', 'Updated Story For Agent')
     except Exception as e:
         db.session.rollback()
