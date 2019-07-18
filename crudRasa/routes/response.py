@@ -3,6 +3,8 @@ from flask import request, jsonify, Blueprint
 from app import db, func
 from orm import models, utils
 
+import json
+
 
 response=Blueprint('response', __name__)
 
@@ -19,13 +21,15 @@ def responseActionID(action_id):
 def responseAction():
     try:
         data=request.get_json()
-        db.session.add(models.Response(
+
+        response=models.Response(
             action_id=data['action_id'],
             response_text=data['response_text'],
             response_type=data['response_type'],
-            buttons_info=data['buttons_info'],
+            buttons_info=json.loads(data['buttons_info']),
             response_image_url=data['response_image_url'],
-        ))
+        )
+        db.session.add(response)
         db.session.commit()
         return utils.result('success', 'Inserted')
     except Exception as e:
