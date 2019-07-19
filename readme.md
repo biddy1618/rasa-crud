@@ -28,12 +28,15 @@ mv models.py ./crudRasa/models/models.py
 ```
 
 # Database relations
-variant
 ![dbRelations](./schema.png)
 
 # Database operations
 
 ![dbOperations](./CRUDOperations.png)
+
+## Progress on endpoints
+
+One can view the status of implementations of endpoints in [Google docs](https://docs.google.com/spreadsheets/d/1hGiSk72mFg_tV9DRYRJDW8FPHNSHuC-0TR2pqpIz0q0/edit?usp=sharing).
 
 ## Information regarding the project
 
@@ -110,6 +113,4 @@ host    all     all     0.0.0.0/0       md5
 ```
 ## TODO
 
-Read about the query types: `models.Entity.query` and `db.session.query(models.Entity)`. The advantage of the later one is that if ORM table `models.Entity` has column `query`, then `models.Entity.query` will return `sqlalchemy.orm.attributes.InstrumentedAttribute` where as `db.session.query(models.Entity)` will return actual Query object `flask_sqlalchemy.BaseQuery`. Thus, if entity has column `query` then it is better to use the latter one. 
-
-Example: `routes/log.py` where `NluLogs` entity has column named `query`.
+* Fix all inserts related to JSON column.
