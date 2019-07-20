@@ -2,7 +2,7 @@
 
 From the postgres terminal download the schema file `dbcreate.sql` (modified file of original RasaUI database).
 ```
-postgresTerminal:~$ wget https://raw.githubusercontent.com/biddy1618/rasaCrud/master/crudRasa/static/dbcreate.sql
+postgresTerminal:~$ wget https://raw.githubusercontent.com/biddy1618/rasa-crud/develop/crudRasa/static/dbcreate.sql
 ```
 Then create the database by running the downloaded script.
 
@@ -23,9 +23,12 @@ pip install sqlacodegen
 ```
 Then following cript should be executed to form ORM models in Python language
 ```
-sqlacodegen postgresql://postgres:admin@localhost:5432/rasaui > models.py
-mv models.py ./crudRasa/models/models.py
+sqlacodegen postgresql://postgres:admin@localhost:5432/rasaui > tempModels.py
 ```
+
+Then modify `tempModels.py` accordingly:
+* Add helper class for serialization and update
+* Link Flask's `db = SQLAlchemy(app)` to models and update accordingly (Base class and metadata)
 
 # Database relations
 ![dbRelations](./schema.png)

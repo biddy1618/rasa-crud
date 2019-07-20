@@ -21,7 +21,7 @@ with open(os.path.abspath(PATH_NLU_FILE), 'r', encoding='utf-8') as fh:
         print(i)
         connection = psycopg2.connect(user="postgres",
                                       password="admin",
-                                      host="127.0.0.1",
+                                      host="localhost",
                                       port="5432",
                                       database="rasaui")
         cursor_name = connection.cursor()

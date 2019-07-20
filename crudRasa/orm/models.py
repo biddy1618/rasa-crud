@@ -1,5 +1,5 @@
 # coding: utf-8
-from sqlalchemy import BigInteger, Boolean, Column, DateTime, ForeignKey, Integer, Numeric, String, Table, Text, text
+from sqlalchemy import BigInteger, Boolean, Column, DateTime, ForeignKey, Integer, Numeric, Float, String, Table, Text, text
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import relationship
 from app import db
@@ -53,6 +53,15 @@ class Agent(db.Model, Helper):
     rasa_nlu_language = Column(String, server_default=text("'en'::character varying"))
     rasa_nlu_fixed_model_name = Column(String)
 
+t_analytics = Table(
+    'analytics', db.metadata,
+    Column('sender_id', String(100), nullable=False),
+    Column('intent_name', String(100), nullable=False),
+    Column('response_time', Float(53), nullable=False),
+    Column('dateandtime', DateTime, nullable=False, server_default=text("now()")),
+    Column('user_message', String(600)),
+    Column('bot_message', String(600))
+)
 
 t_avg_nlu_response_times_30_days = Table(
     'avg_nlu_response_times_30_days', db.metadata,
