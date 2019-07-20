@@ -440,7 +440,20 @@ CREATE TABLE messages_entities
 WITH (
   OIDS = FALSE
 )
-TABLESPACE pg_default;  
+TABLESPACE pg_default;
+
+CREATE TABLE analytics
+(
+  sender_id  VARCHAR (100)  NOT NULL,
+  intent_name VARCHAR (100) NOT NULL,
+  response_time float NOT NULL,
+  dateandtime timestamp NOT NULL DEFAULT NOW(),
+  user_message  VARCHAR (600),
+  bot_message  VARCHAR (600)
+)WITH (
+  OIDS = FALSE
+)
+TABLESPACE pg_default;
 
 /* Views */
 CREATE OR REPLACE VIEW intents_most_used AS
