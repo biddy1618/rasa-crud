@@ -52,7 +52,7 @@ def avgIntentUsageByDay():
             func.round(\
             func.avg(models.t_intent_usage_by_day.c.count))\
             .label('avg')).first_or_404()
-        return jsonify({'avg': data[0]})
+        return jsonify({'avg': 0.0 if data[0] is None else data[0]})
     except Exception as e:
         return(str(e))
 

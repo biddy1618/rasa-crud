@@ -20,6 +20,7 @@ from routes.middleware import middleware
 from routes.rasa_events import rasa_events
 from routes.messages import messages
 from routes.auth import auth
+from routes.analytics import analytics
 
 app.register_blueprint(action)
 app.register_blueprint(intent)
@@ -38,6 +39,7 @@ app.register_blueprint(middleware)
 app.register_blueprint(rasa_events)
 app.register_blueprint(messages)
 app.register_blueprint(auth)
+app.register_blueprint(analytics)
 
 @app.route("/")
 def hello():
