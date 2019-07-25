@@ -21,6 +21,7 @@ from routes.rasa_events import rasa_events
 from routes.messages import messages
 from routes.auth import auth
 from routes.analytics import analytics
+from routes.upload import fileUpload
 
 app.register_blueprint(action)
 app.register_blueprint(intent)
@@ -40,6 +41,7 @@ app.register_blueprint(rasa_events)
 app.register_blueprint(messages)
 app.register_blueprint(auth)
 app.register_blueprint(analytics)
+app.register_blueprint(fileUpload)
 
 @app.route("/")
 def hello():

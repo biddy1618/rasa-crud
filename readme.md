@@ -117,3 +117,25 @@ host    all     all     0.0.0.0/0       md5
 ## TODO
 
 * Fix all inserts related to JSON column.
+* Alter the database declaration so that tables _intents_ and _actions_ have unique _names_. Also table _reponses_ should have unique _intent\_id_, _action\_id_, _buttons\_info_, _response\_text_, and table _expressions_ should have unqiue _intent\_id_ and _epxression\_text_.
+
+## Rasa Details
+
+Responses
+* Intent can have several responses, for instance in `domain.yml` file:
+```
+...
+templates:
+  utter_greet:
+    - text: "hey there {name}!"  # {name} will be filled by slot (same name) or by custom action
+  utter_channel:
+    - text: "this is a default channel"
+    - text: "you're talking to me on slack!"  # if you define channel-specific utterances, the bot will pick
+      channel: "slack"                        # from those when talking on that specific channel
+  utter_goodbye:
+    - text: "goodbye 😢"   # multiple templates - bot will randomly pick one of them
+    - text: "bye bye 😢"
+  utter_default:   # utterance sent by action_default_fallback
+    - text: "sorry, I didn't get that, can you rephrase it?"
+...
+```

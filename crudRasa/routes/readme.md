@@ -33,5 +33,38 @@ This endpoint implemented using direct SQL injection since `sqlalchemy` ORM does
 >* simply execute those two queries separately and aggregate the results already in Python itself (for not so large results sets).
 >* __given that it looks like some kind of reporting functionality rather than business model workflow, create a SQL query and execute it directly via engine. (only if it really is much better performing though).__
 
+### Upload from file - gettings `ID`s of inserted row
+
+>You'll be better off looping over a single insert within a transaction, or using a multi-valued insert... returning, though in the latter case you must be careful to match returned IDs using another input value, you can't just assume the order of returned IDs is the same as the input VALUES list.
+
+Thus while inserting, make sure to insert one by one.
+
+### Inserting JSON data into PostreSQL database
+
+You can use `psycopg2.extras.Json` to convert `dict` to `JSON` that Postgre accept.
+
+```
+from psycopg2.extras import Json
+
+jsonData = [
+    {
+        "key1":{
+            "key2":"value1"
+        },
+        "key2":[
+            {
+                "key1":1,
+                "key2":"value2"
+            },
+            {
+                "key1":"value1"
+            }
+        ]
+    }
+]
+
+jsonDate=Json(jsonDate)
+```
+
 
 
