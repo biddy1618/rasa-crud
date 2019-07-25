@@ -17,21 +17,41 @@ def uploadFromFile():
     conn = None
     try:
         df = pd.read_csv(request.files.get('file'))
+
+        dbData = {
+            "user": 'rasaadmin',
+            "password": 'Ba89elEe2j46',
+            "host": 'dev-postgresql-v965.cpwuac0qgnrf.eu-west-1.rds.amazonaws.com',
+            "port": '5432',
+            "database": 'rasabot',
+        }
+
+        dbDataLocal = {
+            "user": 'postgres',
+            "password": 'admin',
+            "host": 'localhost',
+            "port": '5432',
+            "database": 'rasaui',
+        }
         
-        conn = psycopg2.connect(user="postgres",
-                                password="admin",
-                                host="localhost",
-                                port="5432",
-                                database="temp")
+        conn = psycopg2.connect(user=dbData["user"],
+                                password=dbData["password"],
+                                host=dbData["host"],
+                                port=dbData["port"],
+                                database=dbData["database"])
         cur = conn.cursor()
+
+        data = {}
 
         agentSelect = "SELECT agent_id FROM rasa_ui.agents"
         cur.execute(agentSelect)
         agent_id = cur.fetchone()
         
         if agent_id is None:
-            cur.execute("INSERT INTO rasa_ui.agents (agent_name) VALUES ('agent') RETURNING agent_id")
+            cur.execute("INSERT INTO rasa_ui.agents (agent_name) VALUES ('agent') \
+                RETURNING agent_id")
             agent_id = cur.fetchone()
+            data['agentInserted'] = 1
             
         agent_id = agent_id[0]
 
@@ -49,10 +69,15 @@ def uploadFromFile():
             columns=['name', 'agent_id'],
             data=[[name, agent_id] for name in df.intent.unique()]
         )
-
-        intents = intents[~intents.name.isin(intentToId.keys())]
         
-        intentInj = "INSERT INTO rasa_ui.intents (intent_name, agent_id) VALUES (%s, %s) RETURNING intent_id"
+        data['intentsNotInserted'] = list(intents[intents.name.isin(intentToId.keys())]\
+            .name.values)
+        
+        intents = intents[~intents.name.isin(intentToId.keys())]
+        data['intentsInserted'] = list(intents.name.values)
+        
+        intentInj = "INSERT INTO rasa_ui.intents (intent_name, agent_id) VALUES (%s, %s) \
+            RETURNING intent_id"
 
         for _, row in intents.iterrows():
             cur.execute(intentInj, (row['name'], row['agent_id']))
@@ -77,12 +102,21 @@ def uploadFromFile():
             columns=['intent_id', 'expression_text', 'lemmatized_text'],
             data=expressions
         )
-
-        expressions = expressions[~(expressions.intent_id.astype(str)+'-'+expressions.expression_text).isin(expressionsExist)]
         
-        expressionInj = "INSERT INTO rasa_ui.expressions (intent_id, expression_text, lemmatized_text) VALUES (%s, %s, %s)"
+        data['expressionsNotInserted'] = list(expressions[(expressions.intent_id.astype(str)+'-'+\
+            expressions.expression_text).isin(expressionsExist)].expression_text.values)
+        
+        expressions = expressions[~(expressions.intent_id.astype(str)+'-'+\
+            expressions.expression_text).isin(expressionsExist)]
+        data['expressionsInserted'] = list(expressions.expression_text.values)
+
+        expressionInj = "INSERT INTO rasa_ui.expressions (intent_id, expression_text, lemmatized_text) \
+            VALUES (%s, %s, %s)"
         for _, row in expressions.iterrows():
-            cur.execute(expressionInj, (row['intent_id'], row['expression_text'], row['lemmatized_text']))
+            cur.execute(
+                expressionInj, 
+                (row['intent_id'], row['expression_text'], row['lemmatized_text'])
+            )
         
         
         actionSelect = "SELECT action_id, action_name FROM rasa_ui.actions"
@@ -97,17 +131,23 @@ def uploadFromFile():
             columns=['action_name', 'agent_id'], 
             data=[['utter_'+name, agent_id] for name in df.intent.unique()]
         )
+        
+        data['actionsNotInserted'] = list(actions[actions.action_name.isin(actionToId.keys())]\
+            .action_name.values)
 
         actions = actions[~actions.action_name.isin(actionToId.keys())]
-        
-        actionInj = "INSERT INTO rasa_ui.actions (action_name, agent_id) VALUES (%s, %s) RETURNING action_id"
+        data['actionsInserted'] = list(actions.action_name.values)
+
+        actionInj = "INSERT INTO rasa_ui.actions (action_name, agent_id) VALUES (%s, %s) \
+            RETURNING action_id"
 
         
         for _, row in actions.iterrows():
             cur.execute(actionInj, (row['action_name'], row['agent_id']))
             actionToId[row['action_name']]=cur.fetchone()[0]
 
-        responseSelect = "SELECT intent_id, action_id, buttons_info, response_text FROM rasa_ui.responses"
+        responseSelect = "SELECT intent_id, action_id, buttons_info, response_text FROM \
+            rasa_ui.responses"
 
         cur.execute(responseSelect)
         results = cur.fetchall()
@@ -128,10 +168,13 @@ def uploadFromFile():
         
         temp = responses.intent_id.astype(str)+'-'+responses.action_id.astype(str)+'-'+\
             responses.buttons_info.astype(str)+'-'+responses.response_text.astype(str)
-        
+        data['responsesNotInserted'] = list(responses[temp.isin(responseExist)].response_text.values)
+
         responses = responses[~temp.isin(responseExist)]
+        data['responsesInserted'] = list(responses.response_text.values)
         
-        responseInj = "INSERT INTO rasa_ui.responses (intent_id, action_id, buttons_info, response_text, response_type) VALUES (%s, %s, %s, %s, %s)"
+        responseInj = "INSERT INTO rasa_ui.responses (intent_id, action_id, buttons_info, response_text, \
+            response_type) VALUES (%s, %s, %s, %s, %s)"
 
         for _, row in responses.iterrows():
             cur.execute(
@@ -143,10 +186,20 @@ def uploadFromFile():
                     row['response_type']
                 )
             )
+        
+        
+        totalInsertions = 0
+        for key in data:
+            if isinstance(data[key], list) and 'Not' not in key:
+                totalInsertions += len(data[key])
+            elif key == 'agentInserted':
+                totalInsertions += data[key]
+        
+        data['totalInsertions'] = totalInsertions
 
         conn.commit()
 
-        return ('Good', 200)
+        return (jsonify(data), 200)
     except Exception as e:
         return(str(e))
     finally:

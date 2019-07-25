@@ -193,7 +193,8 @@ CREATE TABLE intents
   endpoint_enabled boolean,
   intent_id integer NOT NULL DEFAULT nextval('intents_intent_id_seq'::regclass),
   CONSTRAINT intent_pkey PRIMARY KEY (intent_id),
-  CONSTRAINT agent_fkey FOREIGN KEY (agent_id) REFERENCES agents (agent_id) ON DELETE CASCADE
+  CONSTRAINT agent_fkey FOREIGN KEY (agent_id) REFERENCES agents (agent_id) ON DELETE CASCADE,
+  CONSTRAINT intent_name_unique UNIQUE (intent_name)
 )
 WITH (
   OIDS = FALSE
@@ -289,7 +290,8 @@ CREATE TABLE actions
   agent_id integer,
   action_id integer NOT NULL DEFAULT nextval('actions_action_id_seq'::regclass),
   CONSTRAINT action_pkey PRIMARY KEY (action_id),
-  CONSTRAINT agent_fkey FOREIGN KEY (agent_id) REFERENCES agents (agent_id) ON DELETE CASCADE
+  CONSTRAINT agent_fkey FOREIGN KEY (agent_id) REFERENCES agents (agent_id) ON DELETE CASCADE,
+  CONSTRAINT action_name_unique UNIQUE (action_name)
 )
 WITH (
   OIDS = FALSE
@@ -308,7 +310,8 @@ CREATE TABLE responses
   CONSTRAINT response_pkey PRIMARY KEY (response_id),
   CONSTRAINT intent_fkey FOREIGN KEY (intent_id) REFERENCES intents (intent_id) ON DELETE CASCADE,
   CONSTRAINT action_fkey FOREIGN KEY (action_id) REFERENCES actions (action_id) ON DELETE CASCADE,
-  CONSTRAINT responses_response_type_fkey FOREIGN KEY (response_type) REFERENCES response_type (response_type_id) ON DELETE CASCADE
+  CONSTRAINT responses_response_type_fkey FOREIGN KEY (response_type) REFERENCES response_type (response_type_id) ON DELETE CASCADE,
+  CONSTRAINT response_unique UNIQUE (intent_id, action_id, buttons_info, response_text)
 )
 WITH (
   OIDS = FALSE
@@ -327,7 +330,8 @@ CREATE TABLE expressions
   
   expression_id integer NOT NULL DEFAULT nextval('expressions_expression_id_seq'::regclass),
   CONSTRAINT expression_pkey PRIMARY KEY (expression_id),
-  CONSTRAINT intent_fkey FOREIGN KEY (intent_id) REFERENCES intents (intent_id) ON DELETE CASCADE
+  CONSTRAINT intent_fkey FOREIGN KEY (intent_id) REFERENCES intents (intent_id) ON DELETE CASCADE,
+  CONSTRAINT expression_unique UNIQUE (intent_id, expression_text)
 )
 WITH (
   OIDS = FALSE
