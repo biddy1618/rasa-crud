@@ -25,7 +25,7 @@ build:
   stage: build
   image: python:3.7
   script:
-  - apt-get install -y python-dev graphviz libgraphviz-dev pkg-config
+  - apt-get install -y python graphviz libgraphviz-dev pkg-config
   - pip install -r requirements.txt
   artifacts:
     paths:
