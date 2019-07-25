@@ -82,6 +82,15 @@ Very good reference to __Docker__ commands in this [Medium post](https://towards
 * `docker build -t name:tag .` - to build image from Dockerfile.
 * `docker run -p DOCKER_HOST_PORT:CONTAINER_PORT name:tag` - run container. `-p` (`--publish`) to publish container's port to the host, `-d` (`--detach`) to run container in background.
 
+---
+
+One should add option `-y` to automatically asnwer `yes` to prompt while runnnig shell commands, i.e. in Dockerfile
+```
+...
+RUN apt-get install -y python-dev
+...
+```
+
 
 ## Notes
 
