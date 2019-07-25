@@ -84,10 +84,12 @@ Very good reference to __Docker__ commands in this [Medium post](https://towards
 
 ---
 
-One should add option `-y` to automatically asnwer `yes` to prompt while runnnig shell commands, i.e. in Dockerfile
+One should add option `-y` to automatically asnwer `yes` to prompt while runnnig shell commands and also merge `RUN ...` commands into one, i.e. in Dockerfile
 ```
 ...
-RUN apt-get install -y python-dev
+RUN apt-get update &&\
+    apt-get install --yes python-dev graphviz libgraphviz-dev pkg-config &&\
+    pip install -r requirements.txt
 ...
 ```
 
