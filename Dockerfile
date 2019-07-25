@@ -6,8 +6,7 @@ COPY . /crudRASA
 
 WORKDIR /crudRASA
 
-RUN apt-get update &&\
-    apt-get install --yes python-dev graphviz libgraphviz-dev pkg-config &&\
+RUN apt-get install -y python-dev graphviz libgraphviz-dev pkg-config &&\
     pip install -r requirements.txt
 
 ENTRYPOINT [ "python" ]
