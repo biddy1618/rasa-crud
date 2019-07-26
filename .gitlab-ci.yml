@@ -25,7 +25,8 @@ build:
   stage: build
   image: alpine:3.7
   script:
-  - apt-get install --yes python-dev graphviz libgraphviz-dev pkg-config
+  - apk add --update
+  - apk add python-dev graphviz libgraphviz-dev pkg-config py-pip
   - pip install -r requirements.txt
   artifacts:
     paths:
