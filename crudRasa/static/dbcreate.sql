@@ -453,7 +453,8 @@ CREATE TABLE analytics
   response_time float NOT NULL,
   dateandtime timestamp NOT NULL DEFAULT NOW(),
   user_message  VARCHAR (600),
-  bot_message  VARCHAR (600)
+  bot_message  VARCHAR (600),
+  session_id CHAR
 )WITH (
   OIDS = FALSE
 )

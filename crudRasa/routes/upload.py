@@ -5,6 +5,7 @@ from psycopg2.extras import Json
 
 import json
 import pandas as pd
+from io import StringIO
 
 from app import db
 from orm import models, utils
@@ -16,8 +17,8 @@ fileUpload=Blueprint('fileUpload', __name__)
 def uploadFromFile():
     conn = None
     try:
-        df = pd.read_csv(request.files.get('file'))
-
+        df = pd.read_csv(StringIO(request.get_json()['data']))
+        
         dbData = {
             "user": 'rasaadmin',
             "password": 'Ba89elEe2j46',
@@ -34,11 +35,11 @@ def uploadFromFile():
             "database": 'rasaui',
         }
         
-        conn = psycopg2.connect(user=dbData["user"],
-                                password=dbData["password"],
-                                host=dbData["host"],
-                                port=dbData["port"],
-                                database=dbData["database"])
+        conn = psycopg2.connect(user=dbDataLocal["user"],
+                                password=dbDataLocal["password"],
+                                host=dbDataLocal["host"],
+                                port=dbDataLocal["port"],
+                                database=dbDataLocal["database"])
         cur = conn.cursor()
 
         data = {}
