@@ -5,43 +5,27 @@ from orm import models, utils
 
 analytics=Blueprint('analytics', __name__)
 
-'''
-SELECT count(t.*)
-FROM (
-    SELECT sender_id, DATE(dateandtime) 
-    from rasa_ui.analytics 
-    GROUP BY sender_id, DATE(dateandtime)
-) t
 
-SELECT t.date, count(t.*)
-FROM (
-    SELECT DATE(dateandtime) as date
-    from rasa_ui.analytics
-    GROUP BY sender_id, DATE(dateandtime)
-) t 
-GROUP BY t.date;
-'''
+# [Insights] Enpoint for session count, and session info by day
 @analytics.route("/analytics/sessions/1", methods=['GET'])
 def session1():
     try:
         days=request.args.get('days')
         
-        query1=('SELECT count(t.*) as cnt '
+        query1=('SELECT COUNT(DISTINCT session_id) '
+            'FROM rasa_ui.analytics '
+            'WHERE DATE(dateandtime) >= CURRENT_DATE - :days')
+
+        
+        query2=('SELECT t.date, sum(t.cnt) as count '
             'FROM ('
-                'SELECT sender_id, DATE(dateandtime) '
+                'SELECT DATE(dateandtime) as date, '
+                'session_id, count(*) as cnt '
                 'from rasa_ui.analytics '
                 'where DATE(dateandtime) >= CURRENT_DATE - :days '
-                'GROUP BY sender_id, DATE(dateandtime)'
-            ') t')
-
-        query2=('SELECT t.date, count(t.*) '
-        'FROM ('
-            'SELECT DATE(dateandtime) as date '
-            'from rasa_ui.analytics '
-            'where DATE(dateandtime) >= CURRENT_DATE - :days '
-            'GROUP BY sender_id, DATE(dateandtime)'
-        ') t '
-        'GROUP BY t.date')
+                'GROUP BY session_id, DATE(dateandtime)'
+            ') t '
+            'GROUP BY t.date')
 
         result1=db.session.execute(query1, {'days': int(days)}).fetchone()
         result2=db.session.execute(query2, {'days': int(days)}).fetchall()
@@ -54,43 +38,29 @@ def session1():
     except Exception as e:
         return(str(e))
 
-'''
-SELECT avg(t.cnt) 
-FROM (
-    SELECT sender_id, DATE(dateandtime), count(*) as cnt 
-    from rasa_ui.analytics 
-    GROUP BY sender_id, DATE(dateandtime)
-) t
 
-SELECT t.date, avg(t.cnt)
-FROM (
-    SELECT DATE(dateandtime) as date, count(*) as cnt
-    from rasa_ui.analytics
-    GROUP BY sender_id, DATE(dateandtime)
-) t 
-GROUP BY t.date
-'''
+# [Insights] Endpoint for queries per session and queries info per day
 @analytics.route("/analytics/sessions/2", methods=['GET'])
 def session2():
     try:
         days=request.args.get('days')
         
         query1=('SELECT avg(t.cnt) as queryPerSession '
-        'FROM ('
-            'SELECT count(*) as cnt '
-            'from rasa_ui.analytics '
-            'where DATE(dateandtime) >= CURRENT_DATE - :days '
-            'GROUP BY sender_id, DATE(dateandtime)'
-        ') t')
+            'FROM ('
+                'SELECT count(*) as cnt '
+                'FROM rasa_ui.analytics '
+                'where DATE(dateandtime) >= CURRENT_DATE - :days '
+                'GROUP BY session_id'
+            ') t')
 
         query2=('SELECT t.date, avg(t.cnt) '
-        'FROM ('
-            'SELECT DATE(dateandtime) as date, count(*) as cnt '
-            'from rasa_ui.analytics '
-            'where DATE(dateandtime) >= CURRENT_DATE - :days '
-            'GROUP BY sender_id, DATE(dateandtime)'
-        ') t '
-        'GROUP BY t.date')
+            'FROM ('
+                'SELECT DATE(dateandtime) as date, count(*) as cnt '
+                'from rasa_ui.analytics '
+                'where DATE(dateandtime) >= CURRENT_DATE - :days '
+                'GROUP BY session_id, DATE(dateandtime)'
+            ') t '
+            'GROUP BY t.date')
 
         result1=db.session.execute(query1, {'days': int(days)}).fetchone()
         result2=db.session.execute(query2, {'days': int(days)}).fetchall()
@@ -106,27 +76,39 @@ def session2():
         return(str(e))
 
 
-'''
-SELECT intent_name, 
-    count(*) as cnt, 
-    count(DISTINCT(sender_id, DATE(dateandtime))) as sessions, 
-    avg(response_time) as avgRespTime
-FROM rasa_ui.analytics
-WHERE DATE(dateandtime) >= CURRENT_DATE - :days
-GROUP BY intent_name
-'''
+# [Conversations] Endpoint for single session details
+@analytics.route("/analytics/sessions/3", methods=['GET'])
+def session3():
+    try:
+        sessionId=request.args.get('session_id')
+        
+        query=('SELECT sender_id, dateandtime, user_message, '
+                'bot_message, intent_name, response_time '
+            'FROM rasa_ui.analytics WHERE session_id = :sessionId '
+            'ORDER BY dateandtime')
+
+        result=db.session.execute(query, {'sessionId': sessionId}).fetchall()
+        
+        return jsonify({
+                'messages': [models.Helper.serializeStatic(e) for e in result]
+            })
+    except Exception as e:
+        return(str(e))
+
+
+# [Insights] Endpoint for intents used info
 @analytics.route("/analytics/intents/1", methods=['GET'])
 def intent1():
     try:
         days=request.args.get('days')
         
         query=('SELECT intent_name, '
-            'count(*) as cnt, '
-            'count(DISTINCT(sender_id, DATE(dateandtime))) as sessions, '
-            'avg(response_time) as avgRespTime '
-        'FROM rasa_ui.analytics '
-        'WHERE DATE(dateandtime) >= CURRENT_DATE - :days '
-        'GROUP BY intent_name')
+                'count(*) as cnt, '
+                'count(DISTINCT session_id) as sessions, '
+                'avg(response_time) as avgRespTime '
+            'FROM rasa_ui.analytics '
+            'WHERE DATE(dateandtime) >= CURRENT_DATE - :days '
+            'GROUP BY intent_name')
 
         result=db.session.execute(query, {'days': int(days)}).fetchall()
         
@@ -135,13 +117,7 @@ def intent1():
         return(str(e))
 
 
-'''
-SELECT sender_id as userid, 
-    DATE(dateandtime) as chatdate, 
-    COUNT(DISTINCT intent_name) as intentions
-FROM rasa_ui.analytics
-GROUP BY sender_id, DATE(dateandtime)
-'''
+# [Conversations] Endpoint for conversations info
 @analytics.route("/analytics/intents/2", methods=['GET'])
 def intent2():
     try:
@@ -151,13 +127,23 @@ def intent2():
         itemsPerPage=0 if itemsPerPage is None else int(itemsPerPage)
         page=1 if page is None else int(page)
 
-        
-        query=('SELECT sender_id as userID, '
-                'DATE(dateandtime) as chatDate, '
-                'COUNT(DISTINCT intent_name) as intentions '
-            'FROM rasa_ui.analytics '
-            'GROUP BY sender_id, DATE(dateandtime) '
-            'ORDER BY DATE(dateandtime) desc '
+        query=('SELECT t1.sender_id as userID, '
+                't1.dateandtime as chatDate, '
+                't1.session_id, t2.cnt as intentions, '
+                't3.not_found '
+            'FROM (SELECT sender_id, dateandtime, session_id, row_number() '
+                'OVER(PARTITION BY session_id ORDER BY dateandtime) AS rn '
+                'FROM rasa_ui.analytics) t1 '
+            'JOIN ('
+                'SELECT session_id, count(*) cnt FROM rasa_ui.analytics '
+                'GROUP BY session_id) t2 '
+            'ON t1.session_id = t2.session_id LEFT JOIN ('
+                'SELECT DISTINCT session_id, TRUE as not_found '
+                'FROM rasa_ui.analytics '
+                'WHERE intent_name = \'default-intent\''
+            ') t3 ON t1.session_id = t3.session_id '
+            'WHERE t1.rn = 1 '
+            'ORDER BY t1.dateandtime desc '
             'LIMIT :limit OFFSET :offset')
 
         results=db.session.execute(query, {

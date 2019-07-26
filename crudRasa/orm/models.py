@@ -60,7 +60,8 @@ t_analytics = Table(
     Column('response_time', Float(53), nullable=False),
     Column('dateandtime', DateTime, nullable=False, server_default=text("now()")),
     Column('user_message', String(600)),
-    Column('bot_message', String(600))
+    Column('bot_message', String(600)),
+    Column('session_id', String(600))
 )
 
 t_avg_nlu_response_times_30_days = Table(

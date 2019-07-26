@@ -454,7 +454,7 @@ CREATE TABLE analytics
   dateandtime timestamp NOT NULL DEFAULT NOW(),
   user_message  VARCHAR (600),
   bot_message  VARCHAR (600),
-  session_id CHAR
+  session_id VARCHAR (600)
 )WITH (
   OIDS = FALSE
 )
