@@ -1,13 +1,14 @@
 # Dockerfile
 
-FROM python:3.7
+FROM python:3.6.8
 
 COPY . /crudRASA
 
 WORKDIR /crudRASA
 
-RUN apt-get install -y python-dev graphviz libgraphviz-dev pkg-config &&\
-    pip install -r requirements.txt
+RUN pip install -r requirements.txt
+
+EXPOSE 5010
 
 ENTRYPOINT [ "python" ]
 

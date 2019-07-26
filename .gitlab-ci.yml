@@ -17,16 +17,14 @@ variables:
 
 test:
   stage: test
-  image: alpine:3.7
+  image: python:3.6.8
   script:
   - env
 
 build:
   stage: build
-  image: alpine:3.7
+  image: python:3.6.8
   script:
-  - apk add --update
-  - apk add python-dev graphviz libgraphviz-dev pkg-config py-pip
   - pip install -r requirements.txt
   artifacts:
     paths:
