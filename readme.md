@@ -55,7 +55,11 @@ One can view the status of implementations of endpoints in [Google docs](https:/
 
 ---
 
-`models` folder - holds ORM models for the database. `models.Helper` class implements serialization of the ORM results into JSON format, also implements the update operation for ORM models.
+`migration` folder - holds scripts for migrating data from DialogFlow to Rasa.
+
+---
+
+`orm` folder - holds ORM models for the database. `models.Helper` class implements serialization of the ORM results into JSON format, also implements the update operation for ORM models.
 
 ---
 
