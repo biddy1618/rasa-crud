@@ -35,11 +35,11 @@ def uploadFromFile():
             "database": 'rasaui',
         }
         
-        conn = psycopg2.connect(user=dbDataLocal["user"],
-                                password=dbDataLocal["password"],
-                                host=dbDataLocal["host"],
-                                port=dbDataLocal["port"],
-                                database=dbDataLocal["database"])
+        conn = psycopg2.connect(user=dbData["user"],
+                                password=dbData["password"],
+                                host=dbData["host"],
+                                port=dbData["port"],
+                                database=dbData["database"])
         cur = conn.cursor()
 
         data = {}
