@@ -140,7 +140,7 @@ def intent2():
             'ON t1.session_id = t2.session_id LEFT JOIN ('
                 'SELECT DISTINCT session_id, TRUE as not_found '
                 'FROM rasa_ui.analytics '
-                'WHERE intent_name = \'default-intent\''
+                'WHERE intent_name = \'default\''
             ') t3 ON t1.session_id = t3.session_id '
             'WHERE t1.rn = 1 '
             'ORDER BY t1.dateandtime desc '

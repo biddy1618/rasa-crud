@@ -129,6 +129,17 @@ and add entry in file _/etc/postgresql/9.5/main/pg\_hba.conf_:
 local   all     all     md5
 host    all     all     0.0.0.0/0       md5
 ```
+---
+__GIT Commands__
+
+In order to pull the last changes, but retain local changes (there may be conflicts), do the following:
+```
+git stash
+git pull
+git stash pop
+```
+
+---
 ## TODO
 
 * Fix all inserts related to JSON column.
