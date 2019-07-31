@@ -25,7 +25,8 @@ def session1():
                 'where DATE(dateandtime) >= CURRENT_DATE - :days '
                 'GROUP BY session_id, DATE(dateandtime)'
             ') t '
-            'GROUP BY t.date')
+            'GROUP BY t.date '
+            'ORDER BY t.date')
 
         result1=db.session.execute(query1, {'days': int(days)}).fetchone()
         result2=db.session.execute(query2, {'days': int(days)}).fetchall()
@@ -60,7 +61,8 @@ def session2():
                 'where DATE(dateandtime) >= CURRENT_DATE - :days '
                 'GROUP BY session_id, DATE(dateandtime)'
             ') t '
-            'GROUP BY t.date')
+            'GROUP BY t.date '
+            'ORDER BY t.date')
 
         result1=db.session.execute(query1, {'days': int(days)}).fetchone()
         result2=db.session.execute(query2, {'days': int(days)}).fetchall()
