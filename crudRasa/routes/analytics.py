@@ -109,7 +109,7 @@ def intent1():
         itemsPerPage=0 if itemsPerPage is None else int(itemsPerPage)
         page=1 if page is None else int(page)
         
-        query=('SELECT intent_name, '
+        query1=('SELECT intent_name, '
                 'count(*) as cnt, '
                 'count(DISTINCT session_id) as sessions, '
                 'avg(response_time) as avgRespTime '
@@ -117,14 +117,21 @@ def intent1():
             'WHERE DATE(dateandtime) >= CURRENT_DATE - :days '
             'GROUP BY intent_name '
             'LIMIT :limit OFFSET :offset')
+        query2=('SELECT count(distinct intent_name) as cnt '
+            'FROM rasa_ui.analytics '
+            'WHERE DATE(dateandtime) >= CURRENT_DATE - :days')
 
-        result=db.session.execute(query, {
+        result1=db.session.execute(query1, {
             'days': int(days),
             'limit': itemsPerPage,
             'offset': (page-1)*itemsPerPage
         }).fetchall()
+        result2=db.session.execute(query2, {'days': int(days)}).fetchone()
         
-        return jsonify({'intents': [models.Helper.serializeStatic(e) for e in result]})
+        return jsonify({
+            'intents': [models.Helper.serializeStatic(e) for e in result1],
+            'count': result2[0]
+        })
     except Exception as e:
         return(str(e))
 
@@ -139,7 +146,7 @@ def intent2():
         itemsPerPage=0 if itemsPerPage is None else int(itemsPerPage)
         page=1 if page is None else int(page)
 
-        query=('SELECT t1.sender_id as userID, '
+        query1=('SELECT t1.sender_id as userID, '
                 't1.dateandtime as chatDate, '
                 't1.session_id, t2.cnt as intentions, '
                 't3.not_found '
@@ -157,13 +164,21 @@ def intent2():
             'WHERE t1.rn = 1 '
             'ORDER BY t1.dateandtime desc '
             'LIMIT :limit OFFSET :offset')
+        query2=('SELECT count(DISTINCT session_id) as cnt '
+            'FROM rasa_ui.analytics')
 
-        results=db.session.execute(query, {
+        results1=db.session.execute(query1, {
             'limit': itemsPerPage,
             'offset': (page-1)*itemsPerPage
         }).fetchall()
+        results2=db.session.execute(query2).fetchone()
+        print(results2)
 
-        return jsonify([models.Helper.serializeStatic(e) for e in results])
+
+        return jsonify({
+            'conversations': [models.Helper.serializeStatic(e) for e in results1],
+            'count': results2[0]
+        })
     except Exception as e:
         return(str(e))
 
