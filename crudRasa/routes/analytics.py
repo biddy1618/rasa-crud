@@ -103,6 +103,11 @@ def session3():
 def intent1():
     try:
         days=request.args.get('days')
+        itemsPerPage=request.args.get('itemsPerPage')
+        page=request.args.get('page')
+
+        itemsPerPage=0 if itemsPerPage is None else int(itemsPerPage)
+        page=1 if page is None else int(page)
         
         query=('SELECT intent_name, '
                 'count(*) as cnt, '
@@ -110,9 +115,14 @@ def intent1():
                 'avg(response_time) as avgRespTime '
             'FROM rasa_ui.analytics '
             'WHERE DATE(dateandtime) >= CURRENT_DATE - :days '
-            'GROUP BY intent_name')
+            'GROUP BY intent_name '
+            'LIMIT :limit OFFSET :offset')
 
-        result=db.session.execute(query, {'days': int(days)}).fetchall()
+        result=db.session.execute(query, {
+            'days': int(days),
+            'limit': itemsPerPage,
+            'offset': (page-1)*itemsPerPage
+        }).fetchall()
         
         return jsonify({'intents': [models.Helper.serializeStatic(e) for e in result]})
     except Exception as e:
