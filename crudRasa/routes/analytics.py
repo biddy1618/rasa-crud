@@ -142,38 +142,83 @@ def intent2():
     try:
         itemsPerPage=request.args.get('itemsPerPage')
         page=request.args.get('page')
+        notFound=request.args.get('not_found')
 
         itemsPerPage=0 if itemsPerPage is None else int(itemsPerPage)
         page=1 if page is None else int(page)
-
-        query1=('SELECT t1.sender_id as userID, '
-                't1.dateandtime as chatDate, '
-                't1.session_id, t2.cnt as intentions, '
-                't3.not_found '
-            'FROM (SELECT sender_id, dateandtime, session_id, row_number() '
-                'OVER(PARTITION BY session_id ORDER BY dateandtime) AS rn '
-                'FROM rasa_ui.analytics) t1 '
-            'JOIN ('
-                'SELECT session_id, count(*) cnt FROM rasa_ui.analytics '
-                'GROUP BY session_id) t2 '
-            'ON t1.session_id = t2.session_id LEFT JOIN ('
-                'SELECT DISTINCT session_id, TRUE as not_found '
+        notFound=0 if notFound is None else int(notFound)
+        
+        if notFound==0:
+            query1=('SELECT t1.sender_id as userID, '
+                    't1.dateandtime as chatDate, '
+                    't1.session_id, t2.cnt as intentions, '
+                    't3.not_found '
+                'FROM (SELECT sender_id, dateandtime, session_id, row_number() '
+                    'OVER(PARTITION BY session_id ORDER BY dateandtime) AS rn '
+                    'FROM rasa_ui.analytics) t1 '
+                'JOIN ('
+                    'SELECT session_id, count(*) cnt FROM rasa_ui.analytics '
+                    'GROUP BY session_id) t2 '
+                'ON t1.session_id = t2.session_id LEFT JOIN ('
+                    'SELECT DISTINCT session_id, TRUE as not_found '
+                    'FROM rasa_ui.analytics '
+                    'WHERE intent_name = \'default\''
+                ') t3 ON t1.session_id = t3.session_id '
+                'WHERE t1.rn = 1 '
+                'ORDER BY t1.dateandtime desc '
+                'LIMIT :limit OFFSET :offset')
+            query2=('SELECT count(DISTINCT session_id) as cnt '
+                'FROM rasa_ui.analytics')
+        elif notFound == 1:
+            query1=('SELECT t1.sender_id as userID, '
+                    't1.dateandtime as chatDate, '
+                    't1.session_id, t2.cnt as intentions, '
+                    't3.not_found '
+                'FROM (SELECT sender_id, dateandtime, session_id, row_number() '
+                    'OVER(PARTITION BY session_id ORDER BY dateandtime) AS rn '
+                    'FROM rasa_ui.analytics) t1 '
+                'JOIN ('
+                    'SELECT session_id, count(*) cnt FROM rasa_ui.analytics '
+                    'GROUP BY session_id) t2 '
+                'ON t1.session_id = t2.session_id JOIN ('
+                    'SELECT DISTINCT session_id, TRUE as not_found '
+                    'FROM rasa_ui.analytics '
+                    'WHERE intent_name = \'default\''
+                ') t3 ON t1.session_id = t3.session_id '
+                'WHERE t1.rn = 1 '
+                'ORDER BY t1.dateandtime desc '
+                'LIMIT :limit OFFSET :offset')
+            query2=('SELECT count(DISTINCT session_id) as cnt '
                 'FROM rasa_ui.analytics '
-                'WHERE intent_name = \'default\''
-            ') t3 ON t1.session_id = t3.session_id '
-            'WHERE t1.rn = 1 '
-            'ORDER BY t1.dateandtime desc '
-            'LIMIT :limit OFFSET :offset')
-        query2=('SELECT count(DISTINCT session_id) as cnt '
-            'FROM rasa_ui.analytics')
+                'WHERE intent_name = \'default\'')
+        else:
+            query1=('SELECT t1.sender_id as userID, '
+                    't1.dateandtime as chatDate, '
+                    't1.session_id, t2.cnt as intentions, '
+                    'FALSE as not_found '
+                'FROM (SELECT sender_id, dateandtime, session_id, row_number() '
+                    'OVER(PARTITION BY session_id ORDER BY dateandtime) AS rn '
+                    'FROM rasa_ui.analytics) t1 '
+                'JOIN ('
+                    'SELECT session_id, count(*) cnt FROM rasa_ui.analytics '
+                    'GROUP BY session_id) t2 '
+                'ON t1.session_id = t2.session_id '
+                'WHERE t1.rn = 1 '
+                'AND t1.session_id NOT IN ('
+                    'SELECT session_id FROM rasa_ui.analytics '
+                    'WHERE intent_name = \'default\')'
+                'ORDER BY t1.dateandtime desc '
+                'LIMIT :limit OFFSET :offset')
+            query2=('SELECT count(DISTINCT session_id) as cnt '
+                'FROM rasa_ui.analytics '
+                'WHERE intent_name != \'default\'')
 
         results1=db.session.execute(query1, {
             'limit': itemsPerPage,
             'offset': (page-1)*itemsPerPage
         }).fetchall()
         results2=db.session.execute(query2).fetchone()
-        print(results2)
-
+        
 
         return jsonify({
             'conversations': [models.Helper.serializeStatic(e) for e in results1],
