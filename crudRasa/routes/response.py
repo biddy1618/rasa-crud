@@ -23,6 +23,7 @@ def responseAction():
         data=request.get_json()
 
         response=models.Response(
+            intent_id=data['intent_id'],
             action_id=data['action_id'],
             response_text=data['response_text'],
             response_type=data['response_type'],
@@ -51,6 +52,7 @@ def responseIntent():
         data=request.get_json()
         db.session.add(models.Response(
             intent_id=data['intent_id'],
+            action_id=data['action_id'],
             response_text=data['response_text'],
             response_type=data['response_type']
         ))

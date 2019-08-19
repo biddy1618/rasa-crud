@@ -41,12 +41,13 @@ def actionID(action_id):
 def actions():
     try:
         data=request.get_json()
-        db.session.add(models.Action(
+        tmpAct=models.Action(
             action_name=data['action_name'],
             agent_id=data['agent_id']
-        ))
+        )
+        db.session.add(tmpAct)
         db.session.commit()
-        return utils.result('success', 'Inserted')
+        return utils.result('action added', {'id': tmpAct.action_id})
     except Exception as e:
         db.session.rollback()
         return(str(e))

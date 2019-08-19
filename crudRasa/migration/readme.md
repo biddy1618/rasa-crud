@@ -25,3 +25,17 @@ CACHE 1;
 ## Procedure on how to fill the database
 
 Set the connection details for the PostgreSQL database in the files `responses.py` and `intents.py`. Make sure that the database is newly created. Create a agent in the RasaUI with ID equal to 1. Run the mentioned scripts.
+
+## Refactoring migration script
+
+`migration.py` - script for migrating database (incorporates both intents, actions, and responses).
+
+## CORS
+
+Cross-Origin Resource Sharing - security policy. More on this on this [link](https://www.codecademy.com/articles/what-is-cors).
+
+Same-origin policy</br>
+![same-origin](https://s3.amazonaws.com/codecademy-content/articles/what-is-cors/same-origin.svg)
+
+Cross-origin policy</br>
+![cross-origin](https://s3.amazonaws.com/codecademy-content/articles/what-is-cors/cross-origin.svg)

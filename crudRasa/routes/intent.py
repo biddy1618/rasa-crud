@@ -9,12 +9,30 @@ intent=Blueprint('intent', __name__)
 def intents():
     try:
         data=request.get_json()
-        db.session.add(models.Intent(
-            intent_name = data['intent_name'],
-            agent_id = data['agent_id']
-        ))
-        db.session.commit()
-        return utils.result('success', 'Inserted')
+
+        tmp=models.Intent.query\
+            .filter_by(intent_name=data['intent_name']).first()
+        if tmp is None:
+            tmpInt=models.Intent(
+                intent_name = data['intent_name'],
+                agent_id = data['agent_id']
+            )
+
+            tmpAct=models.Action(
+                action_name='utter_'+data['intent_name'],
+                agent_id=data['agent_id']
+            )
+            
+            db.session.add(tmpInt)
+            db.session.add(tmpAct)
+            db.session.commit()
+            
+            return utils.result('intent and action added', {
+                'intent_id': tmpInt.intent_id,
+                'action_id': tmpAct.action_id,
+            })
+        else:
+            return utils.result('intent exists', {'id': tmp.intent_id})
     except Exception as e:
         db.session.rollback()
         return(str(e))
@@ -27,8 +45,14 @@ def intentID(intent_id):
             intent=db.session.query(models.Intent)\
                 .filter_by(intent_id=intent_id).first_or_404()
             intent.update(data)
+            action=db.session.query(models.Action)\
+                .filter_by(action_name='utter_'+intent.intent_name).first_or_404()
+            action.update({'action_name': 'utter_'+data['intent_name']})
             db.session.commit()
-            return utils.result('success', 'Updated intent')
+            return utils.result('intent and action updated', {
+                'intent_id': intent_id,
+                'action_id': action.action_id
+            })
         except Exception as e:
             db.session.rollback()
             return(str(e))
