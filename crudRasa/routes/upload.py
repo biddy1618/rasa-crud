@@ -7,7 +7,7 @@ import json
 import pandas as pd
 from io import StringIO
 
-from app import db
+from app import app, db
 from orm import models, utils
 
 
@@ -19,27 +19,7 @@ def uploadFromFile():
     try:
         df = pd.read_csv(StringIO(request.get_json()['data']))
         
-        dbData = {
-            "user": 'rasaadmin',
-            "password": 'Ba89elEe2j46',
-            "host": 'dev-postgresql-v965.cpwuac0qgnrf.eu-west-1.rds.amazonaws.com',
-            "port": '5432',
-            "database": 'rasabot',
-        }
-
-        dbDataLocal = {
-            "user": 'postgres',
-            "password": 'admin',
-            "host": 'localhost',
-            "port": '5432',
-            "database": 'rasaui',
-        }
-        
-        conn = psycopg2.connect(user=dbData["user"],
-                                password=dbData["password"],
-                                host=dbData["host"],
-                                port=dbData["port"],
-                                database=dbData["database"])
+        conn = psycopg2.connect(app.config['SQLALCHEMY_DATABASE_STRING'])
         cur = conn.cursor()
 
         data = {}

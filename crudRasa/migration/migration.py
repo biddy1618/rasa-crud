@@ -10,12 +10,15 @@ import psycopg2
 from psycopg2.extras import Json
 from orm import utils
 
+from dotenv import load_dotenv
+load_dotenv()
+
 import ruamel.yaml
 
 yaml = ruamel.yaml.YAML()
 
-PATH_FILE_JSON = './crudRasa/migration/static/test.json'
-PATH_FILE_YAML = './crudRasa/migration/static/test.yml'
+PATH_FILE_JSON = './crudRasa/migration/static/nlu_data.json'
+PATH_FILE_YAML = './crudRasa/migration/static/domain.yml'
 
 jsonFile = None
 with open(os.path.abspath(PATH_FILE_JSON), 'r', encoding="utf-8") as f:
@@ -28,27 +31,8 @@ with open(os.path.abspath(PATH_FILE_YAML), 'r', encoding="utf-8") as f:
 
 conn = None
 try:
-    dbData = {
-        "user": 'rasaadmin',
-        "password": 'Ba89elEe2j46',
-        "host": 'dev-postgresql-v965.cpwuac0qgnrf.eu-west-1.rds.amazonaws.com',
-        "port": '5432',
-        "database": 'rasabot',
-    }
-
-    dbDataLocal = {
-        "user": 'postgres',
-        "password": 'admin',
-        "host": 'localhost',
-        "port": '5432',
-        "database": 'rasaui',
-    }
     
-    conn = psycopg2.connect(user=dbData["user"],
-                            password=dbData["password"],
-                            host=dbData["host"],
-                            port=dbData["port"],
-                            database=dbData["database"])
+    conn = psycopg2.connect(os.environ['DATABASE_URL_STRING_LOCAL'])
     cur = conn.cursor()
 
     agentSelect = "SELECT agent_id FROM rasa_ui.agents"
@@ -74,6 +58,7 @@ try:
             intent['text'], 
             utils.lemmatize(intent['text'])
         ])
+    
     intents = pd.DataFrame(
         columns=['intent_name', 'expression_text', 'lemmatized_text'],
         data = intentsData

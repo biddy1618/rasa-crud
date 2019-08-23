@@ -37,6 +37,12 @@ Then modify `tempModels.py` accordingly:
 
 ![dbOperations](./CRUDOperations.png)
 
+# Authorization
+
+Request should have header with key `token` that will contain token. Before any request to database, check if token is valid.
+
+![authRasaCrud](./AuthForRasa.png)
+
 ## Progress on endpoints
 
 One can view the status of implementations of endpoints in [Google docs](https://docs.google.com/spreadsheets/d/1hGiSk72mFg_tV9DRYRJDW8FPHNSHuC-0TR2pqpIz0q0/edit?usp=sharing).

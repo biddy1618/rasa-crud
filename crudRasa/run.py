@@ -1,7 +1,9 @@
-from flask import Flask
+from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 
 from app import app, db
+
+from orm import utils
 
 from routes.action import action
 from routes.intent import intent
@@ -42,6 +44,11 @@ app.register_blueprint(messages)
 app.register_blueprint(auth)
 app.register_blueprint(analytics)
 app.register_blueprint(fileUpload)
+
+@app.before_request
+def before_request():
+    if request.method != 'OPTIONS' and not utils.checkAuth(request.headers.get('Authorization')):
+        return (utils.result(status='Failed', message='authorization failed'), 401)
 
 @app.route("/")
 def hello():
