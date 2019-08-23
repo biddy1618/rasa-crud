@@ -45,10 +45,10 @@ app.register_blueprint(auth)
 app.register_blueprint(analytics)
 app.register_blueprint(fileUpload)
 
-@app.before_request
-def before_request():
-    if request.method != 'OPTIONS' and not utils.checkAuth(request.headers.get('Authorization')):
-        return (utils.result(status='Failed', message='authorization failed'), 401)
+# @app.before_request
+# def before_request():
+#     if request.method != 'OPTIONS' and not utils.checkAuth(request.headers.get('Authorization')):
+#         return (utils.result(status='Failed', message='authorization failed'), 401)
 
 @app.route("/")
 def hello():

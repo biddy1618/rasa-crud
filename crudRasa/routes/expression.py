@@ -45,7 +45,7 @@ def expressionID(expression_id):
             db.session.query(models.Expression)\
                 .filter_by(expression_id=expression_id).delete()
             db.session.commit()
-            return utils.result('success', f'Removed intent {expression_id}')
+            return utils.result('success', f'Removed expression {expression_id}')
         except Exception as e:
             db.session.rollback()
             return(str(e))

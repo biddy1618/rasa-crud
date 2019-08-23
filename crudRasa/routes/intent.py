@@ -44,9 +44,10 @@ def intentID(intent_id):
             data=request.get_json()
             intent=db.session.query(models.Intent)\
                 .filter_by(intent_id=intent_id).first_or_404()
+            intent_name=intent.intent_name
             intent.update(data)
             action=db.session.query(models.Action)\
-                .filter_by(action_name='utter_'+intent.intent_name).first_or_404()
+                .filter_by(action_name='utter_'+intent_name).first_or_404()
             action.update({'action_name': 'utter_'+data['intent_name']})
             db.session.commit()
             return utils.result('intent and action updated', {
