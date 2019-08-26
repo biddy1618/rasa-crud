@@ -27,8 +27,7 @@ def responseAction():
             action_id=data['action_id'],
             response_text=data['response_text'],
             response_type=data['response_type'],
-            buttons_info=None if data['buttons_info'] is None else json.loads(data['buttons_info']),
-            response_image_url=data['response_image_url'],
+            buttons_info=None if data['buttons_info'] is None else data['buttons_info'],          
         )
         db.session.add(response)
         db.session.commit()

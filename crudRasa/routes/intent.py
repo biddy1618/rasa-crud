@@ -72,7 +72,18 @@ def intentID(intent_id):
     try:
         intent=models.Intent.query\
             .filter_by(intent_id=intent_id).first_or_404()
-        return jsonify(intent.serialize())
+        
+        response = models.Response.query\
+            .filter_by(intent_id=intent_id).first()
+        action_id = None if response is None else response.action_id
+        
+        return jsonify({
+            'intent_name': intent.intent_name,
+            'agent_id': intent.agent_id,
+            'endpoint_enabled': intent.endpoint_enabled,
+            'intent_id': intent.intent_id,
+            'action_id': action_id
+        })
     except Exception as e:
 	    return(str(e))
 

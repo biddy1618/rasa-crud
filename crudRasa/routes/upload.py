@@ -17,8 +17,8 @@ fileUpload=Blueprint('fileUpload', __name__)
 def uploadFromFile():
     conn = None
     try:
-        df = pd.read_csv(StringIO(request.get_json()['data']))
-        
+        df = pd.read_csv(request.files.get('file'))
+
         conn = psycopg2.connect(app.config['SQLALCHEMY_DATABASE_STRING'])
         cur = conn.cursor()
 
