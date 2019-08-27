@@ -1,3 +1,4 @@
+DROP SCHEMA IF EXISTS "rasa_ui" CASCADE;
 CREATE SCHEMA IF NOT EXISTS "rasa_ui";
 
 COMMENT ON SCHEMA "rasa_ui" IS 'standard rasaui schema';
@@ -448,7 +449,7 @@ TABLESPACE pg_default;
 
 CREATE TABLE analytics
 (
-  sender_id  VARCHAR (100)  NOT NULL,
+  sender_id VARCHAR (100) NOT NULL,
   intent_name VARCHAR (100) NOT NULL,
   response_time float NOT NULL,
   dateandtime timestamp NOT NULL DEFAULT NOW(),

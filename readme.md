@@ -37,6 +37,46 @@ Then modify `tempModels.py` accordingly:
 
 ![dbOperations](./CRUDOperations.png)
 
+## Modifications to database
+### Additional column in `rasa_ui.expressions` table
+
+Additional column that will hold lemmatized text of the original text:
+```
+lemmatized_text character varying COLLATE pg_catalog."default" NOT NULL
+```
+
+
+### Additional table `rasa_ui.analytics`
+Additional table that will hold conversations information.
+```
+CREATE TABLE analytics
+(
+  sender_id  VARCHAR (100)  NOT NULL,
+  intent_name VARCHAR (100) NOT NULL,
+  response_time float NOT NULL,
+  dateandtime timestamp NOT NULL DEFAULT NOW(),
+  user_message  VARCHAR (600),
+  bot_message  VARCHAR (600),
+  session_id VARCHAR (600)
+)
+WITH (
+  OIDS = FALSE
+)
+TABLESPACE pg_default;
+```
+
+### Table that corresponds to connections of intents in stories - `rasa_ui.intent_story`
+
+3 columns:
+* id - integer primary key (for indexing)
+* parent_id - integer ID for the parent intent (foreign key for intents.intent_id)
+* intent_id - integer ID for the intent itself (foreign key for intents.intent_id)
+
+
+Operations with stories:
+* When deleting the intent, any record that is connected to this intent will be deleted
+* When deleting the intent (parent intent, to be explicit) from intent edit page, simply remove the record where `intent_id` = current intent's ID and `parent_id` = parent intent's ID
+
 # Authorization
 
 Request should have header with key `token` that will contain token. Before any request to database, check if token is valid.
