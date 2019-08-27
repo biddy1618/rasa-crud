@@ -22,6 +22,7 @@ def responseAction():
     try:
         data=request.get_json()
 
+        print('dauren is the loh')
         response=models.Response(
             intent_id=data['intent_id'],
             action_id=data['action_id'],
@@ -30,6 +31,7 @@ def responseAction():
             buttons_info=None if data['buttons_info'] is None else data['buttons_info'],          
         )
         db.session.add(response)
+        print('dauren is the best')
         db.session.commit()
         return utils.result('success', 'Inserted')
     except Exception as e:

@@ -455,7 +455,22 @@ CREATE TABLE analytics
   user_message  VARCHAR (600),
   bot_message  VARCHAR (600),
   session_id VARCHAR (600)
-)WITH (
+)
+WITH (
+  OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+CREATE TABLE intent_story
+(
+    id serial PRIMARY KEY,
+    parent_id integer NOT NULL,
+    intent_id integer NOT NULL,
+    UNIQUE (parent_id, intent_id),
+    CONSTRAINT parent_fkey FOREIGN KEY (parent_id) REFERENCES intents (intent_id) ON DELETE CASCADE,
+    CONSTRAINT intent_fkey FOREIGN KEY (intent_id) REFERENCES intents (intent_id) ON DELETE CASCADE
+)
+WITH (
   OIDS = FALSE
 )
 TABLESPACE pg_default;
