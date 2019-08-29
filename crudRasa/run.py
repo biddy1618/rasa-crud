@@ -24,6 +24,7 @@ from routes.messages import messages
 from routes.auth import auth
 from routes.analytics import analytics
 from routes.upload import fileUpload
+from routes.story import story
 
 app.register_blueprint(action)
 app.register_blueprint(intent)
@@ -44,6 +45,7 @@ app.register_blueprint(messages)
 app.register_blueprint(auth)
 app.register_blueprint(analytics)
 app.register_blueprint(fileUpload)
+app.register_blueprint(story)
 
 # @app.before_request
 # def before_request():

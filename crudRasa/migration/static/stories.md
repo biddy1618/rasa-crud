@@ -782,6 +782,7 @@
 * help-forte-transfers-swift
   - utter_help-forte-transfers-swift
 
+
 ## story guide-forte-cards-cardissueandactivation-activation-epin7575_story
 * guide-forte-cards
   - utter_guide-forte-cards
@@ -1873,4 +1874,3 @@
   - utter_help-forte-transfers-fees
 * help-forte-transfers-fees-from-otherbanks-card
   - utter_help-forte-transfers-fees-from-otherbanks-card
-

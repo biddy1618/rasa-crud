@@ -1,5 +1,6 @@
 # coding: utf-8
-from sqlalchemy import BigInteger, Boolean, Column, DateTime, ForeignKey, Integer, Numeric, Float, String, Table, Text, text
+from sqlalchemy import BigInteger, Boolean, Column, DateTime, ForeignKey, \
+    Integer, Numeric, Float, String, Table, Text, UniqueConstraint, Time, text
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import relationship
 from app import db
@@ -182,6 +183,16 @@ class Setting(db.Model, Helper):
     setting_value = Column(String)
 
 
+class TrainingInfo(db.Model, Helper):
+    __tablename__ = 'training_info'
+
+    id = Column(Integer, primary_key=True, server_default=text("nextval('training_info_id_seq'::regclass)"))
+    before_number = Column(Integer)
+    differ = Column(Integer)
+    start_at = Column(Time)
+    end_at = Column(Time)
+
+
 t_unique_intent_entities = Table(
     'unique_intent_entities', db.metadata,
     Column('intent_id', Integer),
@@ -192,7 +203,7 @@ t_unique_intent_entities = Table(
 class Action(db.Model, Helper):
     __tablename__ = 'actions'
 
-    action_name = Column(String, nullable=False)
+    action_name = Column(String, nullable=False, unique=True)
     agent_id = Column(ForeignKey('agents.agent_id', ondelete='CASCADE'))
     action_id = Column(Integer, primary_key=True, server_default=text("nextval('actions_action_id_seq'::regclass)"))
 
@@ -213,7 +224,7 @@ class Entity(db.Model, Helper):
 class Intent(db.Model, Helper):
     __tablename__ = 'intents'
 
-    intent_name = Column(String, nullable=False)
+    intent_name = Column(String, nullable=False, unique=True)
     agent_id = Column(ForeignKey('agents.agent_id', ondelete='CASCADE'))
     endpoint_enabled = Column(Boolean)
     intent_id = Column(Integer, primary_key=True, server_default=text("nextval('intents_intent_id_seq'::regclass)"))
@@ -244,6 +255,9 @@ class Synonym(db.Model, Helper):
 
 class Expression(db.Model, Helper):
     __tablename__ = 'expressions'
+    __table_args__ = (
+        UniqueConstraint('intent_id', 'expression_text'),
+    )
 
     intent_id = Column(ForeignKey('intents.intent_id', ondelete='CASCADE'), nullable=False)
     expression_text = Column(String, nullable=False)
@@ -251,6 +265,19 @@ class Expression(db.Model, Helper):
     expression_id = Column(Integer, primary_key=True, server_default=text("nextval('expressions_expression_id_seq'::regclass)"))
 
     intent = relationship('Intent')
+
+class IntentStory(db.Model, Helper):
+    __tablename__ = 'intent_story'
+    __table_args__ = (
+        UniqueConstraint('parent_id', 'intent_id'),
+    )
+
+    id = Column(Integer, primary_key=True, server_default=text("nextval('intent_story_id_seq'::regclass)"))
+    parent_id = Column(ForeignKey('intents.intent_id', ondelete='CASCADE'), nullable=False)
+    intent_id = Column(ForeignKey('intents.intent_id', ondelete='CASCADE'), nullable=False)
+
+    intent = relationship('Intent', primaryjoin='IntentStory.intent_id == Intent.intent_id')
+    parent = relationship('Intent', primaryjoin='IntentStory.parent_id == Intent.intent_id')
 
 
 class Message(db.Model, Helper):
@@ -272,6 +299,9 @@ class Message(db.Model, Helper):
 
 class Response(db.Model, Helper):
     __tablename__ = 'responses'
+    __table_args__ = (
+        UniqueConstraint('intent_id', 'action_id', 'buttons_info', 'response_text'),
+    )
 
     response_id = Column(Integer, primary_key=True, server_default=text("nextval('responses_response_id_seq'::regclass)"))
     intent_id = Column(ForeignKey('intents.intent_id', ondelete='CASCADE'))

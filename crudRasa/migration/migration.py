@@ -19,8 +19,8 @@ import yaml
 
 import argparse
 
-PATH_FILE_NLU_JSON = './crudRasa/migration/static/nlu_data.json'
-PATH_FILE_NLU_MD = './crudRasa/migration/static/nlu_data.md'
+PATH_FILE_NLU_JSON = './crudRasa/migration/static/nlu.json'
+PATH_FILE_NLU_MD = './crudRasa/migration/static/nlu.md'
 PATH_FILE_YAML = './crudRasa/migration/static/domain.yml'
 PATH_FILE_STORIES = './crudRasa/migration/static/stories.md'
 PATH_FILE_SQLSCRIPT = './crudRasa/static/dbcreate.sql'
