@@ -3,7 +3,7 @@ CREATE SCHEMA IF NOT EXISTS "rasa_ui";
 
 COMMENT ON SCHEMA "rasa_ui" IS 'standard rasaui schema';
 
-GRANT ALL ON SCHEMA "rasa_ui" TO "postgres";
+GRANT ALL ON SCHEMA "rasa_ui" TO {0};
 GRANT ALL ON SCHEMA "rasa_ui" TO PUBLIC;
 
 
@@ -476,6 +476,18 @@ WITH (
 )
 TABLESPACE pg_default;
 
+CREATE TABLE training_info (
+    id serial PRIMARY KEY,
+    before_number int,
+    differ int,
+    start_at TIME,
+    end_at TIME
+)
+WITH (
+  OIDS = FALSE
+)
+TABLESPACE pg_default;
+
 /* Views */
 CREATE OR REPLACE VIEW intents_most_used AS
 select intent_name, agents.agent_id, agents.agent_name, grouped_intents.grp_intent_count from intents
@@ -575,8 +587,8 @@ LEFT OUTER JOIN expressions ON (intents.intent_id = expressions.intent_id) AND (
 LEFT OUTER JOIN parameters AS param ON (msgEnt.entity_id = param.entity_id) AND (msgEnt.entity_value = param.parameter_value) AND (param.expression_id = expressions.expression_id)
 ORDER BY timestamp, user_id;
 
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA rasa_ui TO "postgres";
-GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA rasa_ui TO "postgres";
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA rasa_ui TO {0};
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA rasa_ui TO {0};
 
 /* Static Data */
 INSERT INTO response_type (response_type_text) VALUES ('DEFAULT'),('RICH TEXT');
