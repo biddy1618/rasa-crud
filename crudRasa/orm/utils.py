@@ -12,8 +12,9 @@ from app import app
 
 mystem = Mystem()
 
+PATH_FILE_STOPWORDS = "./crudRasa/static/stopwords.pickle"
 
-with open("./crudRasa/static/stopwords.pickle", "rb") as file: # Unpickling
+with open(os.path.abspath(PATH_FILE_STOPWORDS), "rb") as file: # Unpickling
     stopwords = pickle.load(file)
 
 def lemmatize(text):
