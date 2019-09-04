@@ -68,18 +68,19 @@ TABLESPACE pg_default;
 ### Table that corresponds to connections of intents in stories - `rasa_ui.intent_story`
 
 3 columns:
-* id - integer primary key (for indexing)
-* parent_id - integer ID for the parent intent (foreign key for intents.intent_id)
-* intent_id - integer ID for the intent itself (foreign key for intents.intent_id)
+* `id` - integer primary key (for indexing)
+* `parent_id` - integer ID for the parent intent (foreign key for intents.intent_id)
+* `intent_id` - integer ID for the intent itself (foreign key for intents.intent_id)
 
 
 Operations with stories:
-* When deleting the intent, any record that is connected to this intent will be deleted
-* When deleting the intent (parent intent, to be explicit) from intent edit page, simply remove the record where `intent_id` = current intent's ID and `parent_id` = parent intent's ID
+* `CREATE STORY` - given parent intent ID and current intent ID, create new record in `rasa_ui.intent_story` with those IDs.
+* `REMOVE STORY` - when deleting parent intent from intent edit page, remove __single__ record where `intent_id` = current intent's ID and `parent_id` = parent intent's ID.
+* `REMOVE INTENT` - when deleting the intent, also delete __all__ records with `intent_id` = ID of deleted intent, and `parent_id` = ID of deleted intent from table `rasa_ui.intent_story`.
 
 # Authorization
 
-Request should have header with key `token` that will contain token. Before any request to database, check if token is valid.
+Request should have header with key `Authorization` that will contain token. Before any request to database, check if token is valid.
 
 ![authRasaCrud](./AuthForRasa.png)
 
