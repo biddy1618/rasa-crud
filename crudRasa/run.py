@@ -49,8 +49,10 @@ app.register_blueprint(story)
 
 @app.before_request
 def before_request():
-    if request.method != 'OPTIONS' and not utils.checkAuth(request.headers.get('Authorization')):
-        return (utils.result(status='Failed', message='authorization failed'), 401)
+	auth = request.headers.get('Authorization')
+	if request.method != 'OPTIONS' and (auth is None or \
+		not utils.checkAuth(auth)):
+		return (utils.result(status='Failed', message='authorization failed'), 401)
 
 @app.route("/")
 def hello():
