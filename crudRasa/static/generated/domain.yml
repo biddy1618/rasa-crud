@@ -1,4 +1,5 @@
 actions:
+- utter_Test Laura2
 - utter_default
 - utter_dialog-bot-email-to-contact-center
 - utter_dialogs - bot  - great
@@ -385,6 +386,7 @@ actions:
 - utter_help-forte-transfers-swift
 - utter_test zhainar
 intents:
+- Test Laura2
 - default
 - dialog-bot-email-to-contact-center
 - dialogs - bot  - great
@@ -771,6 +773,9 @@ intents:
 - help-forte-transfers-swift
 - test zhainar
 templates:
+  utter_Test Laura2:
+  - buttons: []
+    text: отвечаю что все ок
   utter_default:
   - buttons:
     - payload: Что ты умеешь?

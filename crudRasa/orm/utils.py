@@ -43,6 +43,8 @@ def makeList(urlParams):
 
 
 def checkAuth(token):
+    if token is not None and len(token.split()) != 2:
+        return False
     token = token.split()[-1]
     r = requests.post(
         app.config['AUTH_URL'],

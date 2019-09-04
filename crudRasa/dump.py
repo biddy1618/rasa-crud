@@ -17,7 +17,7 @@ FILE_NLU_MD = './crudRasa/static/generated/nlu.md'
 FILE_NLU_JSON = './crudRasa/static/generated/nlu.json'
 
 
-def dump(local=False, jsonNlu=False):
+def dump(local=False, jsonNlu=False, twoLevel=False):
     conn = None
     try:
         if local:
@@ -128,21 +128,31 @@ def dump(local=False, jsonNlu=False):
         children = children - parents
 
         stories = []
-        for c in children:
-            story = []
-            story.append(c)
-            while c in child2parent:
-                c = child2parent[c]
-                story.append(c)
-            story.reverse()
-            stories.append(story)
 
-        for i, e in enumerate(singleIntents):
-            singleIntents[i] = id2intents[e]
+        if twoLevel:
+            for c in children:
+                while c in child2parent:
+                    stories.append((child2parent[c], c))
+                    c = child2parent[c]
+                    
+            stories = [list(e) for e in set(stories)]
+
+        else:
+            for c in children:
+                story = []
+                story.append(c)
+                while c in child2parent:
+                    c = child2parent[c]
+                    story.append(c)
+                story.reverse()
+                stories.append(story)
         
         for story in stories:
             for i, s in enumerate(story):
                 story[i] = id2intents[s]
+
+        for i, e in enumerate(singleIntents):
+            singleIntents[i] = id2intents[e]
         
         singleIntents = sorted(singleIntents)
         stories = sorted(stories)
@@ -167,6 +177,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate train files from database')
     parser.add_argument('--local', action='store_true', help='set if reading local database (default remote)')
     parser.add_argument('--json', action='store_true', help='set if nlu data should be generated in json format')
+    parser.add_argument('--twoLevel', action='store_true', help='enerate stories in 2 levels (default max)')
     args = parser.parse_args()
     
-    dump(local=args.local, jsonNlu=args.json)
+    dump(local=args.local, jsonNlu=args.json, twoLevel=args.twoLevel)

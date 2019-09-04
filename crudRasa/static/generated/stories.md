@@ -1,3 +1,7 @@
+## story Test Laura2
+* Test Laura2
+  - utter_Test Laura2
+
 ## story default
 * default
   - utter_default
@@ -781,49 +785,11 @@
 * test zhainar
   - utter_test zhainar
 
-## story guide-forte-cards-cardissueandactivation-activation-epin7575_story
+## story guide-forte-cards-cardissueandactivation_story
 * guide-forte-cards
   - utter_guide-forte-cards
 * guide-forte-cards-cardissueandactivation
   - utter_guide-forte-cards-cardissueandactivation
-* guide-forte-cards-cardissueandactivation-activation
-  - utter_guide-forte-cards-cardissueandactivation-activation
-* guide-forte-cards-cardissueandactivation-activation-epin7575
-  - utter_guide-forte-cards-cardissueandactivation-activation-epin7575
-
-## story guide-forte-cards-cardissueandactivation-activation-epinatm_story
-* guide-forte-cards
-  - utter_guide-forte-cards
-* guide-forte-cards-cardissueandactivation
-  - utter_guide-forte-cards-cardissueandactivation
-* guide-forte-cards-cardissueandactivation-activation
-  - utter_guide-forte-cards-cardissueandactivation-activation
-* guide-forte-cards-cardissueandactivation-activation-epinatm
-  - utter_guide-forte-cards-cardissueandactivation-activation-epinatm
-
-## story guide-forte-cards-cardissueandactivation-applepay_story
-* guide-forte-cards
-  - utter_guide-forte-cards
-* guide-forte-cards-cardissueandactivation
-  - utter_guide-forte-cards-cardissueandactivation
-* guide-forte-cards-cardissueandactivation-applepay
-  - utter_guide-forte-cards-cardissueandactivation-applepay
-
-## story guide-forte-cards-cardissueandactivation-delivery_story
-* guide-forte-cards
-  - utter_guide-forte-cards
-* guide-forte-cards-cardissueandactivation
-  - utter_guide-forte-cards-cardissueandactivation
-* guide-forte-cards-cardissueandactivation-delivery
-  - utter_guide-forte-cards-cardissueandactivation-delivery
-
-## story guide-forte-cards-cardissueandactivation-pincode_story
-* guide-forte-cards
-  - utter_guide-forte-cards
-* guide-forte-cards-cardissueandactivation
-  - utter_guide-forte-cards-cardissueandactivation
-* guide-forte-cards-cardissueandactivation-pincode
-  - utter_guide-forte-cards-cardissueandactivation-pincode
 
 ## story guide-forte-cards-cardissueandactivation-mib_story
 * guide-forte-cards
@@ -831,99 +797,11 @@
 * guide-forte-cards-cardissueandactivation-mib
   - utter_guide-forte-cards-cardissueandactivation-mib
 
-## story guide-forte-cards-conditions-classic_story
+## story guide-forte-cards-conditions_story
 * guide-forte-cards
   - utter_guide-forte-cards
 * guide-forte-cards-conditions
   - utter_guide-forte-cards-conditions
-* guide-forte-cards-conditions-classic
-  - utter_guide-forte-cards-conditions-classic
-
-## story guide-forte-cards-conditions-classic-_story
-* guide-forte-cards
-  - utter_guide-forte-cards
-* guide-forte-cards-conditions
-  - utter_guide-forte-cards-conditions
-* guide-forte-cards-conditions-classic-
-  - utter_guide-forte-cards-conditions-classic-
-
-## story guide-forte-cards-conditions-dopcard_story
-* guide-forte-cards
-  - utter_guide-forte-cards
-* guide-forte-cards-conditions
-  - utter_guide-forte-cards-conditions
-* guide-forte-cards-conditions-dopcard
-  - utter_guide-forte-cards-conditions-dopcard
-
-## story guide-forte-cards-conditions-gold_story
-* guide-forte-cards
-  - utter_guide-forte-cards
-* guide-forte-cards-conditions
-  - utter_guide-forte-cards-conditions
-* guide-forte-cards-conditions-gold
-  - utter_guide-forte-cards-conditions-gold
-
-## story guide-forte-cards-conditions-jastar_story
-* guide-forte-cards
-  - utter_guide-forte-cards
-* guide-forte-cards-conditions
-  - utter_guide-forte-cards-conditions
-* guide-forte-cards-conditions-jastar
-  - utter_guide-forte-cards-conditions-jastar
-
-## story guide-forte-cards-conditions-multicard_story
-* guide-forte-cards
-  - utter_guide-forte-cards
-* guide-forte-cards-conditions
-  - utter_guide-forte-cards-conditions
-* guide-forte-cards-conditions-multicard
-  - utter_guide-forte-cards-conditions-multicard
-
-## story guide-forte-cards-conditions-platinum_story
-* guide-forte-cards
-  - utter_guide-forte-cards
-* guide-forte-cards-conditions
-  - utter_guide-forte-cards-conditions
-* guide-forte-cards-conditions-platinum
-  - utter_guide-forte-cards-conditions-platinum
-
-## story guide-forte-cards-conditions-promotions-fortetravel_story
-* guide-forte-cards
-  - utter_guide-forte-cards
-* guide-forte-cards-conditions
-  - utter_guide-forte-cards-conditions
-* guide-forte-cards-conditions-promotions
-  - utter_guide-forte-cards-conditions-promotions
-* guide-forte-cards-conditions-promotions-fortetravel
-  - utter_guide-forte-cards-conditions-promotions-fortetravel
-
-## story guide-forte-cards-conditions-promotions-mastercard_story
-* guide-forte-cards
-  - utter_guide-forte-cards
-* guide-forte-cards-conditions
-  - utter_guide-forte-cards-conditions
-* guide-forte-cards-conditions-promotions
-  - utter_guide-forte-cards-conditions-promotions
-* guide-forte-cards-conditions-promotions-mastercard
-  - utter_guide-forte-cards-conditions-promotions-mastercard
-
-## story guide-forte-cards-conditions-promotions-visa_story
-* guide-forte-cards
-  - utter_guide-forte-cards
-* guide-forte-cards-conditions
-  - utter_guide-forte-cards-conditions
-* guide-forte-cards-conditions-promotions
-  - utter_guide-forte-cards-conditions-promotions
-* guide-forte-cards-conditions-promotions-visa
-  - utter_guide-forte-cards-conditions-promotions-visa
-
-## story guide-forte-cards-conditions-selfiecard_story
-* guide-forte-cards
-  - utter_guide-forte-cards
-* guide-forte-cards-conditions
-  - utter_guide-forte-cards-conditions
-* guide-forte-cards-conditions-selfiecard
-  - utter_guide-forte-cards-conditions-selfiecard
 
 ## story guide-forte-cards-security_story
 * guide-forte-cards
@@ -931,37 +809,119 @@
 * guide-forte-cards-security
   - utter_guide-forte-cards-security
 
-## story guide-forte-cards-transfers-acc_story
+## story guide-forte-cards-transfers_story
 * guide-forte-cards
   - utter_guide-forte-cards
 * guide-forte-cards-transfers
   - utter_guide-forte-cards-transfers
-* guide-forte-cards-transfers-acc
-  - utter_guide-forte-cards-transfers-acc
 
-## story guide-forte-cards-transfers-contact_story
-* guide-forte-cards
-  - utter_guide-forte-cards
-* guide-forte-cards-transfers
-  - utter_guide-forte-cards-transfers
-* guide-forte-cards-transfers-contact
-  - utter_guide-forte-cards-transfers-contact
+## story guide-forte-cards-cardissueandactivation-activation_story
+* guide-forte-cards-cardissueandactivation
+  - utter_guide-forte-cards-cardissueandactivation
+* guide-forte-cards-cardissueandactivation-activation
+  - utter_guide-forte-cards-cardissueandactivation-activation
 
-## story guide-forte-cards-transfers-p2p_story
-* guide-forte-cards
-  - utter_guide-forte-cards
-* guide-forte-cards-transfers
-  - utter_guide-forte-cards-transfers
-* guide-forte-cards-transfers-p2p
-  - utter_guide-forte-cards-transfers-p2p
+## story guide-forte-cards-cardissueandactivation-applepay_story
+* guide-forte-cards-cardissueandactivation
+  - utter_guide-forte-cards-cardissueandactivation
+* guide-forte-cards-cardissueandactivation-applepay
+  - utter_guide-forte-cards-cardissueandactivation-applepay
 
-## story guide-forte-cards-transfers-reqviz_story
-* guide-forte-cards
-  - utter_guide-forte-cards
-* guide-forte-cards-transfers
-  - utter_guide-forte-cards-transfers
-* guide-forte-cards-transfers-reqviz
-  - utter_guide-forte-cards-transfers-reqviz
+## story guide-forte-cards-cardissueandactivation-delivery_story
+* guide-forte-cards-cardissueandactivation
+  - utter_guide-forte-cards-cardissueandactivation
+* guide-forte-cards-cardissueandactivation-delivery
+  - utter_guide-forte-cards-cardissueandactivation-delivery
+
+## story guide-forte-cards-cardissueandactivation-pincode_story
+* guide-forte-cards-cardissueandactivation
+  - utter_guide-forte-cards-cardissueandactivation
+* guide-forte-cards-cardissueandactivation-pincode
+  - utter_guide-forte-cards-cardissueandactivation-pincode
+
+## story guide-forte-cards-cardissueandactivation-activation-epin7575_story
+* guide-forte-cards-cardissueandactivation-activation
+  - utter_guide-forte-cards-cardissueandactivation-activation
+* guide-forte-cards-cardissueandactivation-activation-epin7575
+  - utter_guide-forte-cards-cardissueandactivation-activation-epin7575
+
+## story guide-forte-cards-cardissueandactivation-activation-epinatm_story
+* guide-forte-cards-cardissueandactivation-activation
+  - utter_guide-forte-cards-cardissueandactivation-activation
+* guide-forte-cards-cardissueandactivation-activation-epinatm
+  - utter_guide-forte-cards-cardissueandactivation-activation-epinatm
+
+## story guide-forte-cards-conditions-classic_story
+* guide-forte-cards-conditions
+  - utter_guide-forte-cards-conditions
+* guide-forte-cards-conditions-classic
+  - utter_guide-forte-cards-conditions-classic
+
+## story guide-forte-cards-conditions-classic-_story
+* guide-forte-cards-conditions
+  - utter_guide-forte-cards-conditions
+* guide-forte-cards-conditions-classic-
+  - utter_guide-forte-cards-conditions-classic-
+
+## story guide-forte-cards-conditions-dopcard_story
+* guide-forte-cards-conditions
+  - utter_guide-forte-cards-conditions
+* guide-forte-cards-conditions-dopcard
+  - utter_guide-forte-cards-conditions-dopcard
+
+## story guide-forte-cards-conditions-gold_story
+* guide-forte-cards-conditions
+  - utter_guide-forte-cards-conditions
+* guide-forte-cards-conditions-gold
+  - utter_guide-forte-cards-conditions-gold
+
+## story guide-forte-cards-conditions-jastar_story
+* guide-forte-cards-conditions
+  - utter_guide-forte-cards-conditions
+* guide-forte-cards-conditions-jastar
+  - utter_guide-forte-cards-conditions-jastar
+
+## story guide-forte-cards-conditions-multicard_story
+* guide-forte-cards-conditions
+  - utter_guide-forte-cards-conditions
+* guide-forte-cards-conditions-multicard
+  - utter_guide-forte-cards-conditions-multicard
+
+## story guide-forte-cards-conditions-platinum_story
+* guide-forte-cards-conditions
+  - utter_guide-forte-cards-conditions
+* guide-forte-cards-conditions-platinum
+  - utter_guide-forte-cards-conditions-platinum
+
+## story guide-forte-cards-conditions-promotions_story
+* guide-forte-cards-conditions
+  - utter_guide-forte-cards-conditions
+* guide-forte-cards-conditions-promotions
+  - utter_guide-forte-cards-conditions-promotions
+
+## story guide-forte-cards-conditions-selfiecard_story
+* guide-forte-cards-conditions
+  - utter_guide-forte-cards-conditions
+* guide-forte-cards-conditions-selfiecard
+  - utter_guide-forte-cards-conditions-selfiecard
+
+## story guide-forte-cards-conditions-promotions-fortetravel_story
+* guide-forte-cards-conditions-promotions
+  - utter_guide-forte-cards-conditions-promotions
+* guide-forte-cards-conditions-promotions-fortetravel
+  - utter_guide-forte-cards-conditions-promotions-fortetravel
+
+## story guide-forte-cards-conditions-promotions-mastercard_story
+* guide-forte-cards-conditions-promotions
+  - utter_guide-forte-cards-conditions-promotions
+* guide-forte-cards-conditions-promotions-mastercard
+  - utter_guide-forte-cards-conditions-promotions-mastercard
+
+## story guide-forte-cards-conditions-promotions-visa_story
+* guide-forte-cards-conditions-promotions
+  - utter_guide-forte-cards-conditions-promotions
+* guide-forte-cards-conditions-promotions-visa
+  - utter_guide-forte-cards-conditions-promotions-visa
 
 ## story guide-forte-cards-promotions-mastercard_story
 * guide-forte-cards-promotions
@@ -999,6 +959,30 @@
 * guide-forte-cards-questions-mib
   - utter_guide-forte-cards-questions-mib
 
+## story guide-forte-cards-transfers-acc_story
+* guide-forte-cards-transfers
+  - utter_guide-forte-cards-transfers
+* guide-forte-cards-transfers-acc
+  - utter_guide-forte-cards-transfers-acc
+
+## story guide-forte-cards-transfers-contact_story
+* guide-forte-cards-transfers
+  - utter_guide-forte-cards-transfers
+* guide-forte-cards-transfers-contact
+  - utter_guide-forte-cards-transfers-contact
+
+## story guide-forte-cards-transfers-p2p_story
+* guide-forte-cards-transfers
+  - utter_guide-forte-cards-transfers
+* guide-forte-cards-transfers-p2p
+  - utter_guide-forte-cards-transfers-p2p
+
+## story guide-forte-cards-transfers-reqviz_story
+* guide-forte-cards-transfers
+  - utter_guide-forte-cards-transfers
+* guide-forte-cards-transfers-reqviz
+  - utter_guide-forte-cards-transfers-reqviz
+
 ## story guide-forte-cards-usecard-atmcard_story
 * guide-forte-cards-usecard
   - utter_guide-forte-cards-usecard
@@ -1011,123 +995,11 @@
 * guide-forte-cards-usecard-balance
   - utter_guide-forte-cards-usecard-balance
 
-## story guide-forte-cards-usecard-cashwithdrawal-abroad-classic_story
+## story guide-forte-cards-usecard-cashwithdrawal_story
 * guide-forte-cards-usecard
   - utter_guide-forte-cards-usecard
 * guide-forte-cards-usecard-cashwithdrawal
   - utter_guide-forte-cards-usecard-cashwithdrawal
-* guide-forte-cards-usecard-cashwithdrawal-abroad
-  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad
-* guide-forte-cards-usecard-cashwithdrawal-abroad-classic
-  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad-classic
-
-## story guide-forte-cards-usecard-cashwithdrawal-abroad-classic-_story
-* guide-forte-cards-usecard
-  - utter_guide-forte-cards-usecard
-* guide-forte-cards-usecard-cashwithdrawal
-  - utter_guide-forte-cards-usecard-cashwithdrawal
-* guide-forte-cards-usecard-cashwithdrawal-abroad
-  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad
-* guide-forte-cards-usecard-cashwithdrawal-abroad-classic-
-  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad-classic-
-
-## story guide-forte-cards-usecard-cashwithdrawal-abroad-gold_story
-* guide-forte-cards-usecard
-  - utter_guide-forte-cards-usecard
-* guide-forte-cards-usecard-cashwithdrawal
-  - utter_guide-forte-cards-usecard-cashwithdrawal
-* guide-forte-cards-usecard-cashwithdrawal-abroad
-  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad
-* guide-forte-cards-usecard-cashwithdrawal-abroad-gold
-  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad-gold
-
-## story guide-forte-cards-usecard-cashwithdrawal-abroad-jastar_story
-* guide-forte-cards-usecard
-  - utter_guide-forte-cards-usecard
-* guide-forte-cards-usecard-cashwithdrawal
-  - utter_guide-forte-cards-usecard-cashwithdrawal
-* guide-forte-cards-usecard-cashwithdrawal-abroad
-  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad
-* guide-forte-cards-usecard-cashwithdrawal-abroad-jastar
-  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad-jastar
-
-## story guide-forte-cards-usecard-cashwithdrawal-abroad-multicard_story
-* guide-forte-cards-usecard
-  - utter_guide-forte-cards-usecard
-* guide-forte-cards-usecard-cashwithdrawal
-  - utter_guide-forte-cards-usecard-cashwithdrawal
-* guide-forte-cards-usecard-cashwithdrawal-abroad
-  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad
-* guide-forte-cards-usecard-cashwithdrawal-abroad-multicard
-  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad-multicard
-
-## story guide-forte-cards-usecard-cashwithdrawal-abroad-platinum_story
-* guide-forte-cards-usecard
-  - utter_guide-forte-cards-usecard
-* guide-forte-cards-usecard-cashwithdrawal
-  - utter_guide-forte-cards-usecard-cashwithdrawal
-* guide-forte-cards-usecard-cashwithdrawal-abroad
-  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad
-* guide-forte-cards-usecard-cashwithdrawal-abroad-platinum
-  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad-platinum
-
-## story guide-forte-cards-usecard-cashwithdrawal-nocommission_story
-* guide-forte-cards-usecard
-  - utter_guide-forte-cards-usecard
-* guide-forte-cards-usecard-cashwithdrawal
-  - utter_guide-forte-cards-usecard-cashwithdrawal
-* guide-forte-cards-usecard-cashwithdrawal-nocommission
-  - utter_guide-forte-cards-usecard-cashwithdrawal-nocommission
-
-## story guide-forte-cards-usecard-cashwithdrawal-rk-classic_story
-* guide-forte-cards-usecard
-  - utter_guide-forte-cards-usecard
-* guide-forte-cards-usecard-cashwithdrawal
-  - utter_guide-forte-cards-usecard-cashwithdrawal
-* guide-forte-cards-usecard-cashwithdrawal-rk
-  - utter_guide-forte-cards-usecard-cashwithdrawal-rk
-* guide-forte-cards-usecard-cashwithdrawal-rk-classic
-  - utter_guide-forte-cards-usecard-cashwithdrawal-rk-classic
-
-## story guide-forte-cards-usecard-cashwithdrawal-rk-classic-_story
-* guide-forte-cards-usecard
-  - utter_guide-forte-cards-usecard
-* guide-forte-cards-usecard-cashwithdrawal
-  - utter_guide-forte-cards-usecard-cashwithdrawal
-* guide-forte-cards-usecard-cashwithdrawal-rk
-  - utter_guide-forte-cards-usecard-cashwithdrawal-rk
-* guide-forte-cards-usecard-cashwithdrawal-rk-classic-
-  - utter_guide-forte-cards-usecard-cashwithdrawal-rk-classic-
-
-## story guide-forte-cards-usecard-cashwithdrawal-rk-gold_story
-* guide-forte-cards-usecard
-  - utter_guide-forte-cards-usecard
-* guide-forte-cards-usecard-cashwithdrawal
-  - utter_guide-forte-cards-usecard-cashwithdrawal
-* guide-forte-cards-usecard-cashwithdrawal-rk
-  - utter_guide-forte-cards-usecard-cashwithdrawal-rk
-* guide-forte-cards-usecard-cashwithdrawal-rk-gold
-  - utter_guide-forte-cards-usecard-cashwithdrawal-rk-gold
-
-## story guide-forte-cards-usecard-cashwithdrawal-rk-multicard_story
-* guide-forte-cards-usecard
-  - utter_guide-forte-cards-usecard
-* guide-forte-cards-usecard-cashwithdrawal
-  - utter_guide-forte-cards-usecard-cashwithdrawal
-* guide-forte-cards-usecard-cashwithdrawal-rk
-  - utter_guide-forte-cards-usecard-cashwithdrawal-rk
-* guide-forte-cards-usecard-cashwithdrawal-rk-multicard
-  - utter_guide-forte-cards-usecard-cashwithdrawal-rk-multicard
-
-## story guide-forte-cards-usecard-cashwithdrawal-rk-platinum_story
-* guide-forte-cards-usecard
-  - utter_guide-forte-cards-usecard
-* guide-forte-cards-usecard-cashwithdrawal
-  - utter_guide-forte-cards-usecard-cashwithdrawal
-* guide-forte-cards-usecard-cashwithdrawal-rk
-  - utter_guide-forte-cards-usecard-cashwithdrawal-rk
-* guide-forte-cards-usecard-cashwithdrawal-rk-platinum
-  - utter_guide-forte-cards-usecard-cashwithdrawal-rk-platinum
 
 ## story guide-forte-cards-usecard-dop_story
 * guide-forte-cards-usecard
@@ -1153,13 +1025,11 @@
 * guide-forte-cards-usecard-reference
   - utter_guide-forte-cards-usecard-reference
 
-## story guide-forte-cards-usecard-reissue-reasons_story
+## story guide-forte-cards-usecard-reissue_story
 * guide-forte-cards-usecard
   - utter_guide-forte-cards-usecard
 * guide-forte-cards-usecard-reissue
   - utter_guide-forte-cards-usecard-reissue
-* guide-forte-cards-usecard-reissue-reasons
-  - utter_guide-forte-cards-usecard-reissue-reasons
 
 ## story guide-forte-cards-usecard-replenishment_story
 * guide-forte-cards-usecard
@@ -1167,29 +1037,101 @@
 * guide-forte-cards-usecard-replenishment
   - utter_guide-forte-cards-usecard-replenishment
 
-## story guide-forte-creditcard-activation-applepay_story
-* guide-forte-creditcard
-  - utter_guide-forte-creditcard
-* guide-forte-creditcard-activation
-  - utter_guide-forte-creditcard-activation
-* guide-forte-creditcard-activation-applepay
-  - utter_guide-forte-creditcard-activation-applepay
+## story guide-forte-cards-usecard-cashwithdrawal-abroad_story
+* guide-forte-cards-usecard-cashwithdrawal
+  - utter_guide-forte-cards-usecard-cashwithdrawal
+* guide-forte-cards-usecard-cashwithdrawal-abroad
+  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad
 
-## story guide-forte-creditcard-activation-epin_story
-* guide-forte-creditcard
-  - utter_guide-forte-creditcard
-* guide-forte-creditcard-activation
-  - utter_guide-forte-creditcard-activation
-* guide-forte-creditcard-activation-epin
-  - utter_guide-forte-creditcard-activation-epin
+## story guide-forte-cards-usecard-cashwithdrawal-nocommission_story
+* guide-forte-cards-usecard-cashwithdrawal
+  - utter_guide-forte-cards-usecard-cashwithdrawal
+* guide-forte-cards-usecard-cashwithdrawal-nocommission
+  - utter_guide-forte-cards-usecard-cashwithdrawal-nocommission
 
-## story guide-forte-creditcard-activation-mib_story
+## story guide-forte-cards-usecard-cashwithdrawal-rk_story
+* guide-forte-cards-usecard-cashwithdrawal
+  - utter_guide-forte-cards-usecard-cashwithdrawal
+* guide-forte-cards-usecard-cashwithdrawal-rk
+  - utter_guide-forte-cards-usecard-cashwithdrawal-rk
+
+## story guide-forte-cards-usecard-cashwithdrawal-abroad-classic_story
+* guide-forte-cards-usecard-cashwithdrawal-abroad
+  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad
+* guide-forte-cards-usecard-cashwithdrawal-abroad-classic
+  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad-classic
+
+## story guide-forte-cards-usecard-cashwithdrawal-abroad-classic-_story
+* guide-forte-cards-usecard-cashwithdrawal-abroad
+  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad
+* guide-forte-cards-usecard-cashwithdrawal-abroad-classic-
+  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad-classic-
+
+## story guide-forte-cards-usecard-cashwithdrawal-abroad-gold_story
+* guide-forte-cards-usecard-cashwithdrawal-abroad
+  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad
+* guide-forte-cards-usecard-cashwithdrawal-abroad-gold
+  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad-gold
+
+## story guide-forte-cards-usecard-cashwithdrawal-abroad-jastar_story
+* guide-forte-cards-usecard-cashwithdrawal-abroad
+  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad
+* guide-forte-cards-usecard-cashwithdrawal-abroad-jastar
+  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad-jastar
+
+## story guide-forte-cards-usecard-cashwithdrawal-abroad-multicard_story
+* guide-forte-cards-usecard-cashwithdrawal-abroad
+  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad
+* guide-forte-cards-usecard-cashwithdrawal-abroad-multicard
+  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad-multicard
+
+## story guide-forte-cards-usecard-cashwithdrawal-abroad-platinum_story
+* guide-forte-cards-usecard-cashwithdrawal-abroad
+  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad
+* guide-forte-cards-usecard-cashwithdrawal-abroad-platinum
+  - utter_guide-forte-cards-usecard-cashwithdrawal-abroad-platinum
+
+## story guide-forte-cards-usecard-cashwithdrawal-rk-classic_story
+* guide-forte-cards-usecard-cashwithdrawal-rk
+  - utter_guide-forte-cards-usecard-cashwithdrawal-rk
+* guide-forte-cards-usecard-cashwithdrawal-rk-classic
+  - utter_guide-forte-cards-usecard-cashwithdrawal-rk-classic
+
+## story guide-forte-cards-usecard-cashwithdrawal-rk-classic-_story
+* guide-forte-cards-usecard-cashwithdrawal-rk
+  - utter_guide-forte-cards-usecard-cashwithdrawal-rk
+* guide-forte-cards-usecard-cashwithdrawal-rk-classic-
+  - utter_guide-forte-cards-usecard-cashwithdrawal-rk-classic-
+
+## story guide-forte-cards-usecard-cashwithdrawal-rk-gold_story
+* guide-forte-cards-usecard-cashwithdrawal-rk
+  - utter_guide-forte-cards-usecard-cashwithdrawal-rk
+* guide-forte-cards-usecard-cashwithdrawal-rk-gold
+  - utter_guide-forte-cards-usecard-cashwithdrawal-rk-gold
+
+## story guide-forte-cards-usecard-cashwithdrawal-rk-multicard_story
+* guide-forte-cards-usecard-cashwithdrawal-rk
+  - utter_guide-forte-cards-usecard-cashwithdrawal-rk
+* guide-forte-cards-usecard-cashwithdrawal-rk-multicard
+  - utter_guide-forte-cards-usecard-cashwithdrawal-rk-multicard
+
+## story guide-forte-cards-usecard-cashwithdrawal-rk-platinum_story
+* guide-forte-cards-usecard-cashwithdrawal-rk
+  - utter_guide-forte-cards-usecard-cashwithdrawal-rk
+* guide-forte-cards-usecard-cashwithdrawal-rk-platinum
+  - utter_guide-forte-cards-usecard-cashwithdrawal-rk-platinum
+
+## story guide-forte-cards-usecard-reissue-reasons_story
+* guide-forte-cards-usecard-reissue
+  - utter_guide-forte-cards-usecard-reissue
+* guide-forte-cards-usecard-reissue-reasons
+  - utter_guide-forte-cards-usecard-reissue-reasons
+
+## story guide-forte-creditcard-activation_story
 * guide-forte-creditcard
   - utter_guide-forte-creditcard
 * guide-forte-creditcard-activation
   - utter_guide-forte-creditcard-activation
-* guide-forte-creditcard-activation-mib
-  - utter_guide-forte-creditcard-activation-mib
 
 ## story guide-forte-creditcard-conditions_story
 * guide-forte-creditcard
@@ -1221,45 +1163,47 @@
 * guide-forte-creditcard-repayment
   - utter_guide-forte-creditcard-repayment
 
-## story guide-forte-creditcard-stock-technoshop_story
+## story guide-forte-creditcard-stock_story
 * guide-forte-creditcard
   - utter_guide-forte-creditcard
+* guide-forte-creditcard-stock
+  - utter_guide-forte-creditcard-stock
+
+## story guide-forte-creditcard-activation-applepay_story
+* guide-forte-creditcard-activation
+  - utter_guide-forte-creditcard-activation
+* guide-forte-creditcard-activation-applepay
+  - utter_guide-forte-creditcard-activation-applepay
+
+## story guide-forte-creditcard-activation-epin_story
+* guide-forte-creditcard-activation
+  - utter_guide-forte-creditcard-activation
+* guide-forte-creditcard-activation-epin
+  - utter_guide-forte-creditcard-activation-epin
+
+## story guide-forte-creditcard-activation-mib_story
+* guide-forte-creditcard-activation
+  - utter_guide-forte-creditcard-activation
+* guide-forte-creditcard-activation-mib
+  - utter_guide-forte-creditcard-activation-mib
+
+## story guide-forte-creditcard-stock-technoshop_story
 * guide-forte-creditcard-stock
   - utter_guide-forte-creditcard-stock
 * guide-forte-creditcard-stock-technoshop
   - utter_guide-forte-creditcard-stock-technoshop
 
 ## story guide-forte-creditcard-stock-travel_story
-* guide-forte-creditcard
-  - utter_guide-forte-creditcard
 * guide-forte-creditcard-stock
   - utter_guide-forte-creditcard-stock
 * guide-forte-creditcard-stock-travel
   - utter_guide-forte-creditcard-stock-travel
 
-## story guide-forte-deposits-advantages-guaranteeing_story
+## story guide-forte-deposits-advantages_story
 * guide-forte-deposits
   - utter_guide-forte-deposits
 * guide-forte-deposits-advantages
   - utter_guide-forte-deposits-advantages
-* guide-forte-deposits-advantages-guaranteeing
-  - utter_guide-forte-deposits-advantages-guaranteeing
-
-## story guide-forte-deposits-advantages-partialwithdrawals_story
-* guide-forte-deposits
-  - utter_guide-forte-deposits
-* guide-forte-deposits-advantages
-  - utter_guide-forte-deposits-advantages
-* guide-forte-deposits-advantages-partialwithdrawals
-  - utter_guide-forte-deposits-advantages-partialwithdrawals
-
-## story guide-forte-deposits-advantages-withoutpartialwithdrawal_story
-* guide-forte-deposits
-  - utter_guide-forte-deposits
-* guide-forte-deposits-advantages
-  - utter_guide-forte-deposits-advantages
-* guide-forte-deposits-advantages-withoutpartialwithdrawal
-  - utter_guide-forte-deposits-advantages-withoutpartialwithdrawal
 
 ## story guide-forte-deposits-advantages-premium_story
 * guide-forte-deposits
@@ -1267,55 +1211,11 @@
 * guide-forte-deposits-advantages-premium
   - utter_guide-forte-deposits-advantages-premium
 
-## story guide-forte-deposits-conditions-bankbranch-partialwithdrawals_story
+## story guide-forte-deposits-conditions_story
 * guide-forte-deposits
   - utter_guide-forte-deposits
 * guide-forte-deposits-conditions
   - utter_guide-forte-deposits-conditions
-* guide-forte-deposits-conditions-bankbranch
-  - utter_guide-forte-deposits-conditions-bankbranch
-* guide-forte-deposits-conditions-bankbranch-partialwithdrawals
-  - utter_guide-forte-deposits-conditions-bankbranch-partialwithdrawals
-
-## story guide-forte-deposits-conditions-bankbranch-premium_story
-* guide-forte-deposits
-  - utter_guide-forte-deposits
-* guide-forte-deposits-conditions
-  - utter_guide-forte-deposits-conditions
-* guide-forte-deposits-conditions-bankbranch
-  - utter_guide-forte-deposits-conditions-bankbranch
-* guide-forte-deposits-conditions-bankbranch-premium
-  - utter_guide-forte-deposits-conditions-bankbranch-premium
-
-## story guide-forte-deposits-conditions-bankbranch-withoutpartialwithdrawa_story
-* guide-forte-deposits
-  - utter_guide-forte-deposits
-* guide-forte-deposits-conditions
-  - utter_guide-forte-deposits-conditions
-* guide-forte-deposits-conditions-bankbranch
-  - utter_guide-forte-deposits-conditions-bankbranch
-* guide-forte-deposits-conditions-bankbranch-withoutpartialwithdrawa
-  - utter_guide-forte-deposits-conditions-bankbranch-withoutpartialwithdrawa
-
-## story guide-forte-deposits-conditions-online-partialwithdrawals_story
-* guide-forte-deposits
-  - utter_guide-forte-deposits
-* guide-forte-deposits-conditions
-  - utter_guide-forte-deposits-conditions
-* guide-forte-deposits-conditions-online
-  - utter_guide-forte-deposits-conditions-online
-* guide-forte-deposits-conditions-online-partialwithdrawals
-  - utter_guide-forte-deposits-conditions-online-partialwithdrawals
-
-## story guide-forte-deposits-conditions-online-withoutpartialwithdrawa_story
-* guide-forte-deposits
-  - utter_guide-forte-deposits
-* guide-forte-deposits-conditions
-  - utter_guide-forte-deposits-conditions
-* guide-forte-deposits-conditions-online
-  - utter_guide-forte-deposits-conditions-online
-* guide-forte-deposits-conditions-online-withoutpartialwithdrawa
-  - utter_guide-forte-deposits-conditions-online-withoutpartialwithdrawa
 
 ## story guide-forte-deposits-credcarddep_story
 * guide-forte-deposits
@@ -1329,13 +1229,11 @@
 * guide-forte-deposits-loanondeposit
   - utter_guide-forte-deposits-loanondeposit
 
-## story guide-forte-deposits-opendep-MIB_story
+## story guide-forte-deposits-opendep_story
 * guide-forte-deposits
   - utter_guide-forte-deposits
 * guide-forte-deposits-opendep
   - utter_guide-forte-deposits-opendep
-* guide-forte-deposits-opendep-MIB
-  - utter_guide-forte-deposits-opendep-MIB
 
 ## story guide-forte-deposits-replenishment_story
 * guide-forte-deposits
@@ -1349,53 +1247,83 @@
 * guide-forte-deposits-withdrawal
   - utter_guide-forte-deposits-withdrawal
 
-## story guide-forte-loan-mortgage-emergencyloan-conditions_story
+## story guide-forte-deposits-advantages-guaranteeing_story
+* guide-forte-deposits-advantages
+  - utter_guide-forte-deposits-advantages
+* guide-forte-deposits-advantages-guaranteeing
+  - utter_guide-forte-deposits-advantages-guaranteeing
+
+## story guide-forte-deposits-advantages-partialwithdrawals_story
+* guide-forte-deposits-advantages
+  - utter_guide-forte-deposits-advantages
+* guide-forte-deposits-advantages-partialwithdrawals
+  - utter_guide-forte-deposits-advantages-partialwithdrawals
+
+## story guide-forte-deposits-advantages-withoutpartialwithdrawal_story
+* guide-forte-deposits-advantages
+  - utter_guide-forte-deposits-advantages
+* guide-forte-deposits-advantages-withoutpartialwithdrawal
+  - utter_guide-forte-deposits-advantages-withoutpartialwithdrawal
+
+## story guide-forte-deposits-conditions-bankbranch_story
+* guide-forte-deposits-conditions
+  - utter_guide-forte-deposits-conditions
+* guide-forte-deposits-conditions-bankbranch
+  - utter_guide-forte-deposits-conditions-bankbranch
+
+## story guide-forte-deposits-conditions-online_story
+* guide-forte-deposits-conditions
+  - utter_guide-forte-deposits-conditions
+* guide-forte-deposits-conditions-online
+  - utter_guide-forte-deposits-conditions-online
+
+## story guide-forte-deposits-conditions-bankbranch-partialwithdrawals_story
+* guide-forte-deposits-conditions-bankbranch
+  - utter_guide-forte-deposits-conditions-bankbranch
+* guide-forte-deposits-conditions-bankbranch-partialwithdrawals
+  - utter_guide-forte-deposits-conditions-bankbranch-partialwithdrawals
+
+## story guide-forte-deposits-conditions-bankbranch-premium_story
+* guide-forte-deposits-conditions-bankbranch
+  - utter_guide-forte-deposits-conditions-bankbranch
+* guide-forte-deposits-conditions-bankbranch-premium
+  - utter_guide-forte-deposits-conditions-bankbranch-premium
+
+## story guide-forte-deposits-conditions-bankbranch-withoutpartialwithdrawa_story
+* guide-forte-deposits-conditions-bankbranch
+  - utter_guide-forte-deposits-conditions-bankbranch
+* guide-forte-deposits-conditions-bankbranch-withoutpartialwithdrawa
+  - utter_guide-forte-deposits-conditions-bankbranch-withoutpartialwithdrawa
+
+## story guide-forte-deposits-conditions-online-partialwithdrawals_story
+* guide-forte-deposits-conditions-online
+  - utter_guide-forte-deposits-conditions-online
+* guide-forte-deposits-conditions-online-partialwithdrawals
+  - utter_guide-forte-deposits-conditions-online-partialwithdrawals
+
+## story guide-forte-deposits-conditions-online-withoutpartialwithdrawa_story
+* guide-forte-deposits-conditions-online
+  - utter_guide-forte-deposits-conditions-online
+* guide-forte-deposits-conditions-online-withoutpartialwithdrawa
+  - utter_guide-forte-deposits-conditions-online-withoutpartialwithdrawa
+
+## story guide-forte-deposits-opendep-MIB_story
+* guide-forte-deposits-opendep
+  - utter_guide-forte-deposits-opendep
+* guide-forte-deposits-opendep-MIB
+  - utter_guide-forte-deposits-opendep-MIB
+
+## story guide-forte-loan-mortgage-emergencyloan_story
 * guide-forte-loan
   - utter_guide-forte-loan
 * guide-forte-loan-mortgage-emergencyloan
   - utter_guide-forte-loan-mortgage-emergencyloan
-* guide-forte-loan-mortgage-emergencyloan-conditions
-  - utter_guide-forte-loan-mortgage-emergencyloan-conditions
 
-## story guide-forte-loan-mortgage-emergencyloan-makeloan_story
-* guide-forte-loan
-  - utter_guide-forte-loan
-* guide-forte-loan-mortgage-emergencyloan
-  - utter_guide-forte-loan-mortgage-emergencyloan
-* guide-forte-loan-mortgage-emergencyloan-makeloan
-  - utter_guide-forte-loan-mortgage-emergencyloan-makeloan
-
-## story guide-forte-loan-mortgage-emergencyloan-repayment_story
-* guide-forte-loan
-  - utter_guide-forte-loan
-* guide-forte-loan-mortgage-emergencyloan
-  - utter_guide-forte-loan-mortgage-emergencyloan
-* guide-forte-loan-mortgage-emergencyloan-repayment
-  - utter_guide-forte-loan-mortgage-emergencyloan-repayment
-
-## story guide-forte-loan-mortgage-mortgageloan-conditions_story
+## story guide-forte-loan-mortgage-mortgageloan_story
 * guide-forte-loan
   - utter_guide-forte-loan
 * guide-forte-loan-mortgage-mortgageloan
   - utter_guide-forte-loan-mortgage-mortgageloan
-* guide-forte-loan-mortgage-mortgageloan-conditions
-  - utter_guide-forte-loan-mortgage-mortgageloan-conditions
-
-## story guide-forte-loan-mortgage-mortgageloan-makeloan_story
-* guide-forte-loan
-  - utter_guide-forte-loan
-* guide-forte-loan-mortgage-mortgageloan
-  - utter_guide-forte-loan-mortgage-mortgageloan
-* guide-forte-loan-mortgage-mortgageloan-makeloan
-  - utter_guide-forte-loan-mortgage-mortgageloan-makeloan
-
-## story guide-forte-loan-mortgage-mortgageloan-repayment_story
-* guide-forte-loan
-  - utter_guide-forte-loan
-* guide-forte-loan-mortgage-mortgageloan
-  - utter_guide-forte-loan-mortgage-mortgageloan
-* guide-forte-loan-mortgage-mortgageloan-repayment
-  - utter_guide-forte-loan-mortgage-mortgageloan-repayment
 
 ## story guide-forte-loan-mortgage-mortgageloan-baspana_story
 * guide-forte-loan
@@ -1403,53 +1331,17 @@
 * guide-forte-loan-mortgage-mortgageloan-baspana
   - utter_guide-forte-loan-mortgage-mortgageloan-baspana
 
-## story guide-forte-loan-mortgage-mortgageloan-livespacious-conditions_story
+## story guide-forte-loan-mortgage-mortgageloan-livespacious_story
 * guide-forte-loan
   - utter_guide-forte-loan
 * guide-forte-loan-mortgage-mortgageloan-livespacious
   - utter_guide-forte-loan-mortgage-mortgageloan-livespacious
-* guide-forte-loan-mortgage-mortgageloan-livespacious-conditions
-  - utter_guide-forte-loan-mortgage-mortgageloan-livespacious-conditions
 
-## story guide-forte-loan-mortgage-mortgageloan-livespacious-makeloan_story
-* guide-forte-loan
-  - utter_guide-forte-loan
-* guide-forte-loan-mortgage-mortgageloan-livespacious
-  - utter_guide-forte-loan-mortgage-mortgageloan-livespacious
-* guide-forte-loan-mortgage-mortgageloan-livespacious-makeloan
-  - utter_guide-forte-loan-mortgage-mortgageloan-livespacious-makeloan
-
-## story guide-forte-loan-mortgage-mortgageloan-livespacious-repayment_story
-* guide-forte-loan
-  - utter_guide-forte-loan
-* guide-forte-loan-mortgage-mortgageloan-livespacious
-  - utter_guide-forte-loan-mortgage-mortgageloan-livespacious
-* guide-forte-loan-mortgage-mortgageloan-livespacious-repayment
-  - utter_guide-forte-loan-mortgage-mortgageloan-livespacious-repayment
-
-## story guide-forte-loan-mortgage-mortgageloan72025-conditions_story
+## story guide-forte-loan-mortgage-mortgageloan72025_story
 * guide-forte-loan
   - utter_guide-forte-loan
 * guide-forte-loan-mortgage-mortgageloan72025
   - utter_guide-forte-loan-mortgage-mortgageloan72025
-* guide-forte-loan-mortgage-mortgageloan72025-conditions
-  - utter_guide-forte-loan-mortgage-mortgageloan72025-conditions
-
-## story guide-forte-loan-mortgage-mortgageloan72025-makeloan_story
-* guide-forte-loan
-  - utter_guide-forte-loan
-* guide-forte-loan-mortgage-mortgageloan72025
-  - utter_guide-forte-loan-mortgage-mortgageloan72025
-* guide-forte-loan-mortgage-mortgageloan72025-makeloan
-  - utter_guide-forte-loan-mortgage-mortgageloan72025-makeloan
-
-## story guide-forte-loan-mortgage-mortgageloan72025-repayment_story
-* guide-forte-loan
-  - utter_guide-forte-loan
-* guide-forte-loan-mortgage-mortgageloan72025
-  - utter_guide-forte-loan-mortgage-mortgageloan72025
-* guide-forte-loan-mortgage-mortgageloan72025-repayment
-  - utter_guide-forte-loan-mortgage-mortgageloan72025-repayment
 
 ## story guide-forte-loan-refinancing_story
 * guide-forte-loan
@@ -1457,41 +1349,109 @@
 * guide-forte-loan-refinancing
   - utter_guide-forte-loan-refinancing
 
-## story guide-forte-loan-unsecured-expressloan-conditions_story
+## story guide-forte-loan-unsecured-expressloan_story
 * guide-forte-loan
   - utter_guide-forte-loan
+* guide-forte-loan-unsecured-expressloan
+  - utter_guide-forte-loan-unsecured-expressloan
+
+## story guide-forte-loan-mortgage-emergencyloan-conditions_story
+* guide-forte-loan-mortgage-emergencyloan
+  - utter_guide-forte-loan-mortgage-emergencyloan
+* guide-forte-loan-mortgage-emergencyloan-conditions
+  - utter_guide-forte-loan-mortgage-emergencyloan-conditions
+
+## story guide-forte-loan-mortgage-emergencyloan-makeloan_story
+* guide-forte-loan-mortgage-emergencyloan
+  - utter_guide-forte-loan-mortgage-emergencyloan
+* guide-forte-loan-mortgage-emergencyloan-makeloan
+  - utter_guide-forte-loan-mortgage-emergencyloan-makeloan
+
+## story guide-forte-loan-mortgage-emergencyloan-repayment_story
+* guide-forte-loan-mortgage-emergencyloan
+  - utter_guide-forte-loan-mortgage-emergencyloan
+* guide-forte-loan-mortgage-emergencyloan-repayment
+  - utter_guide-forte-loan-mortgage-emergencyloan-repayment
+
+## story guide-forte-loan-mortgage-mortgageloan-conditions_story
+* guide-forte-loan-mortgage-mortgageloan
+  - utter_guide-forte-loan-mortgage-mortgageloan
+* guide-forte-loan-mortgage-mortgageloan-conditions
+  - utter_guide-forte-loan-mortgage-mortgageloan-conditions
+
+## story guide-forte-loan-mortgage-mortgageloan-makeloan_story
+* guide-forte-loan-mortgage-mortgageloan
+  - utter_guide-forte-loan-mortgage-mortgageloan
+* guide-forte-loan-mortgage-mortgageloan-makeloan
+  - utter_guide-forte-loan-mortgage-mortgageloan-makeloan
+
+## story guide-forte-loan-mortgage-mortgageloan-repayment_story
+* guide-forte-loan-mortgage-mortgageloan
+  - utter_guide-forte-loan-mortgage-mortgageloan
+* guide-forte-loan-mortgage-mortgageloan-repayment
+  - utter_guide-forte-loan-mortgage-mortgageloan-repayment
+
+## story guide-forte-loan-mortgage-mortgageloan-livespacious-conditions_story
+* guide-forte-loan-mortgage-mortgageloan-livespacious
+  - utter_guide-forte-loan-mortgage-mortgageloan-livespacious
+* guide-forte-loan-mortgage-mortgageloan-livespacious-conditions
+  - utter_guide-forte-loan-mortgage-mortgageloan-livespacious-conditions
+
+## story guide-forte-loan-mortgage-mortgageloan-livespacious-makeloan_story
+* guide-forte-loan-mortgage-mortgageloan-livespacious
+  - utter_guide-forte-loan-mortgage-mortgageloan-livespacious
+* guide-forte-loan-mortgage-mortgageloan-livespacious-makeloan
+  - utter_guide-forte-loan-mortgage-mortgageloan-livespacious-makeloan
+
+## story guide-forte-loan-mortgage-mortgageloan-livespacious-repayment_story
+* guide-forte-loan-mortgage-mortgageloan-livespacious
+  - utter_guide-forte-loan-mortgage-mortgageloan-livespacious
+* guide-forte-loan-mortgage-mortgageloan-livespacious-repayment
+  - utter_guide-forte-loan-mortgage-mortgageloan-livespacious-repayment
+
+## story guide-forte-loan-mortgage-mortgageloan72025-conditions_story
+* guide-forte-loan-mortgage-mortgageloan72025
+  - utter_guide-forte-loan-mortgage-mortgageloan72025
+* guide-forte-loan-mortgage-mortgageloan72025-conditions
+  - utter_guide-forte-loan-mortgage-mortgageloan72025-conditions
+
+## story guide-forte-loan-mortgage-mortgageloan72025-makeloan_story
+* guide-forte-loan-mortgage-mortgageloan72025
+  - utter_guide-forte-loan-mortgage-mortgageloan72025
+* guide-forte-loan-mortgage-mortgageloan72025-makeloan
+  - utter_guide-forte-loan-mortgage-mortgageloan72025-makeloan
+
+## story guide-forte-loan-mortgage-mortgageloan72025-repayment_story
+* guide-forte-loan-mortgage-mortgageloan72025
+  - utter_guide-forte-loan-mortgage-mortgageloan72025
+* guide-forte-loan-mortgage-mortgageloan72025-repayment
+  - utter_guide-forte-loan-mortgage-mortgageloan72025-repayment
+
+## story guide-forte-loan-unsecured-expressloan-conditions_story
 * guide-forte-loan-unsecured-expressloan
   - utter_guide-forte-loan-unsecured-expressloan
 * guide-forte-loan-unsecured-expressloan-conditions
   - utter_guide-forte-loan-unsecured-expressloan-conditions
 
 ## story guide-forte-loan-unsecured-expressloan-delivery_story
-* guide-forte-loan
-  - utter_guide-forte-loan
 * guide-forte-loan-unsecured-expressloan
   - utter_guide-forte-loan-unsecured-expressloan
 * guide-forte-loan-unsecured-expressloan-delivery
   - utter_guide-forte-loan-unsecured-expressloan-delivery
 
 ## story guide-forte-loan-unsecured-expressloan-makeloan_story
-* guide-forte-loan
-  - utter_guide-forte-loan
 * guide-forte-loan-unsecured-expressloan
   - utter_guide-forte-loan-unsecured-expressloan
 * guide-forte-loan-unsecured-expressloan-makeloan
   - utter_guide-forte-loan-unsecured-expressloan-makeloan
 
 ## story guide-forte-loan-unsecured-expressloan-repayment_story
-* guide-forte-loan
-  - utter_guide-forte-loan
 * guide-forte-loan-unsecured-expressloan
   - utter_guide-forte-loan-unsecured-expressloan
 * guide-forte-loan-unsecured-expressloan-repayment
   - utter_guide-forte-loan-unsecured-expressloan-repayment
 
 ## story guide-forte-loan-unsecured-expressloan-smartphone_story
-* guide-forte-loan
-  - utter_guide-forte-loan
 * guide-forte-loan-unsecured-expressloan
   - utter_guide-forte-loan-unsecured-expressloan
 * guide-forte-loan-unsecured-expressloan-smartphone
@@ -1527,61 +1487,17 @@
 * guide-forte-mib-limitmanag
   - utter_guide-forte-mib-limitmanag
 
-## story guide-forte-mib-otherbankscard-pay_story
+## story guide-forte-mib-otherbankscard_story
 * guide-forte-mib
   - utter_guide-forte-mib
 * guide-forte-mib-otherbankscard
   - utter_guide-forte-mib-otherbankscard
-* guide-forte-mib-otherbankscard-pay
-  - utter_guide-forte-mib-otherbankscard-pay
 
-## story guide-forte-mib-otherbankscard-transfer_story
-* guide-forte-mib
-  - utter_guide-forte-mib
-* guide-forte-mib-otherbankscard
-  - utter_guide-forte-mib-otherbankscard
-* guide-forte-mib-otherbankscard-transfer
-  - utter_guide-forte-mib-otherbankscard-transfer
-
-## story guide-forte-mib-prodonline-card_story
+## story guide-forte-mib-prodonline_story
 * guide-forte-mib
   - utter_guide-forte-mib
 * guide-forte-mib-prodonline
   - utter_guide-forte-mib-prodonline
-* guide-forte-mib-prodonline-card
-  - utter_guide-forte-mib-prodonline-card
-
-## story guide-forte-mib-prodonline-credonline_story
-* guide-forte-mib
-  - utter_guide-forte-mib
-* guide-forte-mib-prodonline
-  - utter_guide-forte-mib-prodonline
-* guide-forte-mib-prodonline-credonline
-  - utter_guide-forte-mib-prodonline-credonline
-
-## story guide-forte-mib-prodonline-currentacc_story
-* guide-forte-mib
-  - utter_guide-forte-mib
-* guide-forte-mib-prodonline
-  - utter_guide-forte-mib-prodonline
-* guide-forte-mib-prodonline-currentacc
-  - utter_guide-forte-mib-prodonline-currentacc
-
-## story guide-forte-mib-prodonline-dep_story
-* guide-forte-mib
-  - utter_guide-forte-mib
-* guide-forte-mib-prodonline
-  - utter_guide-forte-mib-prodonline
-* guide-forte-mib-prodonline-dep
-  - utter_guide-forte-mib-prodonline-dep
-
-## story guide-forte-mib-prodonline-dopcard_story
-* guide-forte-mib
-  - utter_guide-forte-mib
-* guide-forte-mib-prodonline
-  - utter_guide-forte-mib-prodonline
-* guide-forte-mib-prodonline-dopcard
-  - utter_guide-forte-mib-prodonline-dopcard
 
 ## story guide-forte-mib-registration_story
 * guide-forte-mib
@@ -1589,13 +1505,11 @@
 * guide-forte-mib-registration
   - utter_guide-forte-mib-registration
 
-## story guide-forte-mib-security-cardlock_story
+## story guide-forte-mib-security_story
 * guide-forte-mib
   - utter_guide-forte-mib
 * guide-forte-mib-security
   - utter_guide-forte-mib-security
-* guide-forte-mib-security-cardlock
-  - utter_guide-forte-mib-security-cardlock
 
 ## story guide-forte-mib-talkin_story
 * guide-forte-mib
@@ -1603,97 +1517,125 @@
 * guide-forte-mib-talkin
   - utter_guide-forte-mib-talkin
 
-## story guide-forte-mib-transferandpay-autotransferandpay_story
+## story guide-forte-mib-transferandpay_story
 * guide-forte-mib
   - utter_guide-forte-mib
+* guide-forte-mib-transferandpay
+  - utter_guide-forte-mib-transferandpay
+
+## story guide-forte-mib-otherbankscard-pay_story
+* guide-forte-mib-otherbankscard
+  - utter_guide-forte-mib-otherbankscard
+* guide-forte-mib-otherbankscard-pay
+  - utter_guide-forte-mib-otherbankscard-pay
+
+## story guide-forte-mib-otherbankscard-transfer_story
+* guide-forte-mib-otherbankscard
+  - utter_guide-forte-mib-otherbankscard
+* guide-forte-mib-otherbankscard-transfer
+  - utter_guide-forte-mib-otherbankscard-transfer
+
+## story guide-forte-mib-prodonline-card_story
+* guide-forte-mib-prodonline
+  - utter_guide-forte-mib-prodonline
+* guide-forte-mib-prodonline-card
+  - utter_guide-forte-mib-prodonline-card
+
+## story guide-forte-mib-prodonline-credonline_story
+* guide-forte-mib-prodonline
+  - utter_guide-forte-mib-prodonline
+* guide-forte-mib-prodonline-credonline
+  - utter_guide-forte-mib-prodonline-credonline
+
+## story guide-forte-mib-prodonline-currentacc_story
+* guide-forte-mib-prodonline
+  - utter_guide-forte-mib-prodonline
+* guide-forte-mib-prodonline-currentacc
+  - utter_guide-forte-mib-prodonline-currentacc
+
+## story guide-forte-mib-prodonline-dep_story
+* guide-forte-mib-prodonline
+  - utter_guide-forte-mib-prodonline
+* guide-forte-mib-prodonline-dep
+  - utter_guide-forte-mib-prodonline-dep
+
+## story guide-forte-mib-prodonline-dopcard_story
+* guide-forte-mib-prodonline
+  - utter_guide-forte-mib-prodonline
+* guide-forte-mib-prodonline-dopcard
+  - utter_guide-forte-mib-prodonline-dopcard
+
+## story guide-forte-mib-security-cardlock_story
+* guide-forte-mib-security
+  - utter_guide-forte-mib-security
+* guide-forte-mib-security-cardlock
+  - utter_guide-forte-mib-security-cardlock
+
+## story guide-forte-mib-transferandpay-autotransferandpay_story
 * guide-forte-mib-transferandpay
   - utter_guide-forte-mib-transferandpay
 * guide-forte-mib-transferandpay-autotransferandpay
   - utter_guide-forte-mib-transferandpay-autotransferandpay
 
 ## story guide-forte-mib-transferandpay-payments_story
-* guide-forte-mib
-  - utter_guide-forte-mib
 * guide-forte-mib-transferandpay
   - utter_guide-forte-mib-transferandpay
 * guide-forte-mib-transferandpay-payments
   - utter_guide-forte-mib-transferandpay-payments
 
-## story guide-forte-mib-transferandpay-tariffs-acc_story
-* guide-forte-mib
-  - utter_guide-forte-mib
+## story guide-forte-mib-transferandpay-tariffs_story
 * guide-forte-mib-transferandpay
   - utter_guide-forte-mib-transferandpay
 * guide-forte-mib-transferandpay-tariffs
   - utter_guide-forte-mib-transferandpay-tariffs
-* guide-forte-mib-transferandpay-tariffs-acc
-  - utter_guide-forte-mib-transferandpay-tariffs-acc
-
-## story guide-forte-mib-transferandpay-tariffs-creditcard_story
-* guide-forte-mib
-  - utter_guide-forte-mib
-* guide-forte-mib-transferandpay
-  - utter_guide-forte-mib-transferandpay
-* guide-forte-mib-transferandpay-tariffs
-  - utter_guide-forte-mib-transferandpay-tariffs
-* guide-forte-mib-transferandpay-tariffs-creditcard
-  - utter_guide-forte-mib-transferandpay-tariffs-creditcard
-
-## story guide-forte-mib-transferandpay-tariffs-dep_story
-* guide-forte-mib
-  - utter_guide-forte-mib
-* guide-forte-mib-transferandpay
-  - utter_guide-forte-mib-transferandpay
-* guide-forte-mib-transferandpay-tariffs
-  - utter_guide-forte-mib-transferandpay-tariffs
-* guide-forte-mib-transferandpay-tariffs-dep
-  - utter_guide-forte-mib-transferandpay-tariffs-dep
-
-## story guide-forte-mib-transferandpay-tariffs-fortecard_story
-* guide-forte-mib
-  - utter_guide-forte-mib
-* guide-forte-mib-transferandpay
-  - utter_guide-forte-mib-transferandpay
-* guide-forte-mib-transferandpay-tariffs
-  - utter_guide-forte-mib-transferandpay-tariffs
-* guide-forte-mib-transferandpay-tariffs-fortecard
-  - utter_guide-forte-mib-transferandpay-tariffs-fortecard
-
-## story guide-forte-mib-transferandpay-tariffs-instantcard_story
-* guide-forte-mib
-  - utter_guide-forte-mib
-* guide-forte-mib-transferandpay
-  - utter_guide-forte-mib-transferandpay
-* guide-forte-mib-transferandpay-tariffs
-  - utter_guide-forte-mib-transferandpay-tariffs
-* guide-forte-mib-transferandpay-tariffs-instantcard
-  - utter_guide-forte-mib-transferandpay-tariffs-instantcard
-
-## story guide-forte-mib-transferandpay-tariffs-otherbankscard_story
-* guide-forte-mib
-  - utter_guide-forte-mib
-* guide-forte-mib-transferandpay
-  - utter_guide-forte-mib-transferandpay
-* guide-forte-mib-transferandpay-tariffs
-  - utter_guide-forte-mib-transferandpay-tariffs
-* guide-forte-mib-transferandpay-tariffs-otherbankscard
-  - utter_guide-forte-mib-transferandpay-tariffs-otherbankscard
 
 ## story guide-forte-mib-transferandpay-transfercard_story
-* guide-forte-mib
-  - utter_guide-forte-mib
 * guide-forte-mib-transferandpay
   - utter_guide-forte-mib-transferandpay
 * guide-forte-mib-transferandpay-transfercard
   - utter_guide-forte-mib-transferandpay-transfercard
 
 ## story guide-forte-mib-transferandpay-transfercontact_story
-* guide-forte-mib
-  - utter_guide-forte-mib
 * guide-forte-mib-transferandpay
   - utter_guide-forte-mib-transferandpay
 * guide-forte-mib-transferandpay-transfercontact
   - utter_guide-forte-mib-transferandpay-transfercontact
+
+## story guide-forte-mib-transferandpay-tariffs-acc_story
+* guide-forte-mib-transferandpay-tariffs
+  - utter_guide-forte-mib-transferandpay-tariffs
+* guide-forte-mib-transferandpay-tariffs-acc
+  - utter_guide-forte-mib-transferandpay-tariffs-acc
+
+## story guide-forte-mib-transferandpay-tariffs-creditcard_story
+* guide-forte-mib-transferandpay-tariffs
+  - utter_guide-forte-mib-transferandpay-tariffs
+* guide-forte-mib-transferandpay-tariffs-creditcard
+  - utter_guide-forte-mib-transferandpay-tariffs-creditcard
+
+## story guide-forte-mib-transferandpay-tariffs-dep_story
+* guide-forte-mib-transferandpay-tariffs
+  - utter_guide-forte-mib-transferandpay-tariffs
+* guide-forte-mib-transferandpay-tariffs-dep
+  - utter_guide-forte-mib-transferandpay-tariffs-dep
+
+## story guide-forte-mib-transferandpay-tariffs-fortecard_story
+* guide-forte-mib-transferandpay-tariffs
+  - utter_guide-forte-mib-transferandpay-tariffs
+* guide-forte-mib-transferandpay-tariffs-fortecard
+  - utter_guide-forte-mib-transferandpay-tariffs-fortecard
+
+## story guide-forte-mib-transferandpay-tariffs-instantcard_story
+* guide-forte-mib-transferandpay-tariffs
+  - utter_guide-forte-mib-transferandpay-tariffs
+* guide-forte-mib-transferandpay-tariffs-instantcard
+  - utter_guide-forte-mib-transferandpay-tariffs-instantcard
+
+## story guide-forte-mib-transferandpay-tariffs-otherbankscard_story
+* guide-forte-mib-transferandpay-tariffs
+  - utter_guide-forte-mib-transferandpay-tariffs
+* guide-forte-mib-transferandpay-tariffs-otherbankscard
+  - utter_guide-forte-mib-transferandpay-tariffs-otherbankscard
 
 ## story guide-forte-transfers-acc_story
 * guide-forte-transfers
@@ -1707,29 +1649,11 @@
 * guide-forte-transfers-atm
   - utter_guide-forte-transfers-atm
 
-## story guide-forte-transfers-bankbranch-goldcrown_story
+## story guide-forte-transfers-bankbranch_story
 * guide-forte-transfers
   - utter_guide-forte-transfers
 * guide-forte-transfers-bankbranch
   - utter_guide-forte-transfers-bankbranch
-* guide-forte-transfers-bankbranch-goldcrown
-  - utter_guide-forte-transfers-bankbranch-goldcrown
-
-## story guide-forte-transfers-bankbranch-instantransfer_story
-* guide-forte-transfers
-  - utter_guide-forte-transfers
-* guide-forte-transfers-bankbranch
-  - utter_guide-forte-transfers-bankbranch
-* guide-forte-transfers-bankbranch-instantransfer
-  - utter_guide-forte-transfers-bankbranch-instantransfer
-
-## story guide-forte-transfers-bankbranch-westernunion_story
-* guide-forte-transfers
-  - utter_guide-forte-transfers
-* guide-forte-transfers-bankbranch
-  - utter_guide-forte-transfers-bankbranch
-* guide-forte-transfers-bankbranch-westernunion
-  - utter_guide-forte-transfers-bankbranch-westernunion
 
 ## story guide-forte-transfers-contact_story
 * guide-forte-transfers
@@ -1743,17 +1667,37 @@
 * guide-forte-transfers-p2p
   - utter_guide-forte-transfers-p2p
 
-## story guide-forte-transfers-socianetw-odnokl_story
+## story guide-forte-transfers-socianetw_story
 * guide-forte-transfers
   - utter_guide-forte-transfers
+* guide-forte-transfers-socianetw
+  - utter_guide-forte-transfers-socianetw
+
+## story guide-forte-transfers-bankbranch-goldcrown_story
+* guide-forte-transfers-bankbranch
+  - utter_guide-forte-transfers-bankbranch
+* guide-forte-transfers-bankbranch-goldcrown
+  - utter_guide-forte-transfers-bankbranch-goldcrown
+
+## story guide-forte-transfers-bankbranch-instantransfer_story
+* guide-forte-transfers-bankbranch
+  - utter_guide-forte-transfers-bankbranch
+* guide-forte-transfers-bankbranch-instantransfer
+  - utter_guide-forte-transfers-bankbranch-instantransfer
+
+## story guide-forte-transfers-bankbranch-westernunion_story
+* guide-forte-transfers-bankbranch
+  - utter_guide-forte-transfers-bankbranch
+* guide-forte-transfers-bankbranch-westernunion
+  - utter_guide-forte-transfers-bankbranch-westernunion
+
+## story guide-forte-transfers-socianetw-odnokl_story
 * guide-forte-transfers-socianetw
   - utter_guide-forte-transfers-socianetw
 * guide-forte-transfers-socianetw-odnokl
   - utter_guide-forte-transfers-socianetw-odnokl
 
 ## story guide-forte-transfers-socianetw-wk_story
-* guide-forte-transfers
-  - utter_guide-forte-transfers
 * guide-forte-transfers-socianetw
   - utter_guide-forte-transfers-socianetw
 * guide-forte-transfers-socianetw-wk

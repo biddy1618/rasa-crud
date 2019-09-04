@@ -143,7 +143,18 @@ RUN apt-get update &&\
     pip install -r requirements.txt
 ...
 ```
+## Kubernetes
 
+To set the correct client.
+```
+export AWS_PROFILE=k8s.watcher
+export KUBECONFIG=~/config
+```
+
+
+`kubectl get pods -n dev-rasa` - to get the list of hosted services
+
+`kubectl logs -f NAME -n dev-rasa` - to view live the logs of service
 
 ## Notes
 
