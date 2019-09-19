@@ -462,14 +462,27 @@ WITH (
 )
 TABLESPACE pg_default;
 
-CREATE TABLE intent_story
+CREATE TABLE stories
 (
-    id serial PRIMARY KEY,
-    parent_id integer NOT NULL,
+    story_id serial PRIMARY KEY,
+    story_name varchar NOT NULL,
+    story_sequence integer[][],
+    CONSTRAINT story_name_unique UNIQUE (story_name)
+)
+WITH (
+  OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+CREATE TABLE story_pairs
+(
     intent_id integer NOT NULL,
-    UNIQUE (parent_id, intent_id),
-    CONSTRAINT parent_fkey FOREIGN KEY (parent_id) REFERENCES intents (intent_id) ON DELETE CASCADE,
-    CONSTRAINT intent_fkey FOREIGN KEY (intent_id) REFERENCES intents (intent_id) ON DELETE CASCADE
+    action_id integer NOT NULL,
+    story_id integer NOT NULL,
+    PRIMARY KEY (intent_id, action_id, story_id),
+    CONSTRAINT intent_fkey FOREIGN KEY (intent_id) REFERENCES intents (intent_id) ON DELETE CASCADE,
+    CONSTRAINT action_fkey FOREIGN KEY (action_id) REFERENCES actions (action_id) ON DELETE CASCADE,
+    CONSTRAINT story_fkey FOREIGN KEY (story_id) REFERENCES stories (story_id) ON DELETE CASCADE
 )
 WITH (
   OIDS = FALSE

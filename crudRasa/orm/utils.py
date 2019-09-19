@@ -18,6 +18,9 @@ with open(os.path.abspath(PATH_FILE_STOPWORDS), "rb") as file: # Unpickling
     stopwords = pickle.load(file)
 
 def lemmatize(text):
+
+    if '+' in text:
+        return text
     
     tokens = mystem.lemmatize(text.lower())
     tokens = [token for token in tokens if token not in stopwords\
@@ -54,3 +57,6 @@ def checkAuth(token):
     )
         
     return True if r.status_code == 200 else False
+
+def lst2pgarr(args):
+    return '{' + ','.join([str(a) for a in args]) + '}'

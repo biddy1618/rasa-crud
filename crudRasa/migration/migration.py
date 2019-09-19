@@ -110,18 +110,7 @@ def migrateDatabase(nluPath=PATH_FILE_NLU_MD, storiesPath=PATH_FILE_STORIES,
                 intentToId[name]=cur.fetchone()[0]
             except Exception as e:
                 print(str(e))
-        actionToId = {}
-
-        actionInj = "INSERT INTO rasa_ui.actions (action_name, agent_id) VALUES (%s, %s) \
-                ON CONFLICT DO NOTHING RETURNING action_id"
-
-        for name in intents.intent_name.unique():
-            try:
-                cur.execute(actionInj, ('utter_'+name, agent_id))
-                print(f'Inserting action {name}')
-                actionToId['utter_'+name]=cur.fetchone()[0]
-            except Exception as e:
-                print(str(e))
+        
 
         expressionInj = "INSERT INTO rasa_ui.expressions (intent_id, expression_text, lemmatized_text) \
             VALUES (%s, %s, %s) ON CONFLICT DO NOTHING"
@@ -149,6 +138,7 @@ def migrateDatabase(nluPath=PATH_FILE_NLU_MD, storiesPath=PATH_FILE_STORIES,
                 except Exception as e:
                     print(str(e))
         
+        actionToId = {}
         actionInj = "INSERT INTO rasa_ui.actions (action_name, agent_id) VALUES (%s, %s) \
                 ON CONFLICT DO NOTHING RETURNING action_id"
         
@@ -156,17 +146,16 @@ def migrateDatabase(nluPath=PATH_FILE_NLU_MD, storiesPath=PATH_FILE_STORIES,
             if action not in actionToId:
                 try:
                     cur.execute(actionInj, (action, agent_id))
-                    print(f'Inserting action without intent {action}')
+                    print(f'Inserting action {action}')
                     actionToId[action]=cur.fetchone()[0]
                 except Exception as e:
                     print(str(e))
 
-        responseInj = "INSERT INTO rasa_ui.responses (intent_id, action_id, buttons_info, response_text, \
-            response_type) VALUES (%s, %s, %s, %s, %s) ON CONFLICT DO NOTHING"
-        
+        responses = {}
         for response in ymlFile['templates']:
-            intentId = intentToId[response[6:]]
             actionId = actionToId[response]
+            if actionId not in responses:
+                responses[actionId] = []
             for responseDetails in ymlFile['templates'][response]:
                 text = responseDetails['text']
 
@@ -179,6 +168,84 @@ def migrateDatabase(nluPath=PATH_FILE_NLU_MD, storiesPath=PATH_FILE_STORIES,
                             'title': button['title'],
                             'payload': button['payload']
                         })
+                responses[actionId].append({
+                    'buttons': buttons,
+                    'text': text
+                })
+        
+        print('\nReading stories data')
+        with open(os.path.abspath(storiesPath), 'r') as f:
+            storiesData = f.readlines()
+
+        stories = {}
+        storyName = None
+        story = []
+        storyPair = []
+        intentActions = []
+        for line in storiesData:
+            if line.strip()[:2] == '##':
+                if len(story) == 0:
+                    storyName = line.strip()[3:]
+                    stories[storyName] = None
+                    continue
+                stories[storyName] = story
+                storyName = line.strip()[3:]
+                stories[storyName] = None
+                story = []
+            elif line.strip()[:1] == '*':
+                intent_name = line.strip()[2:]
+                if intent_name not in intentToId:
+                    raise Exception(f'Intent {intent_name} \
+                        found in stories.md but not in \
+                        nlu.md and domain.yml')
+                storyPair.append(intentToId[intent_name])
+            elif line.strip()[:1] == '-':
+                action_name = line.strip()[2:]
+                if action_name not in actionToId:
+                    raise Exception(f'Action {action_name} \
+                        found in stories.md but not in domain.yml')
+                storyPair.append(actionToId[action_name])
+                story.append(tuple(storyPair))
+                intentActions.append(tuple(storyPair))
+                storyPair = []
+            else:
+                continue
+        else:
+            if storyName is not None:
+                stories[storyName] = story
+            
+        
+        storyToId = {}
+        storyInj = "INSERT INTO rasa_ui.stories (story_name, story_sequence) VALUES (%s, %s) ON CONFLICT DO NOTHING RETURNING story_id"
+        for storyName, storyPairs in stories.items():
+            try:
+                temp = utils.lst2pgarr([utils.lst2pgarr(pair) for pair in storyPairs])
+                cur.execute(storyInj, (storyName, temp))
+                print(f'Inserting story {storyName}')
+                storyToId[storyName]=cur.fetchone()[0]
+            except Exception as e:
+                print(str(e))
+        
+        storyPairInj = "INSERT INTO rasa_ui.story_pairs (intent_id, action_id, story_id) VALUES (%s, %s, %s) ON CONFLICT DO NOTHING"
+        
+        for storyName, storyPairs in stories.items():
+            for intentId, actionId in storyPairs:
+                try:
+                    cur.execute(storyPairInj, (intentId, actionId, storyToId[storyName]))
+                    print(f'Inserting pairs for story {storyName}')
+                except Exception as e:
+                    print(str(e))
+        
+        intentActions = list(set(intentActions))
+        
+        responseInj = "INSERT INTO rasa_ui.responses (intent_id, action_id, buttons_info, response_text, \
+            response_type) VALUES (%s, %s, %s, %s, %s) ON CONFLICT DO NOTHING"
+        
+        for intentId, actionId in intentActions:
+            for response in responses[actionId]:
+                text = response['text']
+
+                buttons = response['buttons']
                 try:
                     cur.execute(responseInj, (
                         str(intentId), 
@@ -187,42 +254,7 @@ def migrateDatabase(nluPath=PATH_FILE_NLU_MD, storiesPath=PATH_FILE_STORIES,
                         text, 
                         str(1)
                     ))
-                    print(f'Inserting response for intent {response[6:]}')
-                except Exception as e:
-                    print(str(e))
-        
-        print('\nReading stories data')
-        with open(os.path.abspath(storiesPath), 'r') as f:
-            storiesData = f.readlines()
-
-        stories = []
-        story = []
-        for line in storiesData:
-            if line.strip()[:2] == '##':
-                if len(story) == 0:
-                    continue
-                stories.append(story)
-                story = []
-            elif line.strip()[:1] == '*':
-                intent_name = line.strip()[2:]
-                story.append(intent_name)
-            else:
-                continue
-        
-        intentStoryInj = "INSERT INTO rasa_ui.intent_story (parent_id, intent_id) VALUES (%s, %s) ON CONFLICT DO NOTHING"
-
-        for story in stories:
-            if len(story) == 0:
-                continue
-            print(f'Inserting intent story for intent {story[-1]}')
-            for i in range(1, len(story)):
-                parentId = intentToId[story[i-1]]
-                intentId = intentToId[story[i]]
-                try:
-                    cur.execute(intentStoryInj, (
-                        parentId, 
-                        intentId,
-                    ))
+                    print(f'Inserting response for intent {intentId} and action {actionId}')
                 except Exception as e:
                     print(str(e))
 
@@ -230,7 +262,7 @@ def migrateDatabase(nluPath=PATH_FILE_NLU_MD, storiesPath=PATH_FILE_STORIES,
         print('\nMigration completed')
             
     except Exception as e:
-        print(str(e))
+        raise e
     finally:
         if conn is not None:
             conn.close()

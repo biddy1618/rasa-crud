@@ -156,6 +156,10 @@ export KUBECONFIG=~/config
 
 `kubectl logs -f NAME -n dev-rasa` - to view live the logs of service
 
+## CORS check
+
+Go to `codepen.io` and run the cors-check script to test the CORS functionality
+
 ## Notes
 
 One can't do ORM operations with `sqlalchemy.Table`. 

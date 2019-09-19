@@ -8,10 +8,8 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 load_dotenv()
 
-methods = ['GET', 'HEAD', 'POST', 'OPTIONS', 'PUT', 'PATCH', 'DELETE']
-
 app = Flask(__name__)
-CORS(app, origins = '*', methods = methods, support_credentials=True)
+CORS(app, support_credentials=True)
 
 app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

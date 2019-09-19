@@ -5,7 +5,7 @@ actions:
 - utter_dialogs - bot - are you busy
 - utter_dialogs - bot - are you happy
 - utter_dialogs - bot - are you here
-- utter_dialogs - bot - are you ready?
+- utter_dialogs - bot - are you ready
 - utter_dialogs - bot - are you real
 - utter_dialogs - bot - are you sure
 - utter_dialogs - bot - bad
@@ -390,7 +390,7 @@ intents:
 - dialogs - bot - are you busy
 - dialogs - bot - are you happy
 - dialogs - bot - are you here
-- dialogs - bot - are you ready?
+- dialogs - bot - are you ready
 - dialogs - bot - are you real
 - dialogs - bot - are you sure
 - dialogs - bot - bad
@@ -430,7 +430,6 @@ intents:
 - dialogs - bot - i will be back soon
 - dialogs - bot - i'm back
 - dialogs - bot - i'm busy
-- dialogs - bot - i'm delighted
 - dialogs - bot - i'm going to sleep
 - dialogs - bot - i'm happy
 - dialogs - bot - i'm ill
@@ -454,97 +453,83 @@ intents:
 - dialogs - bot - thank you
 - dialogs - bot - today is my birthday
 - dialogs - bot - trash
+- dialogs - bot - what
 - dialogs - bot - what DAR company is
 - dialogs - bot - what are you doing
 - dialogs - bot - what chatbot is
-- dialogs - bot - what do you mean
 - dialogs - bot - what do you work
-- dialogs - bot - what
 - dialogs - bot - where are you from
 - dialogs - bot - where are you working
 - dialogs - bot - where do you live
 - dialogs - bot - where do your learned to fawn
 - dialogs - bot - who are you?
 - dialogs - bot - who teaches you
-- dialogs - bot - you are bad
 - dialogs - bot - you are bot
-- dialogs - bot - you are clever
-- dialogs - bot - you are crazy
-- dialogs - bot - you are fired
 - dialogs - bot - you are funny
 - dialogs - bot - you are good companion
 - dialogs - bot - you are handsome
 - dialogs - bot - you are not right
-- dialogs - bot - you are pretty
 - dialogs - bot - you are right
 - dialogs - bot - your birthday
 - dialogs - ru - good luck
 - dialogs-bot-what_can_you_do
+- guide-forte-cards
+- guide-forte-cards-cardissueandactivation
+- guide-forte-cards-cardissueandactivation-activation
 - guide-forte-cards-cardissueandactivation-activation-epin7575
 - guide-forte-cards-cardissueandactivation-activation-epinatm
-- guide-forte-cards-cardissueandactivation-activation
 - guide-forte-cards-cardissueandactivation-applepay
 - guide-forte-cards-cardissueandactivation-delivery
 - guide-forte-cards-cardissueandactivation-mib
 - guide-forte-cards-cardissueandactivation-pincode
-- guide-forte-cards-cardissueandactivation
-- guide-forte-cards-conditions-classic-
+- guide-forte-cards-conditions
 - guide-forte-cards-conditions-classic
+- guide-forte-cards-conditions-classic-
 - guide-forte-cards-conditions-dopcard
 - guide-forte-cards-conditions-gold
 - guide-forte-cards-conditions-jastar
 - guide-forte-cards-conditions-multicard
 - guide-forte-cards-conditions-platinum
+- guide-forte-cards-conditions-promotions
 - guide-forte-cards-conditions-promotions-fortetravel
 - guide-forte-cards-conditions-promotions-mastercard
 - guide-forte-cards-conditions-promotions-visa
-- guide-forte-cards-conditions-promotions
 - guide-forte-cards-conditions-selfiecard
-- guide-forte-cards-conditions
-- guide-forte-cards-promotions-mastercard
-- guide-forte-cards-promotions-visa
-- guide-forte-cards-promotions
+- guide-forte-cards-questions
 - guide-forte-cards-questions-datachange
 - guide-forte-cards-questions-disput
 - guide-forte-cards-questions-epin
 - guide-forte-cards-questions-mib
-- guide-forte-cards-questions
 - guide-forte-cards-security
+- guide-forte-cards-transfers
 - guide-forte-cards-transfers-acc
 - guide-forte-cards-transfers-contact
 - guide-forte-cards-transfers-p2p
 - guide-forte-cards-transfers-reqviz
-- guide-forte-cards-transfers
+- guide-forte-cards-usecard
 - guide-forte-cards-usecard-atmcard
 - guide-forte-cards-usecard-balance
-- guide-forte-cards-usecard-cashwithdrawal-abroad-classic-
+- guide-forte-cards-usecard-cashwithdrawal
+- guide-forte-cards-usecard-cashwithdrawal-abroad
 - guide-forte-cards-usecard-cashwithdrawal-abroad-classic
+- guide-forte-cards-usecard-cashwithdrawal-abroad-classic-
 - guide-forte-cards-usecard-cashwithdrawal-abroad-gold
 - guide-forte-cards-usecard-cashwithdrawal-abroad-jastar
 - guide-forte-cards-usecard-cashwithdrawal-abroad-multicard
 - guide-forte-cards-usecard-cashwithdrawal-abroad-platinum
-- guide-forte-cards-usecard-cashwithdrawal-abroad
 - guide-forte-cards-usecard-cashwithdrawal-nocommission
-- guide-forte-cards-usecard-cashwithdrawal-rk-classic-
-- guide-forte-cards-usecard-cashwithdrawal-rk-classic
-- guide-forte-cards-usecard-cashwithdrawal-rk-gold
-- guide-forte-cards-usecard-cashwithdrawal-rk-multicard
-- guide-forte-cards-usecard-cashwithdrawal-rk-platinum
 - guide-forte-cards-usecard-cashwithdrawal-rk
-- guide-forte-cards-usecard-cashwithdrawal
 - guide-forte-cards-usecard-dop
 - guide-forte-cards-usecard-limits
 - guide-forte-cards-usecard-nopin
 - guide-forte-cards-usecard-reference
-- guide-forte-cards-usecard-reissue-reasons
 - guide-forte-cards-usecard-reissue
+- guide-forte-cards-usecard-reissue-reasons
 - guide-forte-cards-usecard-replenishment
-- guide-forte-cards-usecard
-- guide-forte-cards
+- guide-forte-creditcard
 - guide-forte-creditcard-activation-applepay
 - guide-forte-creditcard-activation-epin
 - guide-forte-creditcard-activation-mib
-- guide-forte-creditcard-activation
 - guide-forte-creditcard-conditions
 - guide-forte-creditcard-delivery
 - guide-forte-creditcard-installmentplan
@@ -552,130 +537,78 @@ intents:
 - guide-forte-creditcard-repayment
 - guide-forte-creditcard-stock-technoshop
 - guide-forte-creditcard-stock-travel
-- guide-forte-creditcard-stock
-- guide-forte-creditcard
+- guide-forte-deposits
+- guide-forte-deposits-advantages
 - guide-forte-deposits-advantages-guaranteeing
 - guide-forte-deposits-advantages-partialwithdrawals
 - guide-forte-deposits-advantages-premium
 - guide-forte-deposits-advantages-withoutpartialwithdrawal
-- guide-forte-deposits-advantages
-- guide-forte-deposits-conditions-bankbranch-partialwithdrawals
-- guide-forte-deposits-conditions-bankbranch-premium
-- guide-forte-deposits-conditions-bankbranch-withoutpartialwithdrawa
 - guide-forte-deposits-conditions-bankbranch
-- guide-forte-deposits-conditions-online-partialwithdrawals
-- guide-forte-deposits-conditions-online-withoutpartialwithdrawa
 - guide-forte-deposits-conditions-online
-- guide-forte-deposits-conditions
 - guide-forte-deposits-credcarddep
 - guide-forte-deposits-loanondeposit
-- guide-forte-deposits-opendep-MIB
 - guide-forte-deposits-opendep
+- guide-forte-deposits-opendep-MIB
 - guide-forte-deposits-replenishment
 - guide-forte-deposits-withdrawal
-- guide-forte-deposits
 - guide-forte-fortemarket
-- guide-forte-fortetravel
-- guide-forte-loan-mortgage-emergencyloan-conditions
-- guide-forte-loan-mortgage-emergencyloan-makeloan
-- guide-forte-loan-mortgage-emergencyloan-repayment
+- guide-forte-loan
 - guide-forte-loan-mortgage-emergencyloan
-- guide-forte-loan-mortgage-mortgageloan-baspana
-- guide-forte-loan-mortgage-mortgageloan-conditions
-- guide-forte-loan-mortgage-mortgageloan-livespacious-conditions
-- guide-forte-loan-mortgage-mortgageloan-livespacious-makeloan
-- guide-forte-loan-mortgage-mortgageloan-livespacious-repayment
-- guide-forte-loan-mortgage-mortgageloan-livespacious
-- guide-forte-loan-mortgage-mortgageloan-makeloan
-- guide-forte-loan-mortgage-mortgageloan-repayment
+- guide-forte-loan-mortgage-emergencyloan-makeloan
 - guide-forte-loan-mortgage-mortgageloan
-- guide-forte-loan-mortgage-mortgageloan72025-conditions
-- guide-forte-loan-mortgage-mortgageloan72025-makeloan
-- guide-forte-loan-mortgage-mortgageloan72025-repayment
+- guide-forte-loan-mortgage-mortgageloan-baspana
+- guide-forte-loan-mortgage-mortgageloan-livespacious
 - guide-forte-loan-mortgage-mortgageloan72025
 - guide-forte-loan-refinancing
-- guide-forte-loan-unsecured-expressloan-conditions
-- guide-forte-loan-unsecured-expressloan-delivery
-- guide-forte-loan-unsecured-expressloan-makeloan
-- guide-forte-loan-unsecured-expressloan-repayment
-- guide-forte-loan-unsecured-expressloan-smartphone
 - guide-forte-loan-unsecured-expressloan
-- guide-forte-loan
+- guide-forte-loan-unsecured-expressloan-delivery
+- guide-forte-loan-unsecured-expressloan-smartphone
+- guide-forte-mib
 - guide-forte-mib-0balance
 - guide-forte-mib-ar
 - guide-forte-mib-cashnocard
 - guide-forte-mib-finescontrol
-- guide-forte-mib-limitmanag
-- guide-forte-mib-otherbankscard-pay
-- guide-forte-mib-otherbankscard-transfer
 - guide-forte-mib-otherbankscard
+- guide-forte-mib-otherbankscard-pay
+- guide-forte-mib-prodonline
 - guide-forte-mib-prodonline-card
 - guide-forte-mib-prodonline-credonline
 - guide-forte-mib-prodonline-currentacc
 - guide-forte-mib-prodonline-dep
 - guide-forte-mib-prodonline-dopcard
-- guide-forte-mib-prodonline
 - guide-forte-mib-registration
 - guide-forte-mib-security-cardlock
-- guide-forte-mib-security
 - guide-forte-mib-talkin
+- guide-forte-mib-transferandpay
 - guide-forte-mib-transferandpay-autotransferandpay
-- guide-forte-mib-transferandpay-payments
+- guide-forte-mib-transferandpay-tariffs
 - guide-forte-mib-transferandpay-tariffs-acc
 - guide-forte-mib-transferandpay-tariffs-creditcard
 - guide-forte-mib-transferandpay-tariffs-dep
 - guide-forte-mib-transferandpay-tariffs-fortecard
 - guide-forte-mib-transferandpay-tariffs-instantcard
 - guide-forte-mib-transferandpay-tariffs-otherbankscard
-- guide-forte-mib-transferandpay-tariffs
 - guide-forte-mib-transferandpay-transfercard
 - guide-forte-mib-transferandpay-transfercontact
-- guide-forte-mib-transferandpay
-- guide-forte-mib
 - guide-forte-transfers-acc
 - guide-forte-transfers-atm
+- guide-forte-transfers-bankbranch
 - guide-forte-transfers-bankbranch-goldcrown
 - guide-forte-transfers-bankbranch-instantransfer
 - guide-forte-transfers-bankbranch-westernunion
-- guide-forte-transfers-bankbranch
-- guide-forte-transfers-contact
-- guide-forte-transfers-p2p
+- guide-forte-transfers-socianetw
 - guide-forte-transfers-socianetw-odnokl
 - guide-forte-transfers-socianetw-wk
-- guide-forte-transfers-socianetw
-- guide-forte-transfers
-- help-forte-adm-penalty
 - help-forte-card-anotherbank
-- help-forte-card-block
 - help-forte-card-cash-without-card
-- help-forte-card-other-bank-card-use
 - help-forte-card-unblock
 - help-forte-cards-advantage-cashback
-- help-forte-cards-advantage-delivery
-- help-forte-cards-applepay
-- help-forte-cards-conditions-classic-
-- help-forte-cards-conditions-classic
-- help-forte-cards-conditions-dopcard
-- help-forte-cards-conditions-gold
-- help-forte-cards-conditions-jastar
-- help-forte-cards-conditions-multicard
-- help-forte-cards-conditions-platinum
-- help-forte-cards-conditions-selfiecard
-- help-forte-cards-promotions-fortetravel
-- help-forte-cards-promotions-mastercard
-- help-forte-cards-promotions-visa
 - help-forte-cards-promotions
-- help-forte-cards-usecard-cashwithdrawal-abroad
-- help-forte-cards-usecard-cashwithdrawal-nocommission
-- help-forte-cards-usecard-epinandactivation-activcard
+- help-forte-cards-promotions-fortetravel
 - help-forte-cards-usecard-epinandactivation-epin7575
-- help-forte-cards-usecard-epinandactivation-epinatm
 - help-forte-cards-usecard-limits-increase
 - help-forte-cards-usecard-limits-mib
-- help-forte-cards-usecard-pincode
-- help-forte-cards-usecard-reissue-mib
 - help-forte-cards-usecard-replenishment
-- help-forte-cashbycode
 - help-forte-credentials-password
 - help-forte-credentials-phonenumber
 - help-forte-credit-all-repayment
@@ -690,84 +623,52 @@ intents:
 - help-forte-credit-card-repayment
 - help-forte-credit-expressloan-conditions
 - help-forte-credit-expressloan-makeloan
-- help-forte-credit-expressloan-smartphone
 - help-forte-credit-mortgage-emergencyloan-conditions
 - help-forte-credit-mortgage-emergencyloan-makeloan
 - help-forte-credit-mortgage-mortgageloan-conditions
 - help-forte-credit-mortgage-mortgageloan-livespacious-conditions
 - help-forte-credit-mortgage-mortgageloan-livespacious-makeloan
 - help-forte-credit-mortgage-mortgageloan-makeloan
-- help-forte-credit-mortgage-mortgageloan72025-conditions
-- help-forte-creditcard-conditions
-- help-forte-creditcard-installmentplan
 - help-forte-creditcard-repayment
-- help-forte-creditcard-stock-technoshop
-- help-forte-creditcard-stock-travel
+- help-forte-debit-card-issuance
 - help-forte-debit-card-issuance-no
 - help-forte-debit-card-issuance-yes
-- help-forte-debit-card-issuance
 - help-forte-deposit-interest
-- help-forte-deposits-credcarddep
-- help-forte-deposits-loanondeposit
 - help-forte-limits-abroad
 - help-forte-limits-deposit
 - help-forte-limits-how
 - help-forte-limits-tocard
 - help-forte-loan-amount
-- help-forte-loan-application-no
-- help-forte-loan-application-yes
 - help-forte-loan-application
 - help-forte-loan-fee
 - help-forte-loan-fines
 - help-forte-loan-interest
-- help-forte-mib-advantage-0balance
-- help-forte-mib-ar
-- help-forte-mib-fortemarket
-- help-forte-mib-fortetravel
 - help-forte-mib-prodonline-card
-- help-forte-mib-prodonline-dopcard
-- help-forte-mib-talkin
 - help-forte-mib-transferandpay-payments
-- help-forte-mib-transferandpay-transfercontact
-- help-forte-open-account-no
-- help-forte-open-account-yes
 - help-forte-open-account
-- help-forte-open-deposit-no
-- help-forte-open-deposit-yes
 - help-forte-open-deposit
 - help-forte-payments-other-forte
 - help-forte-recurring-transfers
-- help-forte-registration-no
-- help-forte-registration-yes
 - help-forte-registration
 - help-forte-statement
-- help-forte-transaction-statement-no
-- help-forte-transaction-statement-yes
 - help-forte-transaction-statement
+- help-forte-transfers
 - help-forte-transfers-2-legal-entities
 - help-forte-transfers-2-other-bank-card
 - help-forte-transfers-atm
 - help-forte-transfers-bankbranch
-- help-forte-transfers-card2card
 - help-forte-transfers-dep2acc
 - help-forte-transfers-dep2card
 - help-forte-transfers-dep2other
-- help-forte-transfers-fees-from-cred-card
-- help-forte-transfers-fees-from-cur-acc
-- help-forte-transfers-fees-from-deb-cart
-- help-forte-transfers-fees-from-dep
-- help-forte-transfers-fees-from-instfnt-card
-- help-forte-transfers-fees-from-otherbanks-card
 - help-forte-transfers-fees
 - help-forte-transfers-from-dep-incomplete
 - help-forte-transfers-from-other-bank-card
 - help-forte-transfers-other-forte
+- help-forte-transfers-socianetw
 - help-forte-transfers-socianetw-odnokl
 - help-forte-transfers-socianetw-wk
 - help-forte-transfers-socianetw-wk1
-- help-forte-transfers-socianetw
 - help-forte-transfers-swift
-- help-forte-transfers
 templates:
   utter_default:
   - buttons:
@@ -812,7 +713,7 @@ templates:
   - text: Я здесь, слушаю вас!
   - text: Я Ваш помощник, и постараюсь ответить на Ваши вопросы по приложению ForteBank!
   - text: Чем могу быть полезна?
-  utter_dialogs - bot - are you ready?:
+  utter_dialogs - bot - are you ready:
   - text: Я готова ответить на Ваши вопросы!
   utter_dialogs - bot - are you real:
   - text: Я живу когда Вы пользуетесь приложением ForteBank!
@@ -1555,7 +1456,7 @@ templates:
       \ проходить с 26 декабря 2018 года по 02 февраля 2019. \nэксклюзивные туры,\
       \ рестораны и множество восхитительных впечатлений со скидкой:\n• Flydubai airline:\
       \ 10% скидка на Бизнес и Эконом классы  \n• Jumeirah Hotels & Resorts: Скидка\
-      \ до 25% на проживание и  20% скидки на Food&Beverages \n\nВсе положения и условия\
+      \ до 25% на проживание и  20% скидки на Food&Beverages \nВсе положения и условия\
       \ доступны по ссылке http://visamiddleeast.com/dsf\n"
   utter_guide-forte-cards-questions:
   - buttons:
@@ -2677,7 +2578,6 @@ templates:
       кредиту!
 
       *Просто – без подтверждения доходов!
-
 
       УСЛОВИЯ:
 
@@ -3855,7 +3755,7 @@ templates:
       код. На самом банкомате нужно выбрать "операции с наличностью" и пошагово провести
       действия указанные на банкомате '
   utter_help-forte-card-other-bank-card-use:
-  - text: 'Вы можете использовать карту другого банка РК при наличии поддержки сторонним
+  - text: 'Вы можете использовать карту другого банка при наличии поддержки сторонним
       банком функции 3DSecure code. При совершении операции (платеж или перевод),
       Вам нужно добавить карту источник и в дальнейшем при совершении операции она
       будет доступна в перечне Ваших карт.  '
@@ -3891,9 +3791,7 @@ templates:
       Использовать Apple Pay на iPhone или Apple Watch гораздо удобнее, чем платить
       обычной картой. Совсем необязательно тратить время у кассы.
 
-
       Поддерживаемые карты – все карты MasterCard, выпущенные ForteBank.
-
 
       Как настроить?
 
@@ -3903,14 +3801,12 @@ templates:
 
       3. Следуйте инструкции, отображенной на экране.
 
-
       Как работает?
 
       1. Поднесите свой iPhone или Apple Watch к терминалу, где имеются бесконтактные
       платежи.
 
       2. Подтвердите покупку с помощью Face ID, Touch ID или passcode.
-
 
       Поддерживаемые устройства:
 
@@ -3921,7 +3817,6 @@ templates:
       Apple Watch (все модели);
 
       Mac (модели с Touch ID);
-
 
       Подробнее на www.forte.bank или по номеру 7575
 
@@ -4049,7 +3944,7 @@ templates:
       \ проходить с 26 декабря 2018 года по 02 февраля 2019. \nэксклюзивные туры,\
       \ рестораны и множество восхитительных впечатлений со скидкой:\n• Flydubai airline:\
       \ 10% скидка на Бизнес и Эконом классы  \n• Jumeirah Hotels & Resorts: Скидка\
-      \ до 25% на проживание и  20% скидки на Food&Beverages \n\nВсе положения и условия\
+      \ до 25% на проживание и  20% скидки на Food&Beverages \nВсе положения и условия\
       \ доступны на сайте http://visamiddleeast.com/dsf\n"
   utter_help-forte-cards-usecard-cashwithdrawal-abroad:
   - text: "Вы можете снимать деньги в банкоматах за границей.\n   Platinum - бесплатно\
@@ -4141,7 +4036,7 @@ templates:
       \ Через банкомат с функцией Cash-in (расположение таких банкоматов можно посмотреть\
       \ на сайте нашего банка)\n   3. Переводом с другого счета, открытого в нашем\
       \ банке, а также с карты другого Банка с использованием мобильного приложения\n\
-      \   4. Переводом со счета, открытого в другом банке.\n\n   Пополняйте нашу карточку\
+      \   4. Переводом со счета, открытого в другом банке.\n   Пополняйте нашу карточку\
       \ и пользуйтесь ее преимуществами!))"
   utter_help-forte-cashbycode:
   - text: 'Вам необходимо в приложении совершить перевод на контакт, сумма должна
@@ -4176,7 +4071,7 @@ templates:
       без штрафов!'
   utter_help-forte-credit-card-conditions:
   - text: "Уникальное отличие Forte CreditCard - это возможность не платить проценты\
-      \ и делать покупки без переплаты!\n\nПРЕИМУЩЕСТВА:\n- 55 дней – гарантированный\
+      \ и делать покупки без переплаты!\nПРЕИМУЩЕСТВА:\n- 55 дней – гарантированный\
       \ беcпроцентный период.\nКоличество дней беcпроцентного периода зависит от даты\
       \ покупки и действует до 25-го числа следующего месяца. Гарантированный беcпроцентный\
       \ период  распространяется на  все наличные и безналичные операции. \n- 4 месяца\
@@ -4185,17 +4080,17 @@ templates:
       \ переплаты процентов по акционным программам. \n       - Техношоппинг – электроника\
       \ в магазинах Sulpak, Технодом, Мечта, Alser, Эврика до 31.12.2018\n       -\
       \ ForteTravel  - туристические туры на путешествия у более чем 50 партнеров\
-      \  до 31.03.2019\n\nУСЛОВИЯ:\n- Покупайте больше - сумма кредитного лимита до\
+      \  до 31.03.2019\nУСЛОВИЯ:\n- Покупайте больше - сумма кредитного лимита до\
       \ 3 000 000 тенге \n- Погашайте как  удобно Вам  - без процентов равными платежами\
       \ либо по минимальному графику платежей, изменение метода погашения без штрафов\
       \ и комиссий \n- Пользуйтесь наличными деньгами - Кроме совершения покупок,\
       \ у вас есть также  возможность получать деньги наличными.\n- Погашенные суммы,\
       \ становятся доступными сразу\n- Получайте Cash Back до 15% при оплате у Партнеров!\
       \  (не действует при покупках в рассрочку). \n- Закажите и получите карту не\
-      \ выходя из дома! \n\nВСЕ БЕСПЛАТНО: \n- выпуск и обслуживание карты – бесплатно\n\
+      \ выходя из дома! \nВСЕ БЕСПЛАТНО: \n- выпуск и обслуживание карты – бесплатно\n\
       - смс уведомления – бесплатно\n- мобильный банкинг – бесплатно  \n- изменение\
       \ метода погашения  без штрафов и комиссий – бесплатно\n- доставка на дом -\
-      \ бесплатно \n\nПодать заявку: https://forte.bank/credit-card/#"
+      \ бесплатно \nПодать заявку: https://forte.bank/credit-card/#"
   utter_help-forte-credit-card-fee:
   - text: Комиссий за организацию, обслуживание и предоставление кредитной карты не
       предусмотрено.
@@ -4244,12 +4139,12 @@ templates:
       задолженности составляет меньше 2 000 тенге, то минимальный платеж равен сумме
       всей задолженности по договору.'
   utter_help-forte-credit-card-repayment:
-  - text: "Выбирайте метод погашения самостоятельно!\n\nПО КРЕДИТНОЙ КАРТЕ:\n- Погашайте\
+  - text: "Выбирайте метод погашения самостоятельно!\nПО КРЕДИТНОЙ КАРТЕ:\n- Погашайте\
       \ полностью в беспроцентный период до 55 дней без переплаты и комиссий. Количество\
       \ дней беcпроцентного  периода  зависит от даты покупки и действует до  25 числа\
       \ следующего месяца.\n- Погашайте по минимальному графику погашений: 1% от использованной\
       \ суммы + начисленное вознаграждение, минимум 2 000 тенге ежемесячно до 25 числа\
-      \ каждого месяца. \n\nПО ПОКУПКАМ В РАССРОЧКУ:\n- Оплачивайте согласно графику,\
+      \ каждого месяца. \nПО ПОКУПКАМ В РАССРОЧКУ:\n- Оплачивайте согласно графику,\
       \ который Банк направляет Вам по SMS сразу после совершения покупки в Рассрочку.\
       \ CashBack Рассрочка погашает вознаграждение за Вас. \n- Погашайте как удобно\
       \ Вам – в рассрочку либо по стандартному графику платежей 1% от использованной\
@@ -4320,7 +4215,6 @@ templates:
 
       - Возможность получения кредита без подтверждения дохода
 
-
       Подать заявку: https://forte.bank/credits/ipoteka/'
   utter_help-forte-credit-mortgage-mortgageloan-livespacious-conditions:
   - text: "Из «двушки» в «трешку» за три дня!\nЖиви просторнее уже сейчас!\n- Покупка\
@@ -4331,9 +4225,9 @@ templates:
       \ использовать по своему усмотрению: \n         - на ремонт приобретенной квартиры\n\
       \         - на покупки, которые Вы давно откладывали\n         - на частичное\
       \ досрочное погашение, для уменьшения своего ежемесячного                  \
-      \      платежа\n         - на любые другие цели\n\nУсловия:\n- Максимальная\
+      \      платежа\n         - на любые другие цели\nУсловия:\n- Максимальная\
       \ сумма займа до 50 000 000 тенге\n- Срок займа – до 15 лет\n- Под залог приобретаемой\
-      \ квартиры\n- Ставка вознаграждения – от 17,99% (ГЭСВ от 19,7%)\n\nПодать заявку:\
+      \ квартиры\n- Ставка вознаграждения – от 17,99% (ГЭСВ от 19,7%)\nПодать заявку:\
       \ https://forte.bank/credits/zhivi_prostornei/"
   utter_help-forte-credit-mortgage-mortgageloan-livespacious-makeloan:
   - text: 'Оформить заявку на кредит Вы можете удобным для Вас способом:
@@ -4359,14 +4253,14 @@ templates:
   - text: "Новые возможности приобретения жилья для каждой семьи!\n- Максимальная\
       \ сумма займа до 20 000 000 тенге\n- Льготная ставка – 7% годовых (ГЭСВ от 7,22%)\n\
       - Низкий первоначальный взнос – 20%\n- Срок кредитования до 25 лет\n- Без комиссий\n\
-      - Без страхования\n- Досрочное погашение без штрафов\n\nСтоимость жилья:\n-\
+      - Без страхования\n- Досрочное погашение без штрафов\nСтоимость жилья:\n-\
       \ 25  млн. тенге – для  городов Астана, Алматы, Актау, Атырау, Шымкент\n- 15\
-      \ млн. тенге – для остальных городов \n\nДля участия в программе - соответствие\
+      \ млн. тенге – для остальных городов \nДля участия в программе - соответствие\
       \ следующим требованиям:\n- Гражданство РК\n- Наличие дохода\n- Отсутствие ипотечных\
       \ жилищных займов\n- Отсутствие жилья"
   utter_help-forte-creditcard-conditions:
   - text: "Уникальное отличие Forte CreditCard - это возможность не платить проценты\
-      \ и делать покупки без переплаты!\n\nПРЕИМУЩЕСТВА:\n55 дней – гарантированный\
+      \ и делать покупки без переплаты!\nПРЕИМУЩЕСТВА:\n55 дней – гарантированный\
       \ беcпроцентный период.\nКоличество дней беcпроцентного периода зависит от даты\
       \ покупки и действует до 25-го числа следующего месяца. Гарантированный беcпроцентный\
       \ период  распространяется на  все наличные и безналичные операции. \n 4 месяца\
@@ -4396,12 +4290,12 @@ templates:
       \ фирменному стикеру, а  также  можно увидеть нажав на кнопку ниже «Список партнеров\
       \ по рассрочке».\n"
   utter_help-forte-creditcard-repayment:
-  - text: "Выбирайте метод погашения самостоятельно!\n\nПО КРЕДИТНОЙ КАРТЕ:\nПогашайте\
+  - text: "Выбирайте метод погашения самостоятельно!\nПО КРЕДИТНОЙ КАРТЕ:\nПогашайте\
       \ полностью в беспроцентный период до 55 дней без переплаты и комиссий. Количество\
       \ дней беcпроцентного  периода  зависит от даты покупки и действует до  25 числа\
       \ следующего месяца.\nПогашайте по минимальному графику погашений: 1% от использованной\
       \ суммы + начисленное вознаграждение, минимум 2 000 тенге ежемесячно до 25 числа\
-      \ каждого месяца. \n\nПО ПОКУПКАМ В РАССРОЧКУ:\nОплачивайте согласно графику,\
+      \ каждого месяца. \nПО ПОКУПКАМ В РАССРОЧКУ:\nОплачивайте согласно графику,\
       \ который Банк направляет Вам по SMS сразу после совершения покупки в Рассрочку.\
       \ CashBack Рассрочка погашает вознаграждение за Вас. \n Погашайте как удобно\
       \ Вам – в рассрочку либо по стандартному графику платежей 1% от использованной\
@@ -4474,7 +4368,7 @@ templates:
   utter_help-forte-deposits-loanondeposit:
   - text: "ПРЕИМУЩЕСТВА:\n*Быстро - выдача кредита за 1 день!\n* Выгодно – проценты,\
       \ начисленные по вкладу превысят проценты, выплаченные по кредиту!\n*Просто\
-      \ – без подтверждения доходов!\n\nУСЛОВИЯ:\nСумма займа – до 95% от суммы депозита.\n\
+      \ – без подтверждения доходов!\nУСЛОВИЯ:\nСумма займа – до 95% от суммы депозита.\n\
       Срок займам – до 48 месяцев. \nСтавка вознаграждения – минимальная ставка по\
       \ действующим депозитным продуктам + 2-3%.\nВалюта займа – в валюте счета, на\
       \ котором размещен вклад.\nКомиссия за организацию кредита – 0,01%.\nШтрафы\
@@ -4549,7 +4443,14 @@ templates:
       Если Вы не являетесь абонентом Beeline, Вы можете сменить оператора сотовой
       связи с СОХРАНЕНИЕМ НОМЕРА мобильного телефона. Для смены оператора на Beeline
       необходимо обратиться в отделение Банка или в Call-центр по номеру 7575.'
-  utter_help-forte-mib-ar: []
+  utter_help-forte-mib-ar: 
+  - text: 'Погрузитесь в дополненную реальность вместе с ForteBank и окунитесь в мир
+      иллюзии в нашем мобильном приложении! В режиме дополненной реальности Вы можете:
+      *Оформить экспресс кредит и кредитную карту; *Открыть депозит; *Заказать платежную
+      карту; *Оплатить услуги; *Сделать перевод; *Узнать курс валют; *Узнать про акции
+      Банка. Для погружения: 1) Войдите в модуль "Дополненная реальность" на главном
+      экране; 2) Наведите камеру телефона на платежную карточку любого банка; 3) Наслаждайтесь
+      новыми ощущениями!'
   utter_help-forte-mib-fortemarket:
   - text: 'FORTEMARKET – НОВЫЙ СЕРВИС ПОКУПКИ ТОВАРОВ ОНЛАЙН! На ForteMarket Вас ждут:
       *Беспроцентная онлайн-рассрочка; *Широкий ассортимент товаров; *Известные мировые

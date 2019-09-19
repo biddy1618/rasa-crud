@@ -17,7 +17,7 @@ FILE_NLU_MD = './crudRasa/static/generated/nlu.md'
 FILE_NLU_JSON = './crudRasa/static/generated/nlu.json'
 
 
-def dump(local=False, jsonNlu=False, twoLevel=False):
+def dump(local=False, jsonNlu=False, twoLevel=False, allStories=False):
     conn = None
     try:
         if local:
@@ -113,61 +113,65 @@ def dump(local=False, jsonNlu=False, twoLevel=False):
                         f.write(f'  - {e}\n')
                     f.write('\n')
             
-        storySql = "SELECT parent_id, intent_id from rasa_ui.intent_story"
+        storySql = "SELECT story_name, story_sequence from rasa_ui.stories"
         cur.execute(storySql)
         results = cur.fetchall()
 
-        child2parent = {}
-        children, parents = set(), set()
-        for p, c in results:
-            child2parent[c] = p
-            children.add(c)
-            parents.add(p)
-        
-        singleIntents = list(intentIds - parents.union(children))
-        children = children - parents
-
-        stories = []
-
-        if twoLevel:
-            for c in children:
-                while c in child2parent:
-                    stories.append((child2parent[c], c))
-                    c = child2parent[c]
-                    
-            stories = [list(e) for e in set(stories)]
-
-        else:
-            for c in children:
-                story = []
-                story.append(c)
-                while c in child2parent:
-                    c = child2parent[c]
-                    story.append(c)
-                story.reverse()
-                stories.append(story)
-        
-        for story in stories:
-            for i, s in enumerate(story):
-                story[i] = id2intents[s]
-
-        for i, e in enumerate(singleIntents):
-            singleIntents[i] = id2intents[e]
-        
-        singleIntents = sorted(singleIntents)
-        stories = sorted(stories)
+        singleStories = set()
+        for story, stories in results:
+            for pair in stories:
+                singleStories.add(tuple(pair))
 
         with open(os.path.abspath(FILE_STORIES), 'w') as f:
-            for intent in singleIntents:
-                f.write(f'## story {intent}\n')
-                f.write(f'* {intent}\n')
-                f.write(f'  - utter_{intent}\n\n')
-            
-            for story in stories:
-                f.write(f'\n## story {story[-1]}_story\n')
-                for sIntent in story:
-                    f.write(f'* {sIntent}\n')
-                    f.write(f'  - utter_{sIntent}\n')        
+            if allStories:
+                for pair in singleStories:
+                    f.write(f'## story {pair[0]}-{pair[1]}\n')
+                    f.write(f'* {id2intents[pair[0]]}\n')
+                    f.write(f'  - {id2actions[pair[1]]}\n')
+                    f.write('\n')
+
+                if twoLevel:
+                    for story, stories in results:
+                        if len(stories)>1:
+                            for i in range(1, len(stories)):
+                                f.write(f'## {story} {i}\n')
+                                f.write(f'* {id2intents[stories[i-1][0]]}\n')
+                                f.write(f'  - {id2actions[stories[i-1][1]]}\n')
+                                f.write(f'* {id2intents[stories[i][0]]}\n')
+                                f.write(f'  - {id2actions[stories[i][1]]}\n')
+                                f.write('\n')
+                else:
+                    for story, stories in results:
+                        if len(stories)>1:
+                            f.write(f'## {story}\n')
+                            for pair in stories:
+                                f.write(f'* {id2intents[pair[0]]}\n')
+                                f.write(f'  - {id2actions[pair[1]]}\n')
+                            f.write('\n')   
+            else:
+                if twoLevel:
+                    for story, stories in results:
+                        if len(stories)==1:
+                            f.write(f'## {story}\n')
+                            f.write(f'* {id2intents[stories[0][0]]}\n')
+                            f.write(f'  - {id2actions[stories[0][1]]}\n')
+                            f.write('\n')
+
+                        for i in range(1, len(stories)):
+                            f.write(f'## {story} {i}\n')
+                            f.write(f'* {id2intents[stories[i-1][0]]}\n')
+                            f.write(f'  - {id2actions[stories[i-1][1]]}\n')
+                            f.write(f'* {id2intents[stories[i][0]]}\n')
+                            f.write(f'  - {id2actions[stories[i][1]]}\n')
+                            f.write('\n')
+
+                else:
+                    for story, stories in results:
+                        f.write(f'## {story}\n')
+                        for pair in stories:
+                            f.write(f'* {id2intents[pair[0]]}\n')
+                            f.write(f'  - {id2actions[pair[1]]}\n')
+                        f.write('\n')
     finally:
         if conn is not None:
             conn.close()
@@ -177,7 +181,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate train files from database')
     parser.add_argument('--local', action='store_true', help='set if reading local database (default remote)')
     parser.add_argument('--json', action='store_true', help='set if nlu data should be generated in json format')
-    parser.add_argument('--twoLevel', action='store_true', help='enerate stories in 2 levels (default max)')
+    parser.add_argument('--twoLevel', action='store_true', help='generate stories in 2 levels (default max)')
+    parser.add_argument('--allStories', action='store_true', help='generate single stories for each pair of intent-action (default false)')
     args = parser.parse_args()
     
-    dump(local=args.local, jsonNlu=args.json, twoLevel=args.twoLevel)
+    dump(local=args.local, jsonNlu=args.json, twoLevel=args.twoLevel, allStories=args.allStories)
