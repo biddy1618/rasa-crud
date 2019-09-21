@@ -1,8 +1,8 @@
 # coding: utf-8
-from sqlalchemy import BigInteger, Boolean, Column, DateTime, ForeignKey, \
-    Integer, Numeric, Float, String, Table, Text, UniqueConstraint, Time, text
+from sqlalchemy import ARRAY, BigInteger, Boolean, Column, DateTime, Float, ForeignKey, Integer, Numeric, String, Table, Text, Time, UniqueConstraint, text
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import relationship
+
 from app import db
 from decimal import Decimal as D
 
@@ -23,6 +23,7 @@ class Helper(object):
     @staticmethod
     def checkDecimal(val):
         return str(val) if isinstance(val, D) else val
+
 
 t_active_user_count_12_months = Table(
     'active_user_count_12_months', db.metadata,
@@ -54,6 +55,7 @@ class Agent(db.Model, Helper):
     rasa_nlu_language = Column(String, server_default=text("'en'::character varying"))
     rasa_nlu_fixed_model_name = Column(String)
 
+
 t_analytics = Table(
     'analytics', db.metadata,
     Column('sender_id', String(100), nullable=False),
@@ -64,6 +66,7 @@ t_analytics = Table(
     Column('bot_message', String(600)),
     Column('session_id', String(600))
 )
+
 
 t_avg_nlu_response_times_30_days = Table(
     'avg_nlu_response_times_30_days', db.metadata,
@@ -183,6 +186,14 @@ class Setting(db.Model, Helper):
     setting_value = Column(String)
 
 
+class Story(db.Model, Helper):
+    __tablename__ = 'stories'
+
+    story_id = Column(Integer, primary_key=True, server_default=text("nextval('stories_story_id_seq'::regclass)"))
+    story_name = Column(String, nullable=False, unique=True)
+    story_sequence = Column(ARRAY(Integer()))
+
+
 class TrainingInfo(db.Model, Helper):
     __tablename__ = 'training_info'
 
@@ -266,19 +277,6 @@ class Expression(db.Model, Helper):
 
     intent = relationship('Intent')
 
-class IntentStory(db.Model, Helper):
-    __tablename__ = 'intent_story'
-    __table_args__ = (
-        UniqueConstraint('parent_id', 'intent_id'),
-    )
-
-    id = Column(Integer, primary_key=True, server_default=text("nextval('intent_story_id_seq'::regclass)"))
-    parent_id = Column(ForeignKey('intents.intent_id', ondelete='CASCADE'), nullable=False)
-    intent_id = Column(ForeignKey('intents.intent_id', ondelete='CASCADE'), nullable=False)
-
-    intent = relationship('Intent', primaryjoin='IntentStory.intent_id == Intent.intent_id')
-    parent = relationship('Intent', primaryjoin='IntentStory.parent_id == Intent.intent_id')
-
 
 class Message(db.Model, Helper):
     __tablename__ = 'messages'
@@ -314,6 +312,18 @@ class Response(db.Model, Helper):
     action = relationship('Action')
     intent = relationship('Intent')
     response_type1 = relationship('ResponseType')
+
+
+class StoryPair(db.Model, Helper):
+    __tablename__ = 'story_pairs'
+
+    intent_id = Column(ForeignKey('intents.intent_id', ondelete='CASCADE'), primary_key=True, nullable=False)
+    action_id = Column(ForeignKey('actions.action_id', ondelete='CASCADE'), primary_key=True, nullable=False)
+    story_id = Column(ForeignKey('stories.story_id', ondelete='CASCADE'), primary_key=True, nullable=False)
+
+    action = relationship('Action')
+    intent = relationship('Intent')
+    story = relationship('Story')
 
 
 class SynonymVariant(db.Model, Helper):
