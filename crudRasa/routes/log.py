@@ -15,7 +15,7 @@ def nluLog(query):
             .limit(100).all()
         return jsonify([l.serialize() for l in data])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @log.route('/intent_usage_by_day', methods=['GET'])
 def intentUsageByDay():
@@ -24,7 +24,7 @@ def intentUsageByDay():
         return jsonify([models.Helper\
             .serializeStatic(d) for d in data])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @log.route('/intent_usage_total', methods=['GET'])
 def intentUsageTotal():
@@ -33,7 +33,7 @@ def intentUsageTotal():
         return jsonify([models.Helper\
             .serializeStatic(d) for d in data])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @log.route('/request_usage_total', methods=['GET'])
 def requestUsageTotal():
@@ -42,7 +42,7 @@ def requestUsageTotal():
         return jsonify([models.Helper\
             .serializeStatic(d) for d in data])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 @log.route('/avg_intent_usage_by_day', methods=['GET'])
@@ -54,7 +54,7 @@ def avgIntentUsageByDay():
             .label('avg')).first_or_404()
         return jsonify({'avg': 0.0 if data[0] is None else data[0]})
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @log.route('/nlu_parse_log/<agent_id>', methods=['GET'])
 def nluParseLog(agent_id):
@@ -68,7 +68,7 @@ def nluParseLog(agent_id):
             .all()
         return jsonify([l.serialize() for l in data])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @log.route('/agentByIntentConfidencePct/<agent_id>', methods=['GET'])
 def agentByIntentConfidencePct(agent_id):
@@ -103,7 +103,7 @@ def agentByIntentConfidencePct(agent_id):
             'agent_name': e[3]
         } for e in results])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @log.route('/intentsMostUsed/<agent_id>', methods=['GET'])
 def intentsMostUsed(agent_id):
@@ -113,7 +113,7 @@ def intentsMostUsed(agent_id):
         return jsonify([models.Helper\
             .serializeStatic(d) for d in data])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @log.route('/avgNluResponseTimesLast30Days', methods=['GET'])
 def avgNluResponseTimesLast30Days():
@@ -122,7 +122,7 @@ def avgNluResponseTimesLast30Days():
         return jsonify([models.Helper\
             .serializeStatic(d) for d in data])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
     
 @log.route('/avgUserResponseTimesLast30Days', methods=['GET'])
 def avgUserResponseTimesLast30Days():
@@ -131,7 +131,7 @@ def avgUserResponseTimesLast30Days():
         return jsonify([models.Helper\
             .serializeStatic(d) for d in data])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
     
 @log.route('/activeUserCountLast12Months', methods=['GET'])
 def activeUserCountLast12Months():
@@ -140,7 +140,7 @@ def activeUserCountLast12Months():
         return jsonify([models.Helper\
             .serializeStatic(d) for d in data])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @log.route('/activeUserCountLast30Days', methods=['GET'])
 def activeUserCountLast30Days():
@@ -149,4 +149,4 @@ def activeUserCountLast30Days():
         return jsonify([models.Helper\
             .serializeStatic(d) for d in data])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)

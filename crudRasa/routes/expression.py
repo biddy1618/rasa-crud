@@ -14,7 +14,7 @@ def intentExpressionQuery():
             models.Expression.intent_id.in_(params)).all()
         return jsonify([e.serialize() for e in expressions])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @expression.route("/intents/<intent_id>/expressions", methods=['GET'])
 def intentExpressions(intent_id):
@@ -23,7 +23,7 @@ def intentExpressions(intent_id):
             intent_id=intent_id).all()
         return jsonify([e.serialize() for e in expressions])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @expression.route("/expressions/<expression_id>", methods=['GET', 'PUT', 'DELETE'])
 def expressionID(expression_id):
@@ -38,7 +38,7 @@ def expressionID(expression_id):
             return utils.result('success', 'Updated expression')
         except Exception as e:
             db.session.rollback()
-            return(str(e))
+            return(f"Internal server error: {str(e)}", 500)
     
     if request.method=='DELETE':
         try:
@@ -48,30 +48,50 @@ def expressionID(expression_id):
             return utils.result('success', f'Removed expression {expression_id}')
         except Exception as e:
             db.session.rollback()
-            return(str(e))
+            return(f"Internal server error: {str(e)}", 500)
 
     try:
         expression=models.Expression.query\
             .filter_by(expression_id=expression_id).first_or_404()
         return jsonify(expression.serialize())
     except Exception as e:
-	    return(str(e))
+	    return(f"Internal server error: {str(e)}", 500)
 
 
-@expression.route('/expressions', methods=['POST'])
+@expression.route('/expressions', methods=['POST', 'GET'])
 def createExpression():
-    try:
-        data=request.get_json()
-        expression=models.Expression(
-            intent_id=data['intent_id'],
-            expression_text=data['expression_text'],
-            lemmatized_text=utils.lemmatize(
-                data['expression_text']
+    if request.method=='GET':
+        try:
+            query = request.args.get('expression')
+            lemmatized_text = utils.lemmatize(query)
+
+            expressions=models.Expression.query.filter_by(
+                lemmatized_text=lemmatized_text
+            ).all()
+
+            intents=models.Intent.query.filter(
+                models.Intent.intent_id.in_((e.intent_id for e in expressions))
+            ).all()
+
+            return jsonify([i.serialize() for i in intents])
+
+        except Exception as e:
+            return(f"Internal server error: {str(e)}", 500)
+
+    else:
+        try:
+            data=request.get_json()
+
+            expression=models.Expression(
+                intent_id=data['intent_id'],
+                expression_text=data['expression_text'],
+                lemmatized_text=utils.lemmatize(
+                    data['expression_text']
+                )
             )
-        )
-        db.session.add(expression)
-        db.session.commit()
-        return jsonify([expression.serialize()])
-    except Exception as e:
-        db.session.rollback()
-        return(str(e))
+            db.session.add(expression)
+            db.session.commit()
+            return jsonify([expression.serialize()])
+        except Exception as e:
+            db.session.rollback()
+            return(f"Internal server error: {str(e)}", 500)

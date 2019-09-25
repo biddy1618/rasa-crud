@@ -14,7 +14,7 @@ def variantsSynonyms(synonyms_ids):
             models.SynonymVariant.synonym_id.in_(params)).all()
         return jsonify([v.serialize() for v in variants])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 @variant.route('/synonyms/<synonym_id>/variants', methods=['GET'])
@@ -24,7 +24,7 @@ def variantSynonym(synonym_id):
             synonym_id=synonym_id).all()
         return jsonify([v.serialize() for v in variants])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 @variant.route('/variants/<variant_id>', methods=['GET', 'DELETE'])
@@ -37,14 +37,14 @@ def variantID(variant_id):
             return utils.result('success', f'Removed variant {variant_id}')
         except Exception as e:
             db.session.rollback()
-            return(str(e))
+            return(f"Internal server error: {str(e)}", 500)
     
     try:
         variant=models.SynonymVariant.query.filter_by(\
             synonym_variant_id=variant_id).first_or_404()
         return jsonify(variant.serialize())
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 @variant.route('/synonymvariants', methods=['GET'])
@@ -66,7 +66,7 @@ def variantAll():
             'synonyms': e[1]
         } for e in results])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
     
 
 
@@ -82,7 +82,7 @@ def variantCreate():
         return utils.result('success', 'Inserted')
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 @variant.route('/synonyms/<synonym_id>/variants', methods=['DELETE'])
@@ -94,4 +94,4 @@ def variantSynonymRemove(synonym_id):
         return utils.result('success', f'Removed variants of synonym {synonym_id}')
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)

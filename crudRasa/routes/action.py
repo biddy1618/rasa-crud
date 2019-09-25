@@ -50,7 +50,7 @@ def actions():
         return utils.result('action added', {'id': tmpAct.action_id})
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @action.route('/agents/<agent_id>/actions', methods=['GET'])
 def agentActions(agent_id):
@@ -58,4 +58,4 @@ def agentActions(agent_id):
         actions=models.Action.query.filter_by(agent_id=agent_id).all()
         return  jsonify([a.serialize() for a in actions])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)

@@ -37,5 +37,5 @@ def operation6():
             'rasa_core_enabled': e[6],
             } for e in data])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
     

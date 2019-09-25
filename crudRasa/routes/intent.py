@@ -18,24 +18,17 @@ def intents():
                 agent_id = data['agent_id']
             )
 
-            tmpAct=models.Action(
-                action_name='utter_'+data['intent_name'],
-                agent_id=data['agent_id']
-            )
-            
             db.session.add(tmpInt)
-            db.session.add(tmpAct)
             db.session.commit()
             
-            return utils.result('intent and action added', {
-                'intent_id': tmpInt.intent_id,
-                'action_id': tmpAct.action_id,
+            return utils.result('intent added', {
+                'intent_id': tmpInt.intent_id
             })
         else:
             return utils.result('intent exists', {'id': tmp.intent_id})
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @intent.route("/intents/<intent_id>", methods=['GET', 'PUT', 'DELETE'])
 def intentID(intent_id):
@@ -44,19 +37,14 @@ def intentID(intent_id):
             data=request.get_json()
             intent=db.session.query(models.Intent)\
                 .filter_by(intent_id=intent_id).first_or_404()
-            intent_name=intent.intent_name
             intent.update(data)
-            action=db.session.query(models.Action)\
-                .filter_by(action_name='utter_'+intent_name).first_or_404()
-            action.update({'action_name': 'utter_'+data['intent_name']})
             db.session.commit()
-            return utils.result('intent and action updated', {
-                'intent_id': intent_id,
-                'action_id': action.action_id
+            return utils.result('intent updated', {
+                'intent_id': intent_id
             })
         except Exception as e:
             db.session.rollback()
-            return(str(e))
+            return(f"Internal server error: {str(e)}", 500)
     
     if request.method=='DELETE':
         try:
@@ -64,28 +52,22 @@ def intentID(intent_id):
                 .filter_by(intent_id=intent_id).delete()
             db.session.commit()
             return jsonify({'rowCount':str(result)})
-            # return utils.result('success', f'Removed intent {intent_id}')
         except Exception as e:
             db.session.rollback()
-            return(str(e))
+            return(f"Internal server error: {str(e)}", 500)
 
     try:
         intent=models.Intent.query\
             .filter_by(intent_id=intent_id).first_or_404()
         
-        response = models.Response.query\
-            .filter_by(intent_id=intent_id).first()
-        action_id = None if response is None else response.action_id
-        
         return jsonify({
             'intent_name': intent.intent_name,
             'agent_id': intent.agent_id,
             'endpoint_enabled': intent.endpoint_enabled,
-            'intent_id': intent.intent_id,
-            'action_id': action_id
+            'intent_id': intent.intent_id
         })
     except Exception as e:
-	    return(str(e))
+	    return(f"Internal server error: {str(e)}", 500)
 
 
 @intent.route('/agents/<agent_id>/intents', methods=['GET', 'POST'])
@@ -101,12 +83,12 @@ def agentIntents(agent_id):
             return utils.result('success', 'Inserted')
         except Exception as e:
             db.session.rollback()
-            return(str(e))
+            return(f"Internal server error: {str(e)}", 500)
     try:
         intents=models.Intent.query.filter_by(agent_id=agent_id).all()
         return  jsonify([i.serialize() for i in intents])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 @intent.route('/intents/<intent_id>/unique_intent_entities', methods=['GET'])
@@ -117,4 +99,4 @@ def intentUnique(intent_id):
         return jsonify([models.Helper\
             .serializeStatic(i) for i in intents])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)

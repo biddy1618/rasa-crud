@@ -682,10 +682,6 @@
 * guide-forte-fortemarket
   - utter_help-forte-mib-fortemarket
 
-## story help-forte-mib-fortetravel
-* guide-forte-cards-conditions-promotions-fortetravel
-  - utter_help-forte-mib-fortetravel
-
 ## story help-forte-mib-prodonline-card
 * help-forte-mib-prodonline-card
   - utter_help-forte-mib-prodonline-card

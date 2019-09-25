@@ -37,7 +37,7 @@ def session1():
                 'dates': [models.Helper.serializeStatic(e) for e in result2]
             })
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 # [Insights] Endpoint for queries per session and queries info per day
@@ -75,7 +75,7 @@ def session2():
                 'dates': [models.Helper.serializeStatic(e) for e in result2]
             })
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 # [Conversations] Endpoint for single session details
@@ -95,7 +95,7 @@ def session3():
                 'messages': [models.Helper.serializeStatic(e) for e in result]
             })
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 # [Insights] Endpoint for intents used info
@@ -133,7 +133,7 @@ def intent1():
             'count': result2[0]
         })
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 # [Conversations] Endpoint for conversations info
@@ -225,5 +225,5 @@ def intent2():
             'count': results2[0]
         })
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 

@@ -16,13 +16,13 @@ def agents():
             return utils.result('success', 'Inserted')
         except Exception as e:
             db.session.rollback()
-            return(str(e))
+            return(f"Internal server error: {str(e)}", 500)
     
     try:
         agents=models.Agent.query.all()
         return  jsonify([a.serialize() for a in agents])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @agent.route("/agents/<agent_id>", methods=['GET', 'PUT', 'DELETE'])
 def agentsID(agent_id):
@@ -36,7 +36,7 @@ def agentsID(agent_id):
             return utils.result('success', 'Updated agent')
         except Exception as e:
             db.session.rollback()
-            return(str(e))
+            return(f"Internal server error: {str(e)}", 500)
     
     if request.method=='DELETE':
         try:
@@ -52,13 +52,13 @@ def agentsID(agent_id):
             return utils.result('success', f'Removed agent {agent_id}')
         except Exception as e:
             db.session.rollback()
-            return(str(e))
+            return(f"Internal server error: {str(e)}", 500)
     try:
         agent=models.Agent.query\
             .filter_by(agent_id=agent_id).first_or_404()
         return jsonify(agent.serialize())
     except Exception as e:
-	    return(str(e))
+	    return(f"Internal server error: {str(e)}", 500)
 
 
 @agent.route('/agentStory', methods=['POST'])
@@ -74,4 +74,4 @@ def agentStory():
         return utils.result('success', 'Updated Story For Agent')
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)

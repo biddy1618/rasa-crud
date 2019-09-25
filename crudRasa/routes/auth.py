@@ -20,4 +20,4 @@ def operation1():
         ).one()
         return jsonify(result.serialize())
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)

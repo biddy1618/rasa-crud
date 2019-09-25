@@ -11,7 +11,7 @@ def settingsAll():
         settings=db.session.query(models.Setting).all()
         return jsonify([s.serialize() for s in settings])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 
@@ -27,12 +27,12 @@ def settingsName(setting_name):
             return utils.result('success', 'Inserted')
         except Exception as e:
             db.session.rollback()
-            return(str(e))
+            return(f"Internal server error: {str(e)}", 500)
         
     try:
         setting=db.session.query(models.Setting)\
             .filter_by(setting_name=setting_name).first_or_404()
         return jsonify(setting.serialize())
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 

@@ -45,7 +45,7 @@ def operation1():
         } for e in results])
         
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -68,7 +68,7 @@ def operation2():
                 
         return jsonify([{'count': result}])        
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -101,7 +101,7 @@ def operation3():
             'recent_active': e[1]
             } for e in results])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -151,7 +151,7 @@ def operation4():
             'noMatchCount': noMatchCount
         }])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -174,7 +174,7 @@ def operation5():
         return jsonify([models.Helper\
             .serializeStatic(e) for e in results])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -196,7 +196,7 @@ def operation6():
         return jsonify([models.Helper\
             .serializeStatic(e) for e in results])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -218,7 +218,7 @@ def operation7():
         return utils.result('success', f'Removed {res} entities')
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -240,7 +240,7 @@ def operation8():
         return jsonify([models.Helper\
             .serializeStatic(e) for e in results])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 
@@ -268,7 +268,7 @@ def operation9():
         return utils.result('success', 'Updated entities')
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -294,7 +294,7 @@ def operation10():
         return utils.result('success', 'Inserted')
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -317,7 +317,7 @@ def operation11():
 
         return jsonify(results)
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -334,7 +334,7 @@ def operation12():
 
         return jsonify([e.serialize() for e in results])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -360,7 +360,7 @@ def operation13():
         return utils.result('success', 'Inserted')
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -383,4 +383,4 @@ def operation14():
         return utils.result('success', 'Updated entities')
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)

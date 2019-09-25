@@ -12,7 +12,7 @@ def regexAgent(agent_id):
             agent_id=agent_id).all()
         return jsonify([r.serialize() for r in regexes])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @regex.route('/regex/<regex_id>', methods=['GET', 'PUT', 'DELETE'])
 def regexID(regex_id):
@@ -26,7 +26,7 @@ def regexID(regex_id):
             return utils.result('success', 'Updated regex')
         except Exception as e:
             db.session.rollback()
-            return(str(e))
+            return(f"Internal server error: {str(e)}", 500)
     
     if request.method=='DELETE':
         try:
@@ -36,14 +36,14 @@ def regexID(regex_id):
             return utils.result('success', f'Removed intent {regex_id}')
         except Exception as e:
             db.session.rollback()
-            return(str(e))
+            return(f"Internal server error: {str(e)}", 500)
 
     try:
         regex=models.Regex.query\
             .filter_by(regex_id=regex_id).first_or_404()
         return jsonify(regex.serialize())
     except Exception as e:
-	    return(str(e))
+	    return(f"Internal server error: {str(e)}", 500)
 
 @regex.route('/regex', methods=['POST'])
 def createRegex():
@@ -58,4 +58,4 @@ def createRegex():
         return utils.result('success', 'Inserted')
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)

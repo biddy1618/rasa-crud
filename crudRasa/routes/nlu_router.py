@@ -37,7 +37,7 @@ def operation1():
         return jsonify([{"messages_id": str(message.messages_id)}])
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -62,7 +62,7 @@ def operation2():
         return
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -89,7 +89,7 @@ def operation3():
         return jsonify([{"messages_id": str(message.messages_id)}])
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -112,7 +112,7 @@ def operation4():
         return utils.result('success', 'Inserted NLU log')
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 '''
 SELECT agents.endpoint_enabled as agent_endpoint, agents.endpoint_url, 
@@ -155,7 +155,7 @@ def operation5():
             'intent_name': e[6]
         } for e in results])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -179,5 +179,5 @@ def operation6():
 
         return jsonify({'response_text': result})
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
     

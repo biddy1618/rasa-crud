@@ -12,7 +12,7 @@ def entityAgent(agent_id):
             filter_by(agent_id=agent_id).all()
         return jsonify([e.serialize() for e in entities])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @entity.route('/entities/<entity_id>', methods=['GET', 'PUT', 'DELETE'])
 def entityID(entity_id):
@@ -27,7 +27,7 @@ def entityID(entity_id):
             return utils.result('success', 'Updated agent')
         except Exception as e:
             db.session.rollback()
-            return(str(e))
+            return(f"Internal server error: {str(e)}", 500)
     if request.method=='DELETE':
         try:
             db.session.query(models.Entity)\
@@ -35,13 +35,13 @@ def entityID(entity_id):
             db.session.commit()
             return utils.result('success', f'Removed entity {entity_id}')
         except Exception as e:
-            return(str(e))
+            return(f"Internal server error: {str(e)}", 500)
     try:
         entity=models.Entity.query.\
             filter_by(entity_id=entity_id).first_or_404()
         return jsonify(entity.serialize())
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @entity.route('/entities', methods=['GET', 'POST'])
 def entityAll():
@@ -57,9 +57,9 @@ def entityAll():
             return utils.result('success', 'Inserted')
         except Exception as e:
             db.session.rollback()
-            return(str(e))
+            return(f"Internal server error: {str(e)}", 500)
     try:
         entities = models.Entity.query.all()
         return jsonify([e.serialize() for e in entities])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)

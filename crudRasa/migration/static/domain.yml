@@ -338,7 +338,6 @@ actions:
 - utter_help-forte-mib-advantage-0balance
 - utter_help-forte-mib-ar
 - utter_help-forte-mib-fortemarket
-- utter_help-forte-mib-fortetravel
 - utter_help-forte-mib-prodonline-card
 - utter_help-forte-mib-prodonline-dopcard
 - utter_help-forte-mib-talkin
@@ -760,8 +759,6 @@ templates:
   - buttons:
     - payload: Кто ты?
       title: Кто ты?
-    - payload: Как тобой пользоваться?
-      title: Как тобой пользоваться?
     - payload: Что ты умеешь делать?
       title: Что ты умеешь делать?
     - payload: Ок
@@ -770,8 +767,6 @@ templates:
   - buttons:
     - payload: Кто ты?
       title: Кто ты?
-    - payload: Как тобой пользоваться?
-      title: Как тобой пользоваться?
     - payload: Что ты умеешь делать?
       title: Что ты умеешь делать?
     - payload: Ок
@@ -807,8 +802,6 @@ templates:
   - text: Я всегда тут, заходите чаще )))
   utter_dialogs - bot - i need an advise:
   - buttons:
-    - payload: Как тобой пользоваться?
-      title: Как тобой пользоваться?
     - payload: Список команд
       title: Список команд
     text: Буду рада Вам помочь!
@@ -994,8 +987,6 @@ templates:
   - buttons:
     - payload: Установить  Е-ПИН в банкомате
       title: Установить  Е-ПИН в банкомате
-    - payload: Выпуск и активация
-      title: Выпуск и активация
     - payload: Платежные карты
       title: Платежные карты
     text: '"1. Наберите короткий номер Контактного центра - 7575 с мобильного телефона,
@@ -1011,10 +1002,6 @@ templates:
       "'
   utter_guide-forte-cards-cardissueandactivation-activation-epinatm:
   - buttons:
-    - payload: Установить  Е-ПИН через короткий номер 7575
-      title: Установить  Е-ПИН через короткий номер 7575
-    - payload: Выпуск и активация
-      title: Выпуск и активация
     - payload: Платежные карты
       title: Платежные карты
     text: 1) Вставьте карточку в приемник банкомата ForteBank;  2) На мобильный телефон
@@ -1024,8 +1011,6 @@ templates:
       код, высланный в SMS в качестве личного PIN-кода."
   utter_guide-forte-cards-cardissueandactivation-applepay:
   - buttons:
-    - payload: Выпуск и активация
-      title: Выпуск и активация
     - payload: Платежные карты
       title: Платежные карты
     text: 'ОДНО ПРИКОСНОВЕНИЕ - И ВСЁ ГОТОВО!   Платить с Apple Pay очень просто –
@@ -1039,18 +1024,8 @@ templates:
       Pro); *iPhone (SE – XR); *Apple Watch (все модели); *Mac (модели с Touch ID).'
   utter_guide-forte-cards-cardissueandactivation-delivery:
   - buttons:
-    - payload: Выпуск карты в мобильном и интернет банкинге
-      title: Выпуск карты в мобильном и интернет банкинге
-    - payload: Установить Е-ПИН
-      title: Установить Е-ПИН
     - payload: Активировать карту
       title: Активировать карту
-    - payload: Подключить мобильный и интернет банкинг
-      title: Подключить мобильный и интернет банкинг
-    - payload: Подключить Apple Pay
-      title: Подключить Apple Pay
-    - payload: Изменить ПИН код
-      title: Изменить ПИН код
     - payload: Платежные карты
       title: Платежные карты
     text: 'Доставка карты для действующих клиентов Банка, соответствующих одному из
@@ -1062,18 +1037,8 @@ templates:
       предложения.'
   utter_guide-forte-cards-cardissueandactivation-mib:
   - buttons:
-    - payload: Доставить карту на дом
-      title: Доставить карту на дом
-    - payload: Установить Е-ПИН
-      title: Установить Е-ПИН
     - payload: Активировать карту
       title: Активировать карту
-    - payload: Подключить мобильный и интернет банкинг
-      title: Подключить мобильный и интернет банкинг
-    - payload: Подключить Apple Pay
-      title: Подключить Apple Pay
-    - payload: Изменить ПИН код
-      title: Изменить ПИН код
     - payload: Платежные карты
       title: Платежные карты
     text: Клиенты имеющие счета в Банке могут выпустить карту в мобильном и интернет
@@ -1083,8 +1048,6 @@ templates:
       пункте с филиалом Банка, либо выбрать получение в отделении Банка.
   utter_guide-forte-cards-cardissueandactivation-pincode:
   - buttons:
-    - payload: Выпуск и активация
-      title: Выпуск и активация
     - payload: Платежные карты
       title: Платежные карты
     text: '*Если вы забыли свой ПИН-код, то позвонив по номеру 7575 можно обнулить
@@ -1125,18 +1088,8 @@ templates:
       вас раздел!
   utter_guide-forte-cards-conditions-classic:
   - buttons:
-    - payload: пакет Classic+
-      title: пакет Classic+
-    - payload: пакет Gold
-      title: пакет Gold
-    - payload: пакет Platinum
-      title: пакет Platinum
     - payload: 'SelfieCard - карта с индивидуальным дизайном '
       title: 'SelfieCard - карта с индивидуальным дизайном '
-    - payload: JASTAR - платёжная карта для детей и подростков
-      title: JASTAR - платёжная карта для детей и подростков
-    - payload: Multi Card - 5 валют
-      title: Multi Card - 5 валют
     - payload: Дополнительная карточка
       title: Дополнительная карточка
     - payload: Акции
@@ -1153,18 +1106,8 @@ templates:
       по миру - 1,5%, мин. 500 тенге. *Валюта на выбор - KZT/ USD/EURO.
   utter_guide-forte-cards-conditions-classic-:
   - buttons:
-    - payload: пакет Classic
-      title: пакет Classic
-    - payload: пакет Gold
-      title: пакет Gold
-    - payload: пакет Platinum
-      title: пакет Platinum
     - payload: 'SelfieCard - карта с индивидуальным дизайном '
       title: 'SelfieCard - карта с индивидуальным дизайном '
-    - payload: JASTAR - платёжная карта для детей и подростков
-      title: JASTAR - платёжная карта для детей и подростков
-    - payload: Multi Card - 5 валют
-      title: Multi Card - 5 валют
     - payload: Дополнительная карточка
       title: Дополнительная карточка
     - payload: Акции
@@ -1182,20 +1125,8 @@ templates:
       миру до 1 000 000 тенге - 1,5%, мин. 500 тенге.  *Валюта на выбор - KZT/ USD/EURO.
   utter_guide-forte-cards-conditions-dopcard:
   - buttons:
-    - payload: пакет Classic
-      title: пакет Classic
-    - payload: пакет Classic+
-      title: пакет Classic+
-    - payload: пакет Gold
-      title: пакет Gold
-    - payload: пакет Platinum
-      title: пакет Platinum
     - payload: 'SelfieCard - карта с индивидуальным дизайном '
       title: 'SelfieCard - карта с индивидуальным дизайном '
-    - payload: JASTAR - платёжная карта для детей и подростков
-      title: JASTAR - платёжная карта для детей и подростков
-    - payload: Multi Card - 5 валют
-      title: Multi Card - 5 валют
     - payload: Акции
       title: Акции
     - payload: Платежные карты
@@ -1214,18 +1145,8 @@ templates:
       1 000 тенге; *Platinum 3 карты – 0 тенге, последующие 1 000 тенге.'
   utter_guide-forte-cards-conditions-gold:
   - buttons:
-    - payload: пакет Classic
-      title: пакет Classic
-    - payload: пакет Classic+
-      title: пакет Classic+
-    - payload: пакет Platinum
-      title: пакет Platinum
     - payload: 'SelfieCard - карта с индивидуальным дизайном '
       title: 'SelfieCard - карта с индивидуальным дизайном '
-    - payload: JASTAR - платёжная карта для детей и подростков
-      title: JASTAR - платёжная карта для детей и подростков
-    - payload: Multi Card - 5 валют
-      title: Multi Card - 5 валют
     - payload: Дополнительная карточка
       title: Дополнительная карточка
     - payload: Акции
@@ -1243,18 +1164,8 @@ templates:
       миру до 1 000 000 тенге - 1,5%, мин. 500 тенге. Валюта на выбор - KZT/ USD/EURO.
   utter_guide-forte-cards-conditions-jastar:
   - buttons:
-    - payload: пакет Classic
-      title: пакет Classic
-    - payload: пакет Classic+
-      title: пакет Classic+
-    - payload: пакет Gold
-      title: пакет Gold
-    - payload: пакет Platinum
-      title: пакет Platinum
     - payload: 'SelfieCard - карта с индивидуальным дизайном '
       title: 'SelfieCard - карта с индивидуальным дизайном '
-    - payload: Multi Card - 5 валют
-      title: Multi Card - 5 валют
     - payload: Дополнительная карточка
       title: Дополнительная карточка
     - payload: Акции
@@ -1275,18 +1186,8 @@ templates:
       1,5%, мин. 500 тенге.
   utter_guide-forte-cards-conditions-multicard:
   - buttons:
-    - payload: пакет Classic
-      title: пакет Classic
-    - payload: пакет Classic+
-      title: пакет Classic+
-    - payload: пакет Gold
-      title: пакет Gold
-    - payload: пакет Platinum
-      title: пакет Platinum
     - payload: 'SelfieCard - карта с индивидуальным дизайном '
       title: 'SelfieCard - карта с индивидуальным дизайном '
-    - payload: JASTAR - платёжная карта для детей и подростков
-      title: JASTAR - платёжная карта для детей и подростков
     - payload: Дополнительная карточка
       title: Дополнительная карточка
     - payload: Акции
@@ -1304,18 +1205,8 @@ templates:
       *Снятие в банкоматах по миру до 1 000 000 тенге - 1,5%, мин. 500 тенге.
   utter_guide-forte-cards-conditions-platinum:
   - buttons:
-    - payload: пакет Classic
-      title: пакет Classic
-    - payload: пакет Classic+
-      title: пакет Classic+
-    - payload: пакет Gold
-      title: пакет Gold
     - payload: 'SelfieCard - карта с индивидуальным дизайном '
       title: 'SelfieCard - карта с индивидуальным дизайном '
-    - payload: JASTAR - платёжная карта для детей и подростков
-      title: JASTAR - платёжная карта для детей и подростков
-    - payload: Multi Card - 5 валют
-      title: Multi Card - 5 валют
     - payload: Дополнительная карточка
       title: Дополнительная карточка
     - payload: Акции
@@ -1350,8 +1241,6 @@ templates:
       title: от VISA
     - payload: от Master Card
       title: от Master Card
-    - payload: Условия
-      title: Условия
     - payload: Платежные карты
       title: Платежные карты
     text: 'FORTETRAVEL – ПУТЕШЕСТВУЙТЕ ВМЕСТЕ С FORTEBANK! Получайте от ваших карт
@@ -1369,8 +1258,6 @@ templates:
       title: ForteTravel
     - payload: от VISA
       title: от VISA
-    - payload: Условия
-      title: Условия
     - payload: Платежные карты
       title: Платежные карты
     text: 'Для участия в Mastercard UEFA Promo необходимо: 1) оплатить покупки картой
@@ -1385,8 +1272,6 @@ templates:
       title: ForteTravel
     - payload: от Master Card
       title: от Master Card
-    - payload: Условия
-      title: Условия
     - payload: Платежные карты
       title: Платежные карты
     text: 'Visa является ключевым спонсором Dubai Shopping Festival, который будет
@@ -1396,18 +1281,6 @@ templates:
       и 20% скидки на Food&Beverages. Подробнее на сайте www.visa.com.kz.'
   utter_guide-forte-cards-conditions-selfiecard:
   - buttons:
-    - payload: пакет Classic
-      title: пакет Classic
-    - payload: пакет Classic+
-      title: пакет Classic+
-    - payload: пакет Gold
-      title: пакет Gold
-    - payload: пакет Platinum
-      title: пакет Platinum
-    - payload: JASTAR - платёжная карта для детей и подростков
-      title: JASTAR - платёжная карта для детей и подростков
-    - payload: Multi Card - 5 валют
-      title: Multi Card - 5 валют
     - payload: Дополнительная карточка
       title: Дополнительная карточка
     - payload: Акции
@@ -1475,48 +1348,24 @@ templates:
   - buttons:
     - payload: Платежные карты
       title: Платежные карты
-    - payload: Не получилось подключить мобильный банкинг?
-      title: Не получилось подключить мобильный банкинг?
-    - payload: 'Не поступило СМС при установалении Е-ПИН '
-      title: 'Не поступило СМС при установалении Е-ПИН '
-    - payload: Диспутные операции
-      title: Диспутные операции
     text: В случае смены удостоверения личности, номера телефона, адреса проживания,
       необходимо написать заявление в ближайшем отделении ForteBank.
   utter_guide-forte-cards-questions-disput:
   - buttons:
     - payload: Платежные карты
       title: Платежные карты
-    - payload: Не получилось подключить мобильный банкинг?
-      title: Не получилось подключить мобильный банкинг?
-    - payload: 'Не поступило СМС при установалении Е-ПИН '
-      title: 'Не поступило СМС при установалении Е-ПИН '
-    - payload: Изменение персональных данных
-      title: Изменение персональных данных
     text: В случае возникновения спорных ситуаций по карточным операциям, необходимо
       обратиться в отделение Банка или по номеру 7575.
   utter_guide-forte-cards-questions-epin:
   - buttons:
     - payload: Платежные карты
       title: Платежные карты
-    - payload: Не получилось подключить мобильный банкинг?
-      title: Не получилось подключить мобильный банкинг?
-    - payload: Изменение персональных данных
-      title: Изменение персональных данных
-    - payload: Диспутные операции
-      title: Диспутные операции
     text: Если на мобильный телефон не поступает SMS с 4-х значным кодом при установлении
       Е-ПИН по карте, необходимо обратиться в Call-центр Банка по номеру 7575.
   utter_guide-forte-cards-questions-mib:
   - buttons:
     - payload: Платежные карты
       title: Платежные карты
-    - payload: Не поступило СМС при установалении Е-ПИН
-      title: Не поступило СМС при установалении Е-ПИН
-    - payload: Изменение персональных данных
-      title: Изменение персональных данных
-    - payload: Диспутные операции
-      title: Диспутные операции
     text: В случае возникновения ошибок при регистрации и подключении мобильного интернет
       банкинга необходимо обратиться в Call-центр Банка по номеру 7575.
   utter_guide-forte-cards-security:
@@ -1546,12 +1395,6 @@ templates:
   - buttons:
     - payload: Платежные карты
       title: Платежные карты
-    - payload: На контакт
-      title: На контакт
-    - payload: С карты на карту
-      title: С карты на карту
-    - payload: Где смотреть реквизиты моей карты?
-      title: Где смотреть реквизиты моей карты?
     text: 'Для перевода на счет, воспользуйтесь сервисом "Отправить деньги" в мобильном
       приложении: 1) Для перевода на счет физического лица необходимо знать счет IBAN,
       ФИО и ИИН получателя, и заполнить соответствующие реквизиты; 2) Для перевода
@@ -1564,12 +1407,6 @@ templates:
   - buttons:
     - payload: Платежные карты
       title: Платежные карты
-    - payload: С карты на карту
-      title: С карты на карту
-    - payload: 'С карты на счет '
-      title: 'С карты на счет '
-    - payload: Где смотреть реквизиты моей карты?
-      title: Где смотреть реквизиты моей карты?
     text: Для того чтобы отправить деньги, Вам не обязательно знать его номер карты,
       достаточно знать получателя номер телефона и ФИО. Перевод можно сделать с любой
       карты РК, при наличии ее подключения к дополнительной защите 3D Secure. Для
@@ -1582,12 +1419,6 @@ templates:
   - buttons:
     - payload: Платежные карты
       title: Платежные карты
-    - payload: На контакт
-      title: На контакт
-    - payload: 'С карты на счет '
-      title: 'С карты на счет '
-    - payload: Где смотреть реквизиты моей карты?
-      title: Где смотреть реквизиты моей карты?
     text: 'У НАС БЫСТРЫЕ И УДОБНЫЕ ПЕРЕВОДЫ, КОТОРЫЕ ДОСТУПНЫ С ЛЮБЫХ КАРТ РК БЕЗ
       РЕГИСТРАЦИИ!   УСЛОВИЯ: *Для перевода денег на карту достаточно знать номер
       карты и ФИО получателя. *В мобильном приложении Вам не обязательно быть клиентом
@@ -1609,12 +1440,6 @@ templates:
   - buttons:
     - payload: Платежные карты
       title: Платежные карты
-    - payload: На контакт
-      title: На контакт
-    - payload: С карты на карту
-      title: С карты на карту
-    - payload: 'С карты на счет '
-      title: 'С карты на счет '
     text: В мобильном приложении на главной странице выберите "Все счета", далее необходимый
       карточный счет, перейдите в дополнительное меню (три точки в правом верхнем
       углу) и нажмите «Посмотреть детали счета».
@@ -1698,8 +1523,6 @@ templates:
   - buttons:
     - payload: БАНКОМАТНЫЙ СОЮЗ
       title: БАНКОМАТНЫЙ СОЮЗ
-    - payload: Снятие в Казахстане
-      title: Снятие в Казахстане
     - payload: Платежные карты
       title: Платежные карты
     - payload: Как пользоваться картой?
@@ -1719,8 +1542,6 @@ templates:
   - buttons:
     - payload: БАНКОМАТНЫЙ СОЮЗ
       title: БАНКОМАТНЫЙ СОЮЗ
-    - payload: Снятие в Казахстане
-      title: Снятие в Казахстане
     - payload: Платежные карты
       title: Платежные карты
     - payload: Как пользоваться картой?
@@ -1741,8 +1562,6 @@ templates:
   - buttons:
     - payload: БАНКОМАТНЫЙ СОЮЗ
       title: БАНКОМАТНЫЙ СОЮЗ
-    - payload: Снятие в Казахстане
-      title: Снятие в Казахстане
     - payload: Платежные карты
       title: Платежные карты
     - payload: Как пользоваться картой?
@@ -1763,8 +1582,6 @@ templates:
   - buttons:
     - payload: БАНКОМАТНЫЙ СОЮЗ
       title: БАНКОМАТНЫЙ СОЮЗ
-    - payload: Снятие в Казахстане
-      title: Снятие в Казахстане
     - payload: Платежные карты
       title: Платежные карты
     - payload: Как пользоваться картой?
@@ -1790,8 +1607,6 @@ templates:
   - buttons:
     - payload: БАНКОМАТНЫЙ СОЮЗ
       title: БАНКОМАТНЫЙ СОЮЗ
-    - payload: Снятие в Казахстане
-      title: Снятие в Казахстане
     - payload: Платежные карты
       title: Платежные карты
     - payload: Как пользоваться картой?
@@ -1812,8 +1627,6 @@ templates:
   - buttons:
     - payload: БАНКОМАТНЫЙ СОЮЗ
       title: БАНКОМАТНЫЙ СОЮЗ
-    - payload: Снятие в Казахстане
-      title: Снятие в Казахстане
     - payload: Платежные карты
       title: Платежные карты
     - payload: Как пользоваться картой?
@@ -1834,8 +1647,6 @@ templates:
   - buttons:
     - payload: Снятие за рубежом
       title: Снятие за рубежом
-    - payload: Снятие в Казахстане
-      title: Снятие в Казахстане
     - payload: Платежные карты
       title: Платежные карты
     - payload: Как пользоваться картой?
@@ -2028,8 +1839,6 @@ templates:
       10 рабочих дней с даты подачи заявления на выпуск.'
   utter_guide-forte-cards-usecard-reissue-reasons:
   - buttons:
-    - payload: Подробнее о перевыпуске в мобильном и интернет банкинге
-      title: Подробнее о перевыпуске в мобильном и интернет банкинге
     - payload: Платежные карты
       title: Платежные карты
     - payload: Как пользоваться картой?
@@ -2043,24 +1852,14 @@ templates:
       \ с даты подачи заявления на выпуск.\n"
   utter_guide-forte-cards-usecard-replenishment:
   - buttons:
-    - payload: 'Снятие '
-      title: 'Снятие '
-    - payload: Управление лимитами
-      title: Управление лимитами
-    - payload: Как узнать баланс
-      title: Как узнать баланс
     - payload: Забыл ПИН код
       title: Забыл ПИН код
     - payload: Переводы
       title: Переводы
     - payload: Перевыпуск карты
       title: Перевыпуск карты
-    - payload: Если карту заглотил банкомат
-      title: Если карту заглотил банкомат
     - payload: Открыть дополнительную карту
       title: Открыть дополнительную карту
-    - payload: Как получить справку о наличии счета
-      title: Как получить справку о наличии счета
     - payload: Платежные карты
       title: Платежные карты
     text: 'Карту можно пополнить несколькими способами: 1) В отделении нашего банка
@@ -2099,10 +1898,6 @@ templates:
     text: Узнайте подробнее
   utter_guide-forte-creditcard-activation-applepay:
   - buttons:
-    - payload: Подключить мобильный банкинг
-      title: Подключить мобильный банкинг
-    - payload: Установить Е-ПИН
-      title: Установить Е-ПИН
     - payload: Кредитная карта
       title: Кредитная карта
     text: 'ОДНО ПРИКОСНОВЕНИЕ - И ВСЁ ГОТОВО!   Платить с Apple Pay очень просто –
@@ -2118,8 +1913,6 @@ templates:
   - buttons:
     - payload: Apple Pay
       title: Apple Pay
-    - payload: Подключить мобильный банкинг
-      title: Подключить мобильный банкинг
     - payload: Кредитная карта
       title: Кредитная карта
     text: 'Е-ПИН – БЕЗОПАСНЫЙ СПОСОБ УСТАНОВКИ ПИН-КОДА.   Установить Е-ПИН можно
@@ -2144,8 +1937,6 @@ templates:
   - buttons:
     - payload: Apple Pay
       title: Apple Pay
-    - payload: Установить Е-ПИН
-      title: Установить Е-ПИН
     - payload: Кредитная карта
       title: Кредитная карта
     text: 'FORTEBANK - ОНЛАЙН БАНК! Теперь нашим мобильным приложением может пользоваться
@@ -2160,10 +1951,6 @@ templates:
   - buttons:
     - payload: Как работает Рассрочка?
       title: Как работает Рассрочка?
-    - payload: Как оформить?
-      title: Как оформить?
-    - payload: Погашение
-      title: Погашение
     - payload: Активация карты
       title: Активация карты
     - payload: Доставка карты
@@ -2190,16 +1977,10 @@ templates:
       банкинг; *изменение метода погашения  без штрафов и комиссий; *доставка на дом.'
   utter_guide-forte-creditcard-delivery:
   - buttons:
-    - payload: Условия и преимущества
-      title: Условия и преимущества
     - payload: Как работает Рассрочка?
       title: Как работает Рассрочка?
-    - payload: Как оформить?
-      title: Как оформить?
     - payload: Активация карты
       title: Активация карты
-    - payload: Погашение
-      title: Погашение
     - payload: Акции
       title: Акции
     text: 'ЗАКАЖИТЕ И ПОЛУЧИТЕ КАРТУ НЕ ВЫХОДЯ ИЗ ДОМА!  Доставка карт осуществляется:
@@ -2211,12 +1992,6 @@ templates:
       дня; *Доставка действует бесплатно в рамках специального предложения.'
   utter_guide-forte-creditcard-installmentplan:
   - buttons:
-    - payload: Условия и преимущества
-      title: Условия и преимущества
-    - payload: Как оформить?
-      title: Как оформить?
-    - payload: Погашение
-      title: Погашение
     - payload: Активация карты
       title: Активация карты
     - payload: Доставка карты
@@ -2236,12 +2011,8 @@ templates:
       стикеру, а  также  можно увидеть нажав на кнопку ниже «Список партнеров по рассрочке».'
   utter_guide-forte-creditcard-makeloan:
   - buttons:
-    - payload: Условия и преимущества
-      title: Условия и преимущества
     - payload: Как работает Рассрочка?
       title: Как работает Рассрочка?
-    - payload: Погашение
-      title: Погашение
     - payload: Активация карты
       title: Активация карты
     - payload: Доставка карты
@@ -2253,12 +2024,8 @@ templates:
       \ в Call-центр по номеру 7575 (звонок бесплатный с мобильного)."
   utter_guide-forte-creditcard-repayment:
   - buttons:
-    - payload: Условия и преимущества
-      title: Условия и преимущества
     - payload: Как работает Рассрочка?
       title: Как работает Рассрочка?
-    - payload: Как оформить?
-      title: Как оформить?
     - payload: Активация карты
       title: Активация карты
     - payload: Доставка карты
@@ -2347,12 +2114,6 @@ templates:
     text: Выберите интересующий Вас депозит
   utter_guide-forte-deposits-advantages-guaranteeing:
   - buttons:
-    - payload: Депозит с частичными изъятиями
-      title: Депозит с частичными изъятиями
-    - payload: Срочный депозит без частичного изъятия
-      title: Срочный депозит без частичного изъятия
-    - payload: Депозит «Премиальный»
-      title: Депозит «Премиальный»
     - payload: Депозиты
       title: Депозиты
     text: 'ВСЕ ДЕПОЗИТЫ ЗАСТРАХОВАНЫ В "КАЗАХСТАНСКОМ ФОНДЕ ГАРАНТИРОВАНИЯ ДЕПОЗИТОВ"!
@@ -2365,12 +2126,6 @@ templates:
       до 10 000 000 тенге.'
   utter_guide-forte-deposits-advantages-partialwithdrawals:
   - buttons:
-    - payload: Срочный депозит без частичного изъятия
-      title: Срочный депозит без частичного изъятия
-    - payload: Депозит «Премиальный»
-      title: Депозит «Премиальный»
-    - payload: Гарантирование депозитов
-      title: Гарантирование депозитов
     - payload: Депозиты
       title: Депозиты
     text: 'ПРЕИМУЩЕСТВА: *Возможность открытия вклада в мобильном и интернет Банкинге;
@@ -2384,12 +2139,6 @@ templates:
       взносы осуществляются без ограничений, в любое время.'
   utter_guide-forte-deposits-advantages-premium:
   - buttons:
-    - payload: Депозит с частичными изъятиями
-      title: Депозит с частичными изъятиями
-    - payload: Срочный депозит без частичного изъятия
-      title: Срочный депозит без частичного изъятия
-    - payload: Гарантирование депозитов
-      title: Гарантирование депозитов
     - payload: Депозиты
       title: Депозиты
     text: 'ПРЕИМУЩЕСТВА: *Фиксация ставки вознаграждения на длительный срок депозита,
@@ -2400,12 +2149,6 @@ templates:
       платежную карточку; *Автоматическая пролонгация депозита.'
   utter_guide-forte-deposits-advantages-withoutpartialwithdrawal:
   - buttons:
-    - payload: Депозит с частичными изъятиями
-      title: Депозит с частичными изъятиями
-    - payload: Депозит «Премиальный»
-      title: Депозит «Премиальный»
-    - payload: Гарантирование депозитов
-      title: Гарантирование депозитов
     - payload: Депозиты
       title: Депозиты
     text: 'ПРЕИМУЩЕСТВА: *Возможность открытия вклада в Мобильном и Интернет Банкинге;
@@ -2439,14 +2182,8 @@ templates:
     text: Выберите депозит
   utter_guide-forte-deposits-conditions-bankbranch-partialwithdrawals:
   - buttons:
-    - payload: Срочный депозит без частичного изъятия
-      title: Срочный депозит без частичного изъятия
-    - payload: Депозит «Премиальный»
-      title: Депозит «Премиальный»
     - payload: Депозиты
       title: Депозиты
-    - payload: Условия
-      title: Условия
     text: 'УСЛОВИЯ: 1) Минимальная сумма депозита – 15 000 тенге/ 100 долларов США/
       100 евро; 2) Ставка вознаграждения: в тенге – 10% (ГЭСВ 10,5%), в долларах США
       – 0,8% (ГЭСВ 0,8%), в евро – 0,1% (ГЭСВ 0,1%); 3) Срок вклада – 12 месяцев;
@@ -2461,14 +2198,8 @@ templates:
       денег на счете.'
   utter_guide-forte-deposits-conditions-bankbranch-premium:
   - buttons:
-    - payload: Депозит с частичными изъятиями
-      title: Депозит с частичными изъятиями
-    - payload: Срочный депозит без частичного изъятия
-      title: Срочный депозит без частичного изъятия
     - payload: Депозиты
       title: Депозиты
-    - payload: Условия
-      title: Условия
     text: 'УСЛОВИЯ: 1) Минимальная сумма депозита – 75 000 тенге/ 500 долларов США.
       2) Ставка вознаграждения: в тенге - 10% (ГЭСВ 10,5%), в долларах США – 1% (ГЭСВ
       1,0%). 3) Срок вклада: в тенге – 13 месяцев, в долларах США - 13, 24, 36 месяцев.
@@ -2482,14 +2213,8 @@ templates:
       в долларах США/ евро 0,1% годовых.'
   utter_guide-forte-deposits-conditions-bankbranch-withoutpartialwithdrawa:
   - buttons:
-    - payload: Депозит с частичными изъятиями
-      title: Депозит с частичными изъятиями
-    - payload: Депозит «Премиальный»
-      title: Депозит «Премиальный»
     - payload: Депозиты
       title: Депозиты
-    - payload: Условия
-      title: Условия
     text: 'УСЛОВИЯ: 1) Минимальная сумма депозита – 100 000 тенге/ 300 долларов США/
       300 евро; 2) Ставка вознаграждения: в тенге на срок 12 месяцев - 10,5% (ГЭСВ
       11%), на срок 24 месяца - 10% (ГЭСВ 10,5%), на срок 36 месяцев – 8% (ГЭСВ 8,3%);
@@ -2513,10 +2238,6 @@ templates:
     text: Выберите депозит
   utter_guide-forte-deposits-conditions-online-partialwithdrawals:
   - buttons:
-    - payload: Условия
-      title: Условия
-    - payload: Срочный депозит без частичного изъятия
-      title: Срочный депозит без частичного изъятия
     - payload: Депозиты
       title: Депозиты
     text: 'УСЛОВИЯ: 1) Минимальная сумма депозита – 15 000 тенге/ 100 долларов США/
@@ -2531,10 +2252,6 @@ templates:
       за фактическое время нахождения денег на счете.'
   utter_guide-forte-deposits-conditions-online-withoutpartialwithdrawa:
   - buttons:
-    - payload: Условия
-      title: Условия
-    - payload: Депозит с частичными изъятиями
-      title: Депозит с частичными изъятиями
     - payload: Депозиты
       title: Депозиты
     text: 'УСЛОВИЯ: 1) Минимальная сумма депозита – 100 000 тенге/ 300 долларов США/
@@ -2617,8 +2334,6 @@ templates:
       личность вносителя - родителей, попечителя/опекуна.'
   utter_guide-forte-deposits-opendep-MIB:
   - buttons:
-    - payload: Открытие депозита
-      title: Открытие депозита
     - payload: Депозиты
       title: Депозиты
     text: При наличии счета в ForteBank, Вы можете на главной странице интернет банкинга,
@@ -2702,10 +2417,6 @@ templates:
     text: Что Вы хотите узнать?
   utter_guide-forte-loan-mortgage-emergencyloan-conditions:
   - buttons:
-    - payload: Как оформить кредит?
-      title: Как оформить кредит?
-    - payload: Погашение
-      title: Погашение
     - payload: Кредиты
       title: Кредиты
     text: "ПОЛУЧИТЕ КРЕДИТ НА ЛУЧШИХ УСЛОВИЯХ: \n*Максимальная сумма – до 50 000 000\
@@ -2714,10 +2425,6 @@ templates:
       \ \n*Возможность получения кредита без подтверждения дохода."
   utter_guide-forte-loan-mortgage-emergencyloan-makeloan:
   - buttons:
-    - payload: Условия и преимущества
-      title: Как оформить кредит?
-    - payload: Погашение
-      title: Погашение
     - payload: Кредиты
       title: Кредиты
     text: "Оформить заявку на кредит Вы можете удобным для Вас способом: \n1) На сайт\
@@ -2725,10 +2432,6 @@ templates:
       \ бесплатный с мобильного)."
   utter_guide-forte-loan-mortgage-emergencyloan-repayment:
   - buttons:
-    - payload: Условия и преимущества
-      title: Как оформить кредит?
-    - payload: Как оформить кредит?
-      title: Погашение
     - payload: Кредиты
       title: Кредиты
     text: "Погашайте кредит удобным для Вас способом: \n*через мобильное приложение\
@@ -2762,10 +2465,6 @@ templates:
       номеру 7575.'
   utter_guide-forte-loan-mortgage-mortgageloan-conditions:
   - buttons:
-    - payload: Как оформить кредит?
-      title: Как оформить кредит?
-    - payload: Погашение
-      title: Погашение
     - payload: Кредиты
       title: Кредиты
     text: "ПОЛУЧИТЕ КРЕДИТ НА ЛУЧШИХ УСЛОВИЯХ: \n*Максимальная сумма – до 50 000 000\
@@ -2785,10 +2484,6 @@ templates:
     text: Выберите интересующий Вас раздел
   utter_guide-forte-loan-mortgage-mortgageloan-livespacious-conditions:
   - buttons:
-    - payload: Как оформить кредит?
-      title: Как оформить кредит?
-    - payload: Погашение
-      title: Погашение
     - payload: Кредиты
       title: Кредиты
     text: 'ИЗ "ДВУШКИ" В "ТРЕШКУ" ЗА 3 ДНЯ! ЖИВИ ПРОСТОРНЕЕ УЖЕ СЕЙЧАС!   ПРЕИМУЩЕСТВА:
@@ -2801,10 +2496,6 @@ templates:
       – от 17,99% (ГЭСВ от 19,7%).'
   utter_guide-forte-loan-mortgage-mortgageloan-livespacious-makeloan:
   - buttons:
-    - payload: Условия и преимущества
-      title: Как оформить кредит?
-    - payload: Погашение
-      title: Погашение
     - payload: Кредиты
       title: Кредиты
     text: "Оформить заявку на кредит Вы можете удобным для Вас способом: \n1) На сайт\
@@ -2812,10 +2503,6 @@ templates:
       \ бесплатный с мобильного)."
   utter_guide-forte-loan-mortgage-mortgageloan-livespacious-repayment:
   - buttons:
-    - payload: Условия и преимущества
-      title: Как оформить кредит?
-    - payload: Как оформить кредит?
-      title: Как оформить кредит?
     - payload: Кредиты
       title: Кредиты
     text: "Погашайте кредит удобным для Вас способом: \n*через мобильное приложение\
@@ -2825,10 +2512,6 @@ templates:
       \ досрочно погасить свой кредит в любое время, частично или полностью, без штрафов!"
   utter_guide-forte-loan-mortgage-mortgageloan-makeloan:
   - buttons:
-    - payload: Условия и преимущества
-      title: Условия и преимущества
-    - payload: Погашение
-      title: Погашение
     - payload: Кредиты
       title: Кредиты
     text: "Оформить заявку на кредит Вы можете удобным для Вас способом: \n1) На сайт\
@@ -2836,10 +2519,6 @@ templates:
       \ бесплатный с мобильного)."
   utter_guide-forte-loan-mortgage-mortgageloan-repayment:
   - buttons:
-    - payload: Условия и преимущества
-      title: Условия и преимущества
-    - payload: Как оформить кредит?
-      title: Как оформить кредит?
     - payload: Кредиты
       title: Кредиты
     text: "Погашайте кредит удобным для Вас способом: \n*через мобильное приложение\
@@ -2860,10 +2539,6 @@ templates:
     text: Выберите интересующий Вас раздел
   utter_guide-forte-loan-mortgage-mortgageloan72025-conditions:
   - buttons:
-    - payload: Как оформить кредит?
-      title: Как оформить кредит?
-    - payload: Погашение
-      title: Погашение
     - payload: Кредиты
       title: Кредиты
     text: 'НОВЫЕ ВОЗМОЖНОСТИ ПРИОБРЕТЕНИЯ ЖИЛЬЯ ДЛЯ КАЖДОЙ СЕМЬИ!   УСЛОВИЯ: *Максимальная
@@ -2876,20 +2551,12 @@ templates:
       дохода; *Отсутствие ипотечных жилищных займов; *Отсутствие жилья.'
   utter_guide-forte-loan-mortgage-mortgageloan72025-makeloan:
   - buttons:
-    - payload: Условия и преимущества
-      title: Условия и преимущества
-    - payload: Погашение
-      title: Погашение
     - payload: Кредиты
       title: Кредиты
     text: "Оформить заявку на кредит Вы можете удобным для Вас способом: \n1) В отделении\
       \ Банка; \n2) Позвонив в Call-центр по номеру 7575 (звонок бесплатный с мобильного)."
   utter_guide-forte-loan-mortgage-mortgageloan72025-repayment:
   - buttons:
-    - payload: Условия и преимущества
-      title: Условия и преимущества
-    - payload: Как оформить кредит?
-      title: Как оформить кредит?
     - payload: Кредиты
       title: Кредиты
     text: "Погашайте кредит удобным для Вас способом: \n*через мобильное приложение\
@@ -2930,14 +2597,8 @@ templates:
   - buttons:
     - payload: Кредиты
       title: Кредиты
-    - payload: Как оформить кредит?
-      title: Как оформить кредит?
-    - payload: Погашение
-      title: Погашение
     - payload: Смартфон в подарок
       title: Смартфон в подарок
-    - payload: Доставка кредита
-      title: Доставка кредита
     text: "ЛУЧШИЙ КРЕДИТ ТОТ, ПО КОТОРОМУ ПЛАТИШЬ МЕНЬШЕ!   УСЛОВИЯ: \n*Максимальная\
       \ сумма кредита - до 7 000 000 тенге! *Ставка вознаграждения - от 0,1% (ГЭСВ\
       \ от 0,1%)! *Срок кредита - до 5 лет! *Без ежемесячных комиссий за обслуживание\
@@ -2950,12 +2611,6 @@ templates:
   - buttons:
     - payload: Кредиты
       title: Кредиты
-    - payload: Условия и преимущества
-      title: Условия и преимущества
-    - payload: Как оформить кредит?
-      title: Как оформить кредит?
-    - payload: Погашение
-      title: Погашение
     - payload: Смартфон в подарок
       title: Смартфон в подарок
     text: 'ЗАКАЖИТЕ И ПОЛУЧИТЕ КРЕДИТ НЕ ВЫХОДЯ ИЗ ДОМА!  Доставка кредита осуществляется:
@@ -2969,14 +2624,8 @@ templates:
   - buttons:
     - payload: Кредиты
       title: Кредиты
-    - payload: Условия и преимущества
-      title: Условия и преимущества
-    - payload: Погашение
-      title: Погашение
     - payload: Смартфон в подарок
       title: Смартфон в подарок
-    - payload: Доставка кредита
-      title: Доставка кредита
     text: "Оформить заявку на кредит Вы можете удобным для Вас способом: \n1) В мобильном\
       \ приложении ForteBank; \n2) На сайт Банка; \n3) В отделении Банка; \n4) Позвонив\
       \ в Call-центр по номеру 7575 (звонок бесплатный с мобильного)."
@@ -2984,14 +2633,8 @@ templates:
   - buttons:
     - payload: Кредиты
       title: Кредиты
-    - payload: Условия и преимущества
-      title: Условия и преимущества
-    - payload: Как оформить кредит?
-      title: Как оформить кредит?
     - payload: Смартфон в подарок
       title: Смартфон в подарок
-    - payload: Доставка кредита
-      title: Доставка кредита
     text: "Погашайте кредит удобным для Вас способом: \n*через мобильное приложение\
       \ ForteBank;\n*через терминалы ForteBank, находящиеся в отделениях Банка; \n\
       *через банкоматы с функцией cash-in; \n*через кассу в отделении ForteBank; \n\
@@ -3001,14 +2644,6 @@ templates:
   - buttons:
     - payload: Кредиты
       title: Кредиты
-    - payload: Условия и преимущества
-      title: Условия и преимущества
-    - payload: Как оформить кредит?
-      title: Как оформить кредит?
-    - payload: Погашение
-      title: Погашение
-    - payload: Доставка кредита
-      title: Доставка кредита
     text: СПЕЦИАЛЬНОЕ ПРЕДЛОЖЕНИЕ – СМАРТФОН SAMSUNG СО СКИДКОЙ ДО 100%!   К каждому
       кредиту от 1 000 000 тенге в подарок Вы можете получить гарантированный подарок
       - смартфон Samsung Galaxy J1 или премиальный  смартфон Samsung со скидкой до
@@ -3070,18 +2705,6 @@ templates:
   - buttons:
     - payload: Управление штрафами
       title: Управление штрафами
-    - payload: Продукты Банка онлайн
-      title: Продукты Банка онлайн
-    - payload: Регистрация
-      title: Регистрация
-    - payload: Переводы и платежи
-      title: Переводы и платежи
-    - payload: Операции по картам дургих Банков
-      title: Операции по картам дургих Банков
-    - payload: Управление лимитами
-      title: Управление лимитами
-    - payload: Безопасность
-      title: Безопасность
     - payload: TalkIn - Ваш персноальный помощник
       title: TalkIn - Ваш персноальный помощник
     text: 'ВПЕРВЫЕ В КАЗАХСТАНЕ - СНЯТИЕ НАЛИЧНЫХ БЕЗ КАРТЫ С ЛЮБЫХ КАРТ БВУ РК! Для
@@ -3093,20 +2716,6 @@ templates:
       смс с вторым кодом, который нужно ввести в банкомате и получить средства.'
   utter_guide-forte-mib-finescontrol:
   - buttons:
-    - payload: Снятие наличных без карты
-      title: Снятие наличных без карты
-    - payload: Продукты Банка онлайн
-      title: Продукты Банка онлайн
-    - payload: Регистрация
-      title: Регистрация
-    - payload: Переводы и платежи
-      title: Переводы и платежи
-    - payload: Операции по картам дургих Банков
-      title: Операции по картам дургих Банков
-    - payload: Управление лимитами
-      title: Управление лимитами
-    - payload: Безопасность
-      title: Безопасность
     - payload: TalkIn - Ваш персноальный помощник
       title: TalkIn - Ваш персноальный помощник
     text: 'ОПЛАЧИВАЙТЕ ШТРАФЫ ВОВРЕМЯ: 1) На главном экране зайдите в левое меню;
@@ -3152,8 +2761,6 @@ templates:
       и сохранить карточку.'
   utter_guide-forte-mib-otherbankscard-transfer:
   - buttons:
-    - payload: Платежи
-      title: Платежи
     - payload: Мобильный и интернет банкинг
       title: Мобильный и интернет банкинг
     text: 'ОСУЩЕСТВЛЯЙТЕ ПЕРЕВОДЫ КАРТАМИ ЛЮБЫХ БАНКОВ! Для перевода денег необходимо:
@@ -3179,14 +2786,6 @@ templates:
     text: Выберите интересующий Вас продукт
   utter_guide-forte-mib-prodonline-card:
   - buttons:
-    - payload: Открытие текущего счета онлайн
-      title: Открытие текущего счета онлайн
-    - payload: Открытие депозита онлайн
-      title: Открытие депозита онлайн
-    - payload: Выпуск дополнительной карты онлайн
-      title: Выпуск дополнительной карты онлайн
-    - payload: Оформление кредита кредита и кредитной карты онлайн
-      title: Оформление кредита кредита и кредитной карты онлайн
     - payload: Мобильный и интернет банкинг
       title: Мобильный и интернет банкинг
     text: 'СТАНЬТЕ ОБЛАДАТЕЛЕМ ЛУЧШЕЙ КАРТЫ! Для выпуска платежной карты онлайн необходимо
@@ -3197,14 +2796,6 @@ templates:
       доставки (стоимость доставки зависит от региона и будет списана с карты).'
   utter_guide-forte-mib-prodonline-credonline:
   - buttons:
-    - payload: Открытие текущего счета онлайн
-      title: Открытие текущего счета онлайн
-    - payload: Открытие депозита онлайн
-      title: Открытие депозита онлайн
-    - payload: Выпуск платежной карты онлайн
-      title: Выпуск платежной карты онлайн
-    - payload: Выпуск дополнительной карты онлайн
-      title: Выпуск дополнительной карты онлайн
     - payload: Мобильный и интернет банкинг
       title: Мобильный и интернет банкинг
     text: 'КРЕДИТ С ДОСТАВКОЙ В РУКИ! Для подачи онлайн заявки на кредит: 1) На главном
@@ -3213,14 +2804,6 @@ templates:
       получение кредита; 4) Ожидайте решения по кредиту, с Вами обязательно свяжутся.'
   utter_guide-forte-mib-prodonline-currentacc:
   - buttons:
-    - payload: Открытие депозита онлайн
-      title: Открытие депозита онлайн
-    - payload: Выпуск платежной карты онлайн
-      title: Выпуск платежной карты онлайн
-    - payload: Выпуск дополнительной карты онлайн
-      title: Выпуск дополнительной карты онлайн
-    - payload: Оформление кредита кредита и кредитной карты онлайн
-      title: Оформление кредита кредита и кредитной карты онлайн
     - payload: Мобильный и интернет банкинг
       title: Мобильный и интернет банкинг
     text: 'ОТКРОЙТЕ ТЕКУЩИЙ СЧЕТ БЕЗ ПОСЕЩЕНИЯ ОТДЕЛЕНИЯ БАНКА! Для открытия текущего
@@ -3232,14 +2815,6 @@ templates:
       2. Указать валюту счета'
   utter_guide-forte-mib-prodonline-dep:
   - buttons:
-    - payload: Открытие текущего счета онлайн
-      title: Открытие текущего счета онлайн
-    - payload: Выпуск платежной карты онлайн
-      title: Выпуск платежной карты онлайн
-    - payload: Выпуск дополнительной карты онлайн
-      title: Выпуск дополнительной карты онлайн
-    - payload: Оформление кредита кредита и кредитной карты онлайн
-      title: Оформление кредита кредита и кредитной карты онлайн
     - payload: Мобильный и интернет банкинг
       title: Мобильный и интернет банкинг
     text: 'НАЧИНАЙТЕ ЗАРАБАТЫВАТЬ ПРЯМО СЕЙЧАС - ОТКРОЙТЕ ДЕПОЗИТ ОНЛАЙН! Для открытия
@@ -3250,14 +2825,6 @@ templates:
       будут зачислены проценты; 7) Выбрать отделение где будет открыт счет.'
   utter_guide-forte-mib-prodonline-dopcard:
   - buttons:
-    - payload: Открытие текущего счета онлайн
-      title: Открытие текущего счета онлайн
-    - payload: Открытие депозита онлайн
-      title: Открытие депозита онлайн
-    - payload: Выпуск платежной карты онлайн
-      title: Выпуск платежной карты онлайн
-    - payload: Оформление кредита кредита и кредитной карты онлайн
-      title: Оформление кредита кредита и кредитной карты онлайн
     - payload: Мобильный и интернет банкинг
       title: Мобильный и интернет банкинг
     text: 'ВОСПОЛЬЗУЙТЕСЬ НОВЫМИ ВОЗМОЖНОСТЯМИ С ДОПОЛНИТЕЛЬНОЙ КАРТОЙ FORTEBANK!
@@ -3294,8 +2861,6 @@ templates:
   - buttons:
     - payload: Мобильный и интернет банкинг
       title: Мобильный и интернет банкинг
-    - payload: Безопасность
-      title: Безопасность
     text: 'БЕЗОПАСНОСТЬ ВАШИХ ДЕНЕГ ПОД КОНТРОЛЕМ! В случае утери карты, в обязательном
       порядке осуществите блокировку карты: 1) Выберите карточный счет на экране счетов;
       2) Открыть верхнее меню (три точки в правом верхнем углу); 3) Выберите «Настройки
@@ -3327,14 +2892,8 @@ templates:
     text: Хотите узнать подробнее?
   utter_guide-forte-mib-transferandpay-autotransferandpay:
   - buttons:
-    - payload: Платежи
-      title: Платежи
     - payload: Перевод на контакт
       title: Перевод на контакт
-    - payload: Перевод на карту
-      title: Перевод на карту
-    - payload: Тарифы на переводы
-      title: Тарифы на переводы
     - payload: Мобильный и интернет банкинг
       title: Мобильный и интернет банкинг
     text: 'ЗАБУДЬТЕ ПРО РУТИНУ - УСТАНОВИТЕ АВТОПЛАТЕЖИ И ПЕРЕВОДЫ ПО РАСПИСАНИЮ!
@@ -3345,12 +2904,6 @@ templates:
   - buttons:
     - payload: Перевод на контакт
       title: Перевод на контакт
-    - payload: Автоплатежи и переводы по расписанию
-      title: Автоплатежи и переводы по расписанию
-    - payload: Перевод на карту
-      title: Перевод на карту
-    - payload: Тарифы на переводы
-      title: Тарифы на переводы
     - payload: Мобильный и интернет банкинг
       title: Мобильный и интернет банкинг
     text: Совершайте платежи без комиссий и очередей за мобильную связь, коммунальные
@@ -3374,130 +2927,52 @@ templates:
     text: Выберите источник перевода
   utter_guide-forte-mib-transferandpay-tariffs-acc:
   - buttons:
-    - payload: С депозита
-      title: С депозита
-    - payload: С дебетовой карты Forte
-      title: С дебетовой карты Forte
-    - payload: С credit card Forte
-      title: С credit card Forte
-    - payload: С instant card Forte
-      title: С instant card Forte
-    - payload: С карты другого Банка
-      title: С карты другого Банка
     - payload: Мобильный и интернет банкинг
       title: Мобильный и интернет банкинг
-    - payload: Переводы и платежи
-      title: Переводы и платежи
     text: 'Комиссии за перевод: *на счета внутри Банка - 0 тенге;
 
       *на счет в другом Банке - 0,3%, мин.KZT 500 макс. KZT 3500.'
   utter_guide-forte-mib-transferandpay-tariffs-creditcard:
   - buttons:
-    - payload: С депозита
-      title: С депозита
-    - payload: С дебетовой карты Forte
-      title: С дебетовой карты Forte
-    - payload: С instant card Forte
-      title: С instant card Forte
-    - payload: С текущего счета
-      title: С текущего счета
-    - payload: С карты другого Банка
-      title: С карты другого Банка
     - payload: Мобильный и интернет банкинг
       title: Мобильный и интернет банкинг
-    - payload: Переводы и платежи
-      title: Переводы и платежи
     text: 'Комиссии за перевод: *на карточки Банка – 2%; *на карточки, эмитированные
       БВУ РК – 2% мин. KZT 500; *на контакт - 2% мин. KZT 500; *на карточки, эмитированные
       иностранными банками – 2% мин. KZT 700.'
   utter_guide-forte-mib-transferandpay-tariffs-dep:
   - buttons:
-    - payload: С дебетовой карты Forte
-      title: С дебетовой карты Forte
-    - payload: С credit card Forte
-      title: С credit card Forte
-    - payload: С instant card Forte
-      title: С instant card Forte
-    - payload: С текущего счета
-      title: С текущего счета
-    - payload: С карты другого Банка
-      title: С карты другого Банка
     - payload: Мобильный и интернет банкинг
       title: Мобильный и интернет банкинг
-    - payload: Переводы и платежи
-      title: Переводы и платежи
     text: Перевод с депозита возможен только на свои счета внутри Банка. Комиссия
       за перевод составляет 0 тенге. Перевод с депозита на карту позже 23:40 поступят
       после 08:00 следующего дня.
   utter_guide-forte-mib-transferandpay-tariffs-fortecard:
   - buttons:
-    - payload: С депозита
-      title: С депозита
-    - payload: С credit card Forte
-      title: С credit card Forte
-    - payload: С instant card Forte
-      title: С instant card Forte
-    - payload: С текущего счета
-      title: С текущего счета
-    - payload: С карты другого Банка
-      title: С карты другого Банка
     - payload: Мобильный и интернет банкинг
       title: Мобильный и интернет банкинг
-    - payload: Переводы и платежи
-      title: Переводы и платежи
     text: 'Комиссии за перевод: *на карточки Банка - 0 тенге; *на карточки, эмитированные
       БВУ РК – 0,9% мин. KZT 150 макс. KZT 750; *на карточки, эмитированные иностранными
       банками – 0.9% мин. KZT 750; *на контакт - 0,9% мин. KZT 150; *на счет в другом
       Банке - 0,3%, мин.KZT 500 макс. KZT 3500.'
   utter_guide-forte-mib-transferandpay-tariffs-instantcard:
   - buttons:
-    - payload: С депозита
-      title: С депозита
-    - payload: С дебетовой карты Forte
-      title: С дебетовой карты Forte
-    - payload: С credit card Forte
-      title: С credit card Forte
-    - payload: С текущего счета
-      title: С текущего счета
-    - payload: С карты другого Банка
-      title: С карты другого Банка
     - payload: Мобильный и интернет банкинг
       title: Мобильный и интернет банкинг
-    - payload: Переводы и платежи
-      title: Переводы и платежи
     text: 'Комиссии за перевод: *на карточки Банка – 4,5% мин. KZT 200; *на карточки,
       эмитированные БВУ РК – 4,5% мин. KZT 200; *на карточки, эмитированными иностранными
       банками – 4,5% мин. KZT 750; *на контакт - 4,5% мин. KZT 200; *на счет в другом
       Банке - 4,5%, мин.KZT 500'
   utter_guide-forte-mib-transferandpay-tariffs-otherbankscard:
   - buttons:
-    - payload: С депозита
-      title: С депозита
-    - payload: С дебетовой карты Forte
-      title: С дебетовой карты Forte
-    - payload: С credit card Forte
-      title: С credit card Forte
-    - payload: С instant card Forte
-      title: С instant card Forte
-    - payload: С текущего счета
-      title: С текущего счета
     - payload: Мобильный и интернет банкинг
       title: Мобильный и интернет банкинг
-    - payload: Переводы и платежи
-      title: Переводы и платежи
     text: 'Комиссии за перевод: *на карточки Банка - 0 тенге; *на карточки, эмитированные
       БВУ РК – 0.9% мин. KZT 250 макс. KZT 750; *на контакт - 0.9% мин. KZT 250; *на
       карточки, эмитированные иностранными банками – 0.9% мин. KZT 950.'
   utter_guide-forte-mib-transferandpay-transfercard:
   - buttons:
-    - payload: Платежи
-      title: Платежи
     - payload: Перевод на контакт
       title: Перевод на контакт
-    - payload: Автоплатежи и переводы по расписанию
-      title: Автоплатежи и переводы по расписанию
-    - payload: Тарифы на переводы
-      title: Тарифы на переводы
     - payload: Мобильный и интернет банкинг
       title: Мобильный и интернет банкинг
     text: БЫСТРЫЕ ПЕРЕВОДЫ НА КАРТУ! Для осуществления перевода на карту, Вам достаточно
@@ -3508,14 +2983,6 @@ templates:
       быть подключена к 3D Secure.
   utter_guide-forte-mib-transferandpay-transfercontact:
   - buttons:
-    - payload: Платежи
-      title: Платежи
-    - payload: Автоплатежи и переводы по расписанию
-      title: Автоплатежи и переводы по расписанию
-    - payload: Перевод на карту
-      title: Перевод на карту
-    - payload: Тарифы на переводы
-      title: Тарифы на переводы
     - payload: Мобильный и интернет банкинг
       title: Мобильный и интернет банкинг
     text: 'ПЕРЕВОДЫ НА КОНТАКТ ПО НОМЕРУ МОБИЛЬНОГО ТЕЛЕФОНА - ЛЕГКО! Для того, чтобы
@@ -3584,10 +3051,6 @@ templates:
     text: Выберите интересующий Вас перевод
   utter_guide-forte-transfers-bankbranch-goldcrown:
   - buttons:
-    - payload: Western Union
-      title: Western Union
-    - payload: Мгновенные переводы
-      title: Мгновенные  переводы
     - payload: Переводы
       title: Переводы
     text: '"ЗОЛОТАЯ КОРОНА" - ОТПРАВЛЯЙТЕ ДЕНЬГИ НАЛИЧНЫМИ МГНОВЕННО И БЕЗОПАСНО В
@@ -3607,10 +3070,6 @@ templates:
       перевода (при наличии).'
   utter_guide-forte-transfers-bankbranch-instantransfer:
   - buttons:
-    - payload: Золотая Корона
-      title: Золотая Корона
-    - payload: Western Union
-      title: Western Union
     - payload: Переводы
       title: Переводы
     text: 'МГНОВЕННЫЙ ПЕРЕВОД - это перевод между отделениями Fortebanka, где деньги
@@ -3626,10 +3085,6 @@ templates:
       ИИН получателя.   КОМИССИЯ - 2% от суммы, min 350 KZT max 40 000 KZT.'
   utter_guide-forte-transfers-bankbranch-westernunion:
   - buttons:
-    - payload: Золотая Корона
-      title: Золотая Корона
-    - payload: Мгновенные переводы
-      title: Мгновенные  переводы
     - payload: Переводы
       title: Переводы
     text: '«WESTERN UNION» – более 380 000 пунктов обслуживания в 200 странах мира
@@ -3690,8 +3145,6 @@ templates:
     text: Выберите социальную сеть
   utter_guide-forte-transfers-socianetw-odnokl:
   - buttons:
-    - payload: ВКонтакте
-      title: ВКонтакте
     - payload: Переводы
       title: Переводы
     text: 'Безналичные денежные переводы между пользователями социальной сети "Одноклассники".   ПРЕИМУЩЕСТВА:
@@ -3703,8 +3156,6 @@ templates:
       подтверждения перевода необходимо ввести код, присланный сообщением.'
   utter_guide-forte-transfers-socianetw-wk:
   - buttons:
-    - payload: В Одноклассниках
-      title: В Одноклассниках
     - payload: Переводы
       title: Переводы
     text: 'Безналичные денежные переводы между пользователями социальной сети "ВКонтакте".
@@ -4225,8 +3676,8 @@ templates:
       \ использовать по своему усмотрению: \n         - на ремонт приобретенной квартиры\n\
       \         - на покупки, которые Вы давно откладывали\n         - на частичное\
       \ досрочное погашение, для уменьшения своего ежемесячного                  \
-      \      платежа\n         - на любые другие цели\nУсловия:\n- Максимальная\
-      \ сумма займа до 50 000 000 тенге\n- Срок займа – до 15 лет\n- Под залог приобретаемой\
+      \      платежа\n         - на любые другие цели\nУсловия:\n- Максимальная сумма\
+      \ займа до 50 000 000 тенге\n- Срок займа – до 15 лет\n- Под залог приобретаемой\
       \ квартиры\n- Ставка вознаграждения – от 17,99% (ГЭСВ от 19,7%)\nПодать заявку:\
       \ https://forte.bank/credits/zhivi_prostornei/"
   utter_help-forte-credit-mortgage-mortgageloan-livespacious-makeloan:
@@ -4253,11 +3704,11 @@ templates:
   - text: "Новые возможности приобретения жилья для каждой семьи!\n- Максимальная\
       \ сумма займа до 20 000 000 тенге\n- Льготная ставка – 7% годовых (ГЭСВ от 7,22%)\n\
       - Низкий первоначальный взнос – 20%\n- Срок кредитования до 25 лет\n- Без комиссий\n\
-      - Без страхования\n- Досрочное погашение без штрафов\nСтоимость жилья:\n-\
-      \ 25  млн. тенге – для  городов Астана, Алматы, Актау, Атырау, Шымкент\n- 15\
-      \ млн. тенге – для остальных городов \nДля участия в программе - соответствие\
-      \ следующим требованиям:\n- Гражданство РК\n- Наличие дохода\n- Отсутствие ипотечных\
-      \ жилищных займов\n- Отсутствие жилья"
+      - Без страхования\n- Досрочное погашение без штрафов\nСтоимость жилья:\n- 25\
+      \  млн. тенге – для  городов Астана, Алматы, Актау, Атырау, Шымкент\n- 15 млн.\
+      \ тенге – для остальных городов \nДля участия в программе - соответствие следующим\
+      \ требованиям:\n- Гражданство РК\n- Наличие дохода\n- Отсутствие ипотечных жилищных\
+      \ займов\n- Отсутствие жилья"
   utter_help-forte-creditcard-conditions:
   - text: "Уникальное отличие Forte CreditCard - это возможность не платить проценты\
       \ и делать покупки без переплаты!\nПРЕИМУЩЕСТВА:\n55 дней – гарантированный\
@@ -4443,7 +3894,7 @@ templates:
       Если Вы не являетесь абонентом Beeline, Вы можете сменить оператора сотовой
       связи с СОХРАНЕНИЕМ НОМЕРА мобильного телефона. Для смены оператора на Beeline
       необходимо обратиться в отделение Банка или в Call-центр по номеру 7575.'
-  utter_help-forte-mib-ar: 
+  utter_help-forte-mib-ar:
   - text: 'Погрузитесь в дополненную реальность вместе с ForteBank и окунитесь в мир
       иллюзии в нашем мобильном приложении! В режиме дополненной реальности Вы можете:
       *Оформить экспресс кредит и кредитную карту; *Открыть депозит; *Заказать платежную
@@ -4456,16 +3907,6 @@ templates:
       *Беспроцентная онлайн-рассрочка; *Широкий ассортимент товаров; *Известные мировые
       бренды; *Удобный поиск товаров; *Упрощенный процесс заказа; *Специальные акции
       и предложения.   Подробнее на market.forte.kz или по номеру 2727'
-  utter_help-forte-mib-fortetravel:
-  - text: 'FORTETRAVEL – ПУТЕШЕСТВУЙТЕ ВМЕСТЕ С FORTEBANK! Получайте от ваших карт
-      максимальную выгоду при планировании путешествий: 1) Бронирование отелей cashback
-      +4%; 2) Бронирование проката автомобилей cashback +4%; 3) Бронирование и покупка
-      авиа/ЖД билетов cashback +4%.   КАК ПОЛУЧИТЬ CASHBACK 4%: 1) С помощью карты
-      ForteBank осуществить бронирование на сайте Booking и/или Rental с логотипом
-      ForteBank, пройдя по ссылкам с сайта www.forte.travel; 2) Осуществить оплату
-      за проживание и/или за аренду автомобиля той же картой ForteBank, которой было
-      сделано бронирование. По бронированиям, совершенным вне указанных страниц, Cashback
-      начислен не будет.'
   utter_help-forte-mib-prodonline-card:
   - text: 'Вы можете выпустить карту в мобильном банкинге:
 
@@ -4650,79 +4091,26 @@ templates:
       title: С карты другого Банка
     text: выберите источник перевода
   utter_help-forte-transfers-fees-from-cred-card:
-  - buttons:
-    - payload: С дебетовой карты Forte
-      title: С дебетовой карты Forte
-    - payload: С депозита
-      title: С депозита
-    - payload: С instant card Forte
-      title: С instant card Forte
-    - payload: С текущего счета
-      title: С текущего счета
-    - payload: С карты другого Банка
-      title: С карты другого Банка
-    text: 'на карточки Банка – 2%;
+  - text: 'на карточки Банка – 2%;
 
       на карточки, эмитированные БВУ РК – 2% мин. KZT 500;
 
       на карточки, эмитированными иностранными банками – 2% мин. KZT 700'
   utter_help-forte-transfers-fees-from-cur-acc:
-  - buttons:
-    - payload: С депозита
-      title: С депозита
-    - payload: С дебетовой карты Forte
-      title: С дебетовой карты Forte
-    - payload: С credit card Forte
-      title: С credit card Forte
-    - payload: С instant card Forte
-      title: С instant card Forte
-    - payload: С карты другого Банка
-      title: С карты другого Банка
-    text: 'на счета внутри Банка - 0 тенге;
+  - text: 'на счета внутри Банка - 0 тенге;
 
       на счет в другом Банке - 0,3%, мин.KZT 500 макс. KZT 3500'
   utter_help-forte-transfers-fees-from-deb-cart:
-  - buttons:
-    - payload: С дебетовой карты Forte
-      title: С дебетовой карты Forte
-    - payload: С instant card Forte
-      title: С instant card Forte
-    - payload: С текущего счета
-      title: С текущего счета
-    - payload: С карты другого Банка
-      title: С карты другого Банка
-    text: 'на карточки, эмитированные БВУ РК – 0,9% мин. KZT 150 макс. KZT 750;
+  - text: 'на карточки, эмитированные БВУ РК – 0,9% мин. KZT 150 макс. KZT 750;
 
       на карточки, эмитированными иностранными банками – 0.9% мин. KZT 750;
 
       на счет в другом Банке - 0,3%, мин.KZT 500 макс. KZT 3500'
   utter_help-forte-transfers-fees-from-dep:
-  - buttons:
-    - payload: С дебетовой карты Forte
-      title: С дебетовой карты Forte
-    - payload: С credit card Forte
-      title: С credit card Forte
-    - payload: С instant card Forte
-      title: С instant card Forte
-    - payload: С текущего счета
-      title: С текущего счета
-    - payload: С карты другого Банка
-      title: С карты другого Банка
-    text: Перевод с депозита возможен только на свои счета внутри Банка. Комиссия
+  - text: Перевод с депозита возможен только на свои счета внутри Банка. Комиссия
       за перевод составляет 0 тенге.
   utter_help-forte-transfers-fees-from-instfnt-card:
-  - buttons:
-    - payload: С депозита
-      title: С депозита
-    - payload: С дебетовой карты Forte
-      title: С дебетовой карты Forte
-    - payload: С credit card Forte
-      title: С credit card Forte
-    - payload: С текущего счета
-      title: С текущего счета
-    - payload: С карты другого Банка
-      title: С карты другого Банка
-    text: 'на карточки Банка – 4,5% мин. KZT 200;
+  - text: 'на карточки Банка – 4,5% мин. KZT 200;
 
       на карточки, эмитированные БВУ РК – 4,5% мин. KZT 200;
 
@@ -4730,18 +4118,7 @@ templates:
 
       на счет в другом Банке - 4,5%, мин.KZT 500'
   utter_help-forte-transfers-fees-from-otherbanks-card:
-  - buttons:
-    - payload: С депозита
-      title: С депозита
-    - payload: С дебетовой карты Forte
-      title: С дебетовой карты Forte
-    - payload: С credit card Forte
-      title: С credit card Forte
-    - payload: С instant card Forte
-      title: С instant card Forte
-    - payload: С текущего счета
-      title: С текущего счета
-    text: 'на карточки Банка - 0 тенге;
+  - text: 'на карточки Банка - 0 тенге;
 
       на карточки, эмитированные БВУ РК – 0.9% мин. KZT 250 макс. KZT 750;
 

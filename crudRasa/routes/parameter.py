@@ -16,7 +16,7 @@ def parameterExpressionTrain():
         return jsonify([models.Helper\
             .serializeStatic(p) for p in parameters])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @parameter.route('/expressions/<expression_id>/parameters', methods=['GET'])
 def parameterExpression(expression_id):
@@ -41,7 +41,7 @@ def parameterID(parameter_id):
             return utils.result('success', 'Updated parameter')
         except Exception as e:
             db.session.rollback()
-            return(str(e))
+            return(f"Internal server error: {str(e)}", 500)
     
     if request.method=='DELETE':
         try:
@@ -51,14 +51,14 @@ def parameterID(parameter_id):
             return utils.result('success', f'Removed parameter {parameter_id}')
         except Exception as e:
             db.session.rollback()
-            return(str(e))
+            return(f"Internal server error: {str(e)}", 500)
 
     try:
         parameter=models.Parameter.query\
             .filter_by(parameter_id=parameter_id).first_or_404()
         return jsonify(parameter.serialize())
     except Exception as e:
-	    return(str(e))
+	    return(f"Internal server error: {str(e)}", 500)
 
 @parameter.route('/intent/<intent_id>/parameters', methods=['GET'])
 def parameterIntent(intent_id):
@@ -69,7 +69,7 @@ def parameterIntent(intent_id):
         return jsonify([models.Helper\
             .serializeStatic(p) for p in parameters])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @parameter.route('/parameters', methods=['POST'])
 def parameters():
@@ -89,4 +89,4 @@ def parameters():
         return utils.result('success', 'Inserted')
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)

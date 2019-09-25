@@ -168,6 +168,35 @@ def uploadFromFile():
                 )
             )
         
+
+
+        dfStory = df[['intent', 'parent']]
+        dfStory.fillna(value='None', inplace=True)
+        list_of_parents = dfStory.to_dict('split')
+        parents = {}
+        mySet = set()
+
+        for child, parent in list_of_parents['data']:
+            parents[child] = parent
+            mySet.add(child)
+
+        myStories = dict()
+        for i in mySet:
+            story = ancestors(i)
+            my_list = []
+            for k in story:
+                myTuple = intentToId[k], actionToId[f'utter_{k}']
+                my_list.append(myTuple)
+
+            myStories[f'story_{i}'] = my_list
+
+        storyInj = "INSERT INTO rasa_ui.stories (story_name, story_sequence) VALUES (%s, %s)"
+
+        for storyName, storyPairs in myStories.items():
+            temp = utils.lst2pgarr([utils.lst2pgarr(pair) for pair in storyPairs])
+            print(f'Inserting story {storyName}')
+            cur.execute(storyInj, (storyName, temp))
+            
         
         totalInsertions = 0
         for key in data:
@@ -182,7 +211,7 @@ def uploadFromFile():
 
         return (jsonify(data), 200)
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
     finally:
         if conn is not None:
             conn.close()

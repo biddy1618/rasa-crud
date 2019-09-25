@@ -12,7 +12,7 @@ def synonymAgent(agent_id):
             agent_id=agent_id).all()
         return jsonify([s.serialize() for s in synonyms])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @synonym.route('/synonyms/<synonym_id>', methods=['GET', 'DELETE'])
 def synonymID(synonym_id):
@@ -24,14 +24,14 @@ def synonymID(synonym_id):
             return utils.result('success', f'Removed synonym {synonym_id}')
         except Exception as e:
             db.session.rollback()
-            return(str(e))
+            return(f"Internal server error: {str(e)}", 500)
     
     try:
         synonym=models.Synonym.query.filter_by(\
             synonym_id=synonym_id).first_or_404()
         return jsonify(synonym.serialize())
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 @synonym.route('/synonyms', methods=['POST'])
 def createSynonym():
@@ -45,4 +45,4 @@ def createSynonym():
         return utils.result('success', 'Inserted')
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)

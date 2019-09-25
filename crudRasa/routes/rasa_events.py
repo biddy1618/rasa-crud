@@ -27,7 +27,7 @@ def operation1():
         return ('', 204)
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -51,7 +51,7 @@ def operation2():
         return ('', 204)
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -80,7 +80,7 @@ def operation3():
             'parameter_value': e[4],
             } for e in data])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -96,7 +96,7 @@ def operation4():
         
         return jsonify([{'entity_id': e[0]} for e in data])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -115,7 +115,7 @@ def operation5():
         
         return jsonify([{'expression_id': e[0]} for e in data])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -152,7 +152,7 @@ def operation6():
         return jsonify(message.serialize())
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -168,7 +168,7 @@ def operation7():
         
         return jsonify([{'agent_id': agent_id}])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
 
 
 '''
@@ -186,4 +186,4 @@ def operation8():
         
         return jsonify([{'agent_id': agent_id}])
     except Exception as e:
-        return(str(e))
+        return(f"Internal server error: {str(e)}", 500)
