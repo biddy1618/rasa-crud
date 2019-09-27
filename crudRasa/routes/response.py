@@ -3,6 +3,8 @@ from flask import request, jsonify, Blueprint
 from app import db, func
 from orm import models, utils
 
+import copy
+
 import json
 
 
@@ -98,9 +100,11 @@ def responseAction():
 
             story = models.Story.query.filter_by(story_id=data['story_id']).first()
 
-            story_sequence = story.story_sequence
+            story_sequence = copy.deepcopy(story.story_sequence)
             story_sequence.append([data['intent_id'], action_id])
             story.update({'story_sequence': story_sequence})
+
+            db.session.flush()
             print(f'Added story pair to story ID: {story.story_id}\n')
         
         elif 'story_id' in data and 'new' in data:
@@ -129,13 +133,14 @@ def responseAction():
             print(f'New ID: {storyNew.story_id}')
             print('Inserted new story')
             
-            story_pair=models.StoryPair(
-                story_id=storyNew.story_id,
-                intent_id=data['intent_id'],
-                action_id=action_id
-            )
-            db.session.add(story_pair)
-            print('Inserted new story pair')
+            for pair in storyNew.story_sequence:
+                story_pair=models.StoryPair(
+                    story_id=storyNew.story_id,
+                    intent_id=pair[0],
+                    action_id=pair[1]
+                )
+                db.session.add(story_pair)
+                print('Inserted new story pair')
 
         else:
             print('Create new story')
