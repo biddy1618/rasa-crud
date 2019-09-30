@@ -25,7 +25,7 @@ def intents():
                 'intent_id': tmpInt.intent_id
             })
         else:
-            return utils.result('intent exists', {'id': tmp.intent_id})
+            return (f"intent exists with id: {tmp.intent_id}", 400)
     except Exception as e:
         db.session.rollback()
         return(f"Internal server error: {str(e)}", 500)

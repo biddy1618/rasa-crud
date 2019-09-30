@@ -198,19 +198,29 @@ def uploadFromFile():
         storyInj = "INSERT INTO rasa_ui.stories (story_name, story_sequence) VALUES (%s, %s) ON CONFLICT DO NOTHING RETURNING story_id"
         
         storyToId = {}
+        data['storiesInserted'] = []
+        data['storiesNotInserted'] = []
+        existingStory = set()
         for storyName, storyPairs in myStories.items():
             temp = utils.lst2pgarr([utils.lst2pgarr(pair) for pair in storyPairs])
             print(f'Inserting story {storyName}')
             cur.execute(storyInj, (storyName, temp))
             res = cur.fetchone()
             if res is None:
+                print(f'Story exists {storyName}')
+                existingStory.add(storyName)
+                data['storiesNotInserted'].append(storyName)
                 continue
+            data['storiesInserted'].append(storyName)    
             storyToId[storyName] = res[0]
             
         storyPairInj = "INSERT INTO rasa_ui.story_pairs (intent_id, action_id, story_id) VALUES (%s, %s, %s) ON CONFLICT DO NOTHING"
         
         for storyName, storyPairs in myStories.items():
+            if storyName in existingStory:
+                continue
             for intentId, actionId in storyPairs:
+                print(intentId, actionId)
                 cur.execute(storyPairInj, (intentId, actionId, storyToId[storyName]))
                 print(f'Inserting pairs for story {storyName}')
 
