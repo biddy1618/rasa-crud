@@ -15,6 +15,11 @@ fileUpload=Blueprint('fileUpload', __name__)
 
 @fileUpload.route('/uploadFromFile', methods=['POST'])
 def uploadFromFile():
+    
+    def ancestors(node): #the ancestor-finding function
+        if not node or node == 'None': return []
+        return ancestors(parents.get(node))+[node]
+    
     conn = None
     try:
         df = pd.read_excel(request.files.get('file'))
@@ -155,7 +160,7 @@ def uploadFromFile():
         data['responsesInserted'] = list(responses.response_text.values)
         
         responseInj = "INSERT INTO rasa_ui.responses (intent_id, action_id, buttons_info, response_text, \
-            response_type) VALUES (%s, %s, %s, %s, %s)"
+            response_type) VALUES (%s, %s, %s, %s, %s) ON CONFLICT DO NOTHING"
 
         for _, row in responses.iterrows():
             cur.execute(
@@ -190,14 +195,28 @@ def uploadFromFile():
 
             myStories[f'story_{i}'] = my_list
 
-        storyInj = "INSERT INTO rasa_ui.stories (story_name, story_sequence) VALUES (%s, %s)"
-
+        storyInj = "INSERT INTO rasa_ui.stories (story_name, story_sequence) VALUES (%s, %s) ON CONFLICT DO NOTHING RETURNING story_id"
+        
+        storyToId = {}
         for storyName, storyPairs in myStories.items():
             temp = utils.lst2pgarr([utils.lst2pgarr(pair) for pair in storyPairs])
             print(f'Inserting story {storyName}')
             cur.execute(storyInj, (storyName, temp))
+            res = cur.fetchone()
+            if res is None:
+                continue
+            storyToId[storyName] = res[0]
             
+        storyPairInj = "INSERT INTO rasa_ui.story_pairs (intent_id, action_id, story_id) VALUES (%s, %s, %s) ON CONFLICT DO NOTHING"
         
+        for storyName, storyPairs in myStories.items():
+            for intentId, actionId in storyPairs:
+                cur.execute(storyPairInj, (intentId, actionId, storyToId[storyName]))
+                print(f'Inserting pairs for story {storyName}')
+
+
+        conn.commit()
+
         totalInsertions = 0
         for key in data:
             if isinstance(data[key], list) and 'Not' not in key:
@@ -211,8 +230,10 @@ def uploadFromFile():
 
         return (jsonify(data), 200)
     except Exception as e:
-        return(f"Internal server error: {str(e)}", 500)
+        raise e
     finally:
         if conn is not None:
             conn.close()
+    
         
+
