@@ -3,6 +3,9 @@ from flask import request, jsonify, Blueprint
 from app import db
 from orm import models, utils
 
+import copy
+
+
 intent=Blueprint('intent', __name__)
 
 @intent.route("/intents", methods=['POST'])
@@ -30,7 +33,7 @@ def intents():
         db.session.rollback()
         return(f"Internal server error: {str(e)}", 500)
 
-@intent.route("/intents/<intent_id>", methods=['GET', 'PUT', 'DELETE'])
+@intent.route("/intents/<int:intent_id>", methods=['GET', 'PUT', 'DELETE'])
 def intentID(intent_id):
     if request.method=='PUT':
         try:
@@ -48,8 +51,28 @@ def intentID(intent_id):
     
     if request.method=='DELETE':
         try:
+            results = db.session.query(models.StoryPair)\
+                .filter_by(intent_id=intent_id).all()
+            for res in results:
+                story = db.session.query(models.Story)\
+                    .filter_by(story_id=res.story_id).first()
+                if len(story.story_sequence)==1:
+                    print(f'Story deleted {story.story_name}')
+                    db.session.query(models.Story)\
+                        .filter_by(story_id=res.story_id).delete()
+                else:
+                    story_sequence=[]
+                    for pair in story.story_sequence:
+                        if pair[0]==intent_id:
+                            continue
+                        story_sequence.append([pair[0], pair[1]])
+                    print(f'Story update from {story.story_sequence} to {story_sequence}')
+                    story.update({'story_sequence': story_sequence})
+            
             result=db.session.query(models.Intent)\
                 .filter_by(intent_id=intent_id).delete()
+            print('Intent deleted')
+            
             db.session.commit()
             return jsonify({'rowCount':str(result)})
         except Exception as e:
