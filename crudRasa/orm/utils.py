@@ -62,7 +62,3 @@ def checkAuth(token):
 
 def lst2pgarr(args):
     return '{' + ','.join([str(a) for a in args]) + '}'
-
-
-def generateName():
-    return ''.join(random.choices(string.ascii_letters+string.digits, k=8))

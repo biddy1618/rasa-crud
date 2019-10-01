@@ -1849,7 +1849,7 @@
 ## story help-forte-card-cash-without-card-bvu_story
 * help-forte-card-cash-without-card
   - utter_help-forte-card-cash-without-card
-* help-forte-card-cash-without-card-bvu
+* guide-forte-mib-transferandpay-tariffs-otherbankscard
   - utter_help-forte-card-cash-without-card-bvu
 
 ## story help-forte-card-cash-without-card-forte_story
@@ -1861,7 +1861,7 @@
 ## story help-forte-cashbycode-bvu_story
 * help-forte-card-cash-without-card
   - utter_help-forte-cashbycode
-* help-forte-card-cash-without-card-bvu
+* guide-forte-mib-transferandpay-tariffs-otherbankscard
   - utter_help-forte-cashbycode-bvu
 
 ## story help-forte-cashbycode-fortebank_story
@@ -1984,7 +1984,7 @@
 * guide-forte-mib-transferandpay-tariffs-otherbankscard
   - utter_help-forte-transfers-fees-from-otherbanks-card
 
-## story В кино с Forte!_story
+## story guide-forte-cinema_story
 * guide-forte-cards
   - utter_guide-forte-cards
 * guide-forte-cards-conditions
@@ -1992,5 +1992,5 @@
 * guide-forte-cards-conditions-promotions
   - utter_guide-forte-cards-conditions-promotions
 * guide-forte-cards-conditions-promotions-cinema
-  - utter_В кино с Forte!
+  - utter_guide-forte-cinema
 

@@ -25,6 +25,10 @@ def responseAction():
         data=request.get_json()
         addingResponse = False
 
+        intent_name = models.Intent.query.filter_by(
+            intent_id=data['intent_id']
+        ).first().intent_name
+
         if 'story_id' in data and 'new' not in data:
             
             print('Searching for action')
@@ -37,11 +41,13 @@ def responseAction():
                 print(f'Found action ID: {action_id}\n')
                 addingResponse = True
             else:
-                action_name='utter_action'+utils.generateName()
+                i=1
+                action_name='utter_'+intent_name+str(i)
                 results = models.Action.query.filter_by(action_name=action_name).all()
                 print(f'Generated action name: {action_name}')
                 while len(results) > 0:
-                    story_name = 'utter_action'+utils.generateName()
+                    i+=1
+                    story_name = 'utter_'+intent_name+str(i)
                     results = models.Action.query.filter_by(action_name=action_name).all()
                     print(f'Generated action name (new): {action_name}')
                 
@@ -55,11 +61,13 @@ def responseAction():
             
         else:
 
-            action_name='utter_action'+utils.generateName()
+            i=1
+            action_name='utter_'+intent_name+str(i)
             results = models.Action.query.filter_by(action_name=action_name).all()
             print(f'Generated action name: {action_name}')
             while len(results) > 0:
-                story_name = 'utter_action'+utils.generateName()
+                i+=1
+                story_name = 'utter_'+intent_name+str(i)
                 results = models.Action.query.filter_by(action_name=action_name).all()
                 print(f'Generated action name (new): {action_name}')
             
@@ -110,12 +118,14 @@ def responseAction():
         elif 'story_id' in data and 'new' in data:
             print(f'Creating new story in continuiation to story {data["story_id"]}')
             storyOld = models.Story.query.filter_by(story_id=data['story_id']).first()
-                
-            story_name = 'story '+utils.generateName()
+            
+            i=1
+            story_name = 'story '+intent_name+str(i)
             results = models.Story.query.filter_by(story_name=story_name).all()
             print(f'Story name: {story_name}')
             while len(results) > 0:
-                story_name = 'story story'+utils.generateName()
+                i+=1
+                story_name = 'story '+intent_name+str(i)
                 results = models.Story.query.filter_by(story_name=story_name).all()
                 print(f'Story name (new): {story_name}')
             
@@ -144,11 +154,13 @@ def responseAction():
 
         else:
             print('Create new story')
-            story_name = 'story story'+utils.generateName()
+            i=1
+            story_name = 'story '+intent_name+str(i)
             results = models.Story.query.filter_by(story_name=story_name).all()
             print(f'Story name: {story_name}')
             while len(results) > 0:
-                story_name = 'story story'+utils.generateName()
+                i+=1
+                story_name = 'story '+intent_name+str(i)
                 results = models.Story.query.filter_by(story_name=story_name).all()
                 print(f'Story name: {story_name}')
 
@@ -215,50 +227,70 @@ def responseIntent():
         db.session.rollback()
         return(f"Internal server error: {str(e)}", 500)
 
-@response.route('/response/<response_id>', methods=['DELETE'])
+@response.route('/response/<response_id>', methods=['PUT', 'DELETE'])
 def responseIntentRemove(response_id):
-    try:
-        temp=models.Response.query.filter_by(
-            response_id=response_id
-        ).first()
+    if request.method == 'PUT':
+        try:
+            data = request.get_json()
+            response=db.session.query(models.Response)\
+                .filter_by(response_id=response_id).first()
+            updateData = {
+                'intent_id': data['intent_id'],
+                'action_id': data['action_id'],
+                'response_text': data['response_text'],
+                'buttons_info': data['buttons_info'] if \
+                    len(data['buttons_info']) > 0 else None
+            }
+            response.update(updateData)
+            db.session.commit()
+            return utils.result('success', f'Updated response {response_id}')
+        except Exception as e:
+            db.session.rollback()
+            raise e
+            return(f"Internal server error: {str(e)}", 500)
+    else:
+        try:
+            temp=models.Response.query.filter_by(
+                response_id=response_id
+            ).first()
 
-        results=db.session.query(models.Response.response_id)\
-            .filter_by(action_id=temp.action_id).distinct().all()
-        print(results)
-            
-        if len(results) == 1:
-            
-            temp2 = models.StoryPair.query.filter_by(
-                action_id=temp.action_id
-            ).all()
-
-            for triplet in temp2:
-                story = models.Story.query.filter_by(
-                    story_id=triplet.story_id
-                ).first()
-
-                if len(story.story_sequence) == 1:
-                    db.session.query(models.Story)\
-                        .filter_by(story_id=story.story_id).delete()
-                else:
-                    seq = story.story_sequence
-                    new_seq = []
-                    for pair in seq:
-                        if pair[0]==triplet.intent_id and \
-                            pair[1]==triplet.action_id:
-                            continue
-                        new_seq.append(pair)
-                    story.update({'story_sequence': new_seq})
+            results=db.session.query(models.Response.response_id)\
+                .filter_by(action_id=temp.action_id).distinct().all()
+            print(results)
                 
-            db.session.query(models.StoryPair)\
-                .filter_by(action_id=temp.action_id).delete()
-        db.session.query(models.Response)\
-            .filter_by(response_id=response_id).delete()
-        db.session.commit()
-        return utils.result('success', f'Removed response {response_id}')
-    except Exception as e:
-        db.session.rollback()
-        return(f"Internal server error: {str(e)}", 500)
+            if len(results) == 1:
+                
+                temp2 = models.StoryPair.query.filter_by(
+                    action_id=temp.action_id
+                ).all()
+
+                for triplet in temp2:
+                    story = models.Story.query.filter_by(
+                        story_id=triplet.story_id
+                    ).first()
+
+                    if len(story.story_sequence) == 1:
+                        db.session.query(models.Story)\
+                            .filter_by(story_id=story.story_id).delete()
+                    else:
+                        seq = story.story_sequence
+                        new_seq = []
+                        for pair in seq:
+                            if pair[0]==triplet.intent_id and \
+                                pair[1]==triplet.action_id:
+                                continue
+                            new_seq.append(pair)
+                        story.update({'story_sequence': new_seq})
+                    
+                db.session.query(models.StoryPair)\
+                    .filter_by(action_id=temp.action_id).delete()
+            db.session.query(models.Response)\
+                .filter_by(response_id=response_id).delete()
+            db.session.commit()
+            return utils.result('success', f'Removed response {response_id}')
+        except Exception as e:
+            db.session.rollback()
+            return(f"Internal server error: {str(e)}", 500)
 
 @response.route('/rndmresponse', methods=['GET'])
 def responseIntentRandom():

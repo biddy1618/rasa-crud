@@ -1227,11 +1227,11 @@
   - идем под венец
 
 ## intent:dialogs - bot - my name is ...
-  - Мое имя [Абай](username)
-  - Меня зовут [Димон](username)
-  - Меня зовут [Абай](username)
-  - Меня зовут [Екатерина](username)
-  - Меня зовут [Нурсултан](username)
+  - Мое имя Абай
+  - Меня зовут Димон
+  - Меня зовут Абай
+  - Меня зовут Екатерина
+  - Меня зовут Нурсултан
 
 ## intent:dialogs - bot - nice to meet you
   - рад нашей встрече
@@ -1876,7 +1876,7 @@
 ## intent:guide-forte-cards-conditions-promotions-cinema
   - В кино с Forte!
   - Бесплатно посмотреть кино
-  - Cashback до [15](time) % в кино
+  - Cashback до 15% в кино
   - Хочу в кино
   - хочу в кино с Форте
   - В кино с Forte!
@@ -2228,12 +2228,12 @@
 
 ## intent:guide-forte-loan-unsecured-expressloan-stock-samsung
   - Скидка до 30% на смартфоны «Samsung»
-  - Скидка до [17](time)% на смартфоны Самсунг
+  - Скидка до 17% на смартфоны Самсунг
   - Скидка Самсунг
   - Скидка Samsung
   - Samsung
   - Самсунг
-  - Скидка до [17](time)% на смартфоны «Samsung»
+  - Скидка до 17% на смартфоны «Samsung»
 
 ## intent:guide-forte-mib
   - Мобильный и интернет банкинг
@@ -2352,6 +2352,8 @@
 ## intent:guide-forte-mib-transferandpay-tariffs-otherbankscard
   - С карты другого Банка
   - С карты другого Банка
+  - С карт других Банков
+  - С карт других Банков
 
 ## intent:guide-forte-mib-transferandpay-transfercard
   - Перевод на карту
@@ -2438,10 +2440,6 @@
   - я забыл карту, но мне нужно ее обналичить
   - как воспользоваться услугой "cash by code"
 
-## intent:help-forte-card-cash-without-card-bvu
-  - С карт других Банков
-  - С карт других Банков
-
 ## intent:help-forte-card-cash-without-card-forte
   - С карт ForteBank
   - С карт ForteBank
@@ -2471,12 +2469,12 @@
   - Условия пакета Classic+
 
 ## intent:help-forte-cards-conditions-promotions-applepay25%
-  - повышенный Cashback [25](number)%
+  - повышенный Cashback 25
   - Есть ли кэшбэк в apple pay
   - Burger King
   - Starbucks
   - Кофе
-  - Cashback [25](number)% по Apple Pay
+  - Cashback 25 по Apple Pay
   - Starbucks и Burger King
 
 ## intent:help-forte-cards-conditions-selfiecard
