@@ -16,10 +16,6 @@ fileUpload=Blueprint('fileUpload', __name__)
 @fileUpload.route('/uploadFromFile', methods=['POST'])
 def uploadFromFile():
     
-    def ancestors(node): #the ancestor-finding function
-        if not node or node == 'None': return []
-        return ancestors(parents.get(node))+[node]
-    
     conn = None
     try:
         df = pd.read_excel(request.files.get('file'))
@@ -180,23 +176,41 @@ def uploadFromFile():
         list_of_parents = dfStory.to_dict('split')
         parents = {}
         mySet = set()
+        rootSet = set()
+        myStories = dict()
 
         for child, parent in list_of_parents['data']:
             parents[child] = parent
             mySet.add(child)
 
-        myStories = dict()
         for i in mySet:
-            story = ancestors(i)
-            my_list = []
-            for k in story:
-                myTuple = intentToId[k], actionToId[f'utter_{k}']
-                my_list.append(myTuple)
+            end = False
+            while (end == False):
+                i = parents.get(i)
+                rootSet.add(i)
+                if i == None:
+                    end = True
 
-            myStories[f'story_{i}'] = my_list
+        for i in mySet:
+            if i not in rootSet:
+                beginning = i
+                story = list()
+                end = False
+                while (end == False):
+                    if i != None and i != 'None':
+                        story.append(i)
+                    else:
+                        end = True
+                    i = parents.get(i)
+                story.reverse()
+                myList = []
+                for k in story:
+                    myTuple = intentToId[k], actionToId[f'utter_{k}']
+                    myList.append(myTuple)
+                myStories[f'story_{beginning}'] = myList
 
         storyInj = "INSERT INTO rasa_ui.stories (story_name, story_sequence) VALUES (%s, %s) ON CONFLICT DO NOTHING RETURNING story_id"
-        
+
         storyToId = {}
         data['storiesInserted'] = []
         data['storiesNotInserted'] = []
@@ -211,11 +225,11 @@ def uploadFromFile():
                 existingStory.add(storyName)
                 data['storiesNotInserted'].append(storyName)
                 continue
-            data['storiesInserted'].append(storyName)    
+            data['storiesInserted'].append(storyName)
             storyToId[storyName] = res[0]
-            
+
         storyPairInj = "INSERT INTO rasa_ui.story_pairs (intent_id, action_id, story_id) VALUES (%s, %s, %s) ON CONFLICT DO NOTHING"
-        
+
         for storyName, storyPairs in myStories.items():
             if storyName in existingStory:
                 continue
@@ -235,8 +249,6 @@ def uploadFromFile():
                 totalInsertions += data[key]
         
         data['totalInsertions'] = totalInsertions
-
-        conn.commit()
 
         return (jsonify(data), 200)
     except Exception as e:
