@@ -141,7 +141,15 @@ def storyEdit(story_id):
             })
          
         if 'story_name' in data:
-             story.update({
+
+            results = models.Story.query.filter_by(
+                story_name=story_name
+            ).all()
+
+            if len(results) > 0:
+                return ('Story name already exists', 400)
+
+            story.update({
                 'story_name': data['story_name']
             })
 
