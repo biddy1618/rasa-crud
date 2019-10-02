@@ -47,7 +47,7 @@ def responseAction():
                 print(f'Generated action name: {action_name}')
                 while len(results) > 0:
                     i+=1
-                    story_name = 'utter_'+intent_name+str(i)
+                    action_name = 'utter_'+intent_name+str(i)
                     results = models.Action.query.filter_by(action_name=action_name).all()
                     print(f'Generated action name (new): {action_name}')
                 
@@ -67,7 +67,7 @@ def responseAction():
             print(f'Generated action name: {action_name}')
             while len(results) > 0:
                 i+=1
-                story_name = 'utter_'+intent_name+str(i)
+                action_name = 'utter_'+intent_name+str(i)
                 results = models.Action.query.filter_by(action_name=action_name).all()
                 print(f'Generated action name (new): {action_name}')
             
