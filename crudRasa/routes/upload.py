@@ -191,7 +191,6 @@ def uploadFromFile():
             else:
                 intentId = intentToId[row['intent']]
                 actionId = actionToId['utter_' + row['intent']]
-                actionId = actionToId[row['action']]
                 button = Json(json.loads(row['button'])) if not pd.isnull(row['button']) else None
                 responseText = row['response']
                 responses.append([intentId, actionId, button, responseText, 1])
