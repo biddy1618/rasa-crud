@@ -132,13 +132,48 @@ def storyEdit(story_id):
 
             for i in deleted_pairs:
                 pair=old_story_sequence[i]
-                db.session.query(models.StoryPair).filter_by(
-                    intent_id=pair[0], action_id=pair[1], story_id=story_id
-                ).delete()
                 
-            story.update({
-                'story_sequence': [old_story_sequence[i] for i in story_sequence]
-            })
+                storyPair=db.session.query(models.StoryPair).filter_by(
+                    intent_id=pair[0], action_id=pair[1], story_id=story_id
+                ).first()
+
+                intent_name=models.Intent.query.filter_by(
+                    intent_id=pair[0]).first().intent_name
+                
+                i=1
+                story_name = 'story '+intent_name+str(i)
+                results = models.Story.query.filter_by(story_name=story_name).all()
+                print(f'Story name: {story_name}')
+                while len(results) > 0:
+                    i+=1
+                    story_name = 'story '+intent_name+str(i)
+                    results = models.Story.query.filter_by(story_name=story_name).all()
+                    print(f'Story name: {story_name}')
+
+                storyNew=models.Story(
+                    story_name=story_name,
+                    story_sequence=[[pair[0], pair[1]]]
+                )
+                db.session.add(storyNew)
+                db.session.flush()
+
+                storyPair.update({'story_id': storyNew.story_id})
+
+                print('Inserted new story and created new story pair')
+            
+            if len(deleted_pairs) == len(old_story_sequence):
+                db.session.query(models.Story).filter_by(
+                    story_id=story_id
+                ).delete()
+                db.session.commit()
+                return utils.result('Story deleted', {
+                        'story_id': story_id
+                })
+            
+            else:
+                story.update({
+                    'story_sequence': [old_story_sequence[i] for i in story_sequence]
+                })
          
         if 'story_name' in data:
 
@@ -154,7 +189,7 @@ def storyEdit(story_id):
             })
 
         db.session.commit()
-        return utils.result('story updated', {
+        return utils.result('Story updated', {
                 'story_id': story_id
             })
     except Exception as e:
