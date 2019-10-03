@@ -28,8 +28,6 @@ def uploadFromFile():
 
         data = {}
 
-        data = {}
-
         agentSelect = "SELECT agent_id FROM rasa_ui.agents"
         cur.execute(agentSelect)
         agent_id = cur.fetchone()
@@ -49,7 +47,6 @@ def uploadFromFile():
         cur.execute(checkSelect)
         results = cur.fetchall()
 
-        checkData = dict()
         changedIntentName = dict()
         secondChangedIntentName = dict()
 
@@ -69,9 +66,8 @@ def uploadFromFile():
                     changedIntentName[i] = j
                     secondChangedIntentName[i] = j + "@" +i
 
-        dfStory = df[['intent', 'parent']]
 
-        df = df.replace(changedIntentName)
+        dfIntent = df.replace(changedIntentName)
 
         ##############################################################################
 
@@ -86,7 +82,7 @@ def uploadFromFile():
 
         intents = pd.DataFrame(
             columns=['name', 'agent_id'],
-            data=[[name, agent_id] for name in df.intent.unique()]
+            data=[[name, agent_id] for name in dfIntent.intent.unique()]
         )
 
         data['intentsNotInserted'] = list(intents[intents.name.isin(intentToId.keys())] \
@@ -112,7 +108,7 @@ def uploadFromFile():
 
 
         expressions = []
-        for _, row in df.iterrows():
+        for _, row in dfIntent.iterrows():
             expressions.append([
                 intentToId[row['intent']],
                 row['trigger'],
@@ -150,11 +146,13 @@ def uploadFromFile():
         for actionId, actionName in results:
             actionToId[actionName] = actionId
 
+        #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         actions = pd.DataFrame(
             columns=['action_name', 'agent_id'],
-            data=[[name, agent_id] for name in df.action.unique()]
+            data=[[f'utter_{name}', agent_id] for name in df.intent.unique()]
         )
 
+        #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         data['actionsNotInserted'] = list(actions[actions.action_name.isin(actionToId.keys())] \
                                         .action_name.values)
 
@@ -176,12 +174,27 @@ def uploadFromFile():
         responseExist = [str(e[0]) + '-' + str(e[1]) + '-' + str(e[2]) + '-' + str(e[3]) for e in results]
         responses = []
 
-        for _, row in df[df.response.notna() | df.button.notna()].iterrows():
-            intentId = intentToId[row['intent']]
-            actionId = actionToId[row['action']]
-            button = Json(json.loads(row['button'])) if not pd.isnull(row['button']) else None
-            responseText = row['response']
-            responses.append([intentId, actionId, button, responseText, 1])
+
+        dfResponse = df.replace(secondChangedIntentName)
+
+        for _, row in dfResponse[dfResponse.response.notna() | dfResponse.button.notna()].iterrows():
+
+            if '@' in row['intent']:
+                joinedName = row['intent'].split('@')
+                intentName = joinedName[0]
+                actionName = joinedName[1]
+                intentId = intentToId[intentName]
+                actionId = actionToId[f'utter_{actionName}']
+                button = Json(json.loads(row['button'])) if not pd.isnull(row['button']) else None
+                responseText = row['response']
+                responses.append([intentId, actionId, button, responseText, 1])
+            else:
+                intentId = intentToId[row['intent']]
+                actionId = actionToId['utter_' + row['intent']]
+                actionId = actionToId[row['action']]
+                button = Json(json.loads(row['button'])) if not pd.isnull(row['button']) else None
+                responseText = row['response']
+                responses.append([intentId, actionId, button, responseText, 1])
 
         responses = pd.DataFrame(
             columns=['intent_id', 'action_id', 'buttons_info', 'response_text', 'response_type'],
@@ -209,8 +222,7 @@ def uploadFromFile():
                 )
             )
 
-        dfStory = dfStory.replace(secondChangedIntentName)
-
+        dfStory = dfResponse[['intent', 'parent']]
         dfStory.fillna(value='None', inplace=True)
         list_of_parents = dfStory.to_dict('split')
         parents = {}
@@ -221,11 +233,6 @@ def uploadFromFile():
             parents[child] = parent
             mySet.add(child)
 
-
-        def randomString(stringLength=10):
-            """Generate a random string of fixed length """
-            letters = string.ascii_lowercase
-            return ''.join(random.choice(letters) for i in range(stringLength))
 
         for i in mySet:
             if i not in dfStory['parent'].to_list():
@@ -243,11 +250,13 @@ def uploadFromFile():
                     if '@' in k:
                         l = k.split('@')
                         myTuple = intentToId[l[0]], actionToId[f'utter_{l[1]}']
+                        nameStory = l[1]
                         myList.append(myTuple)
                     else:
                         myTuple = intentToId[k], actionToId[f'utter_{k}']
+                        nameStory = k
                         myList.append(myTuple)
-                myStories[f'story_{randomString()}'] = myList
+                myStories[f'story_{nameStory}'] = myList
 
         storyInj = "INSERT INTO rasa_ui.stories (story_name, story_sequence) VALUES (%s, %s) ON CONFLICT DO NOTHING RETURNING story_id"
 

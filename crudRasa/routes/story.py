@@ -143,7 +143,7 @@ def storyEdit(story_id):
         if 'story_name' in data:
 
             results = models.Story.query.filter_by(
-                story_name=story_name
+                story_name=data['story_name']
             ).all()
 
             if len(results) > 0:

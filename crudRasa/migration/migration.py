@@ -28,7 +28,7 @@ PATH_FILE_SQLSCRIPT = './crudRasa/static/dbcreate.sql'
 
 
 def migrateDatabase(nluPath=PATH_FILE_NLU_MD, storiesPath=PATH_FILE_STORIES, 
-    domainPath=PATH_FILE_YAML, nluJsonFormat=False, local=False):
+    domainPath=PATH_FILE_YAML, nluJsonFormat=False, local=False, clean=False):
     conn = None
     try:
         if local:
@@ -63,6 +63,10 @@ def migrateDatabase(nluPath=PATH_FILE_NLU_MD, storiesPath=PATH_FILE_STORIES,
             
         agent_id = agent_id[0]
 
+        if clean:
+            conn.commit()
+            print('\nDatabase cleaned')
+            return
         
         intentsData = []
         if nluJsonFormat:
@@ -276,9 +280,11 @@ if __name__ == '__main__':
     parser.add_argument('--stories', default=PATH_FILE_STORIES, help='path to stories.md file')
     parser.add_argument('--domain', default=PATH_FILE_YAML, help='path to domain.yml file')
     parser.add_argument('--local', action='store_true', help='set if migrating locally (default remote)')
+    parser.add_argument('--clean', action='store_true', help='clean database')
     args = parser.parse_args()
     if args.json and args.nlu is None:
         args.nlu = PATH_FILE_NLU_JSON
     elif not args.json and args.nlu is None:
         args.nlu = PATH_FILE_NLU_MD
-    migrateDatabase(nluPath=args.nlu, storiesPath=args.stories, domainPath=args.domain, nluJsonFormat=args.json, local=args.local)
+    migrateDatabase(nluPath=args.nlu, storiesPath=args.stories, domainPath=args.domain, 
+        nluJsonFormat=args.json, local=args.local, clean=args.clean)
