@@ -118,7 +118,7 @@ def getSory(story_id):
             
 
 
-@story.route('/storyEdit/<story_id>', methods=['POST'])
+@story.route('/storyEdit/<int:story_id>', methods=['POST'])
 def storyEdit(story_id):
     try:
         data=request.get_json()
@@ -142,11 +142,11 @@ def storyEdit(story_id):
          
         if 'story_name' in data:
 
-            results = models.Story.query.filter_by(
+            storyOld = models.Story.query.filter_by(
                 story_name=data['story_name']
-            ).all()
-
-            if len(results) > 0:
+            ).first()
+            
+            if storyOld is not None and storyOld.story_id != story_id:
                 return ('Story name already exists', 400)
 
             story.update({

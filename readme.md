@@ -6,6 +6,20 @@ postgresTerminal:~$ wget https://raw.githubusercontent.com/biddy1618/rasa-crud/d
 ```
 Then create the database by running the downloaded script.
 
+### NOTE:
+
+The configuration file of Postgres Server is at `/etc/postgresql/9.5/main/postgresql.conf`. If you want to change the default timezone of the server, then you should change the `postgresql.conf` file line with `timezone = 'timezone'`, where `timezone` is chose from list `https://en.wikipedia.org/wiki/List_of_tz_database_time_zones`.
+
+If you want to change the default timezone of one specific database then you should enter the server's `psql` termnail as administrator and type the following:
+```
+ALTER DATABASE 'some_database' SET TIME ZONE 'timezone';
+
+SELECT pg_reload_conf();
+```
+---
+
+User for postgres service is created as `postgres`, and in order to enter the local server you need to switch to that user `sudo -i -u postgres`
+
 
 ## Environment variables for the Flask application and database connection are set with `python-dotenv` package.
 
