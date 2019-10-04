@@ -22,6 +22,10 @@ def uploadFromFile():
     conn = None
     try:
         df = pd.read_excel(request.files.get('file'))
+
+        conn = psycopg2.connect(app.config['SQLALCHEMY_DATABASE_STRING'])
+        cur = conn.cursor()
+
         
         df['action'] = 'utter_' + df['intent'].astype(str)
 
@@ -47,14 +51,6 @@ def uploadFromFile():
         dfStory = df.replace(preSecondChangedIntentName)
 
         df = df.replace(preChangedIntentName)
-
-
-        conn = psycopg2.connect(user="postgres",
-                                password="admin",
-                                host="127.0.0.1",
-                                port="5432",
-                                database="rasaui")
-        cur = conn.cursor()
 
         data = {}
 
