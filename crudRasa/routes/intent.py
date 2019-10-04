@@ -40,7 +40,15 @@ def intentID(intent_id):
             data=request.get_json()
             intent=db.session.query(models.Intent)\
                 .filter_by(intent_id=intent_id).first_or_404()
-            intent.update(data)
+            
+            intentExists = models.Intent.query.filter_by(
+                intent_name=data['intent_name']
+            ).first()
+
+            if intentExists is not None:
+                return ('Intent name already exists', 400)
+
+            intent.update({'intent_name': data['intent_name']})
             db.session.commit()
             return utils.result('intent updated', {
                 'intent_id': intent_id

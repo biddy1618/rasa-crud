@@ -29,13 +29,6 @@ def responseAction():
             intent_id=data['intent_id']
         ).first().intent_name
 
-        if 'story_id' in data:
-            story = models.Story.query.filter_by(story_id=data['story_id']).first()
-            intents = [pair[0] for pair in story.story_sequence]
-            if int(data['intent_id']) in intents and 'new' in data:
-                del data['new']
-
-
         if 'story_id' in data and 'new' not in data:
             
             print('Searching for action')
