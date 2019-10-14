@@ -44,7 +44,7 @@ One can view the status of implementations of endpoints in [Google docs](https:/
 
 ---
 
-`config.py` - holds the deployment settings for the Flask server. In order to change the deployment settings change the `.evn` file for corresponding setting in `config.py`.
+`config.py` - holds the deployment settings for the Flask server. In order to change the deployment settings change the `.env` file for corresponding setting in `config.py`.
 
 ---
 

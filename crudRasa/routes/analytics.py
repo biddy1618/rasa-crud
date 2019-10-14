@@ -20,10 +20,10 @@ def session1():
         query2=('SELECT t.date, sum(t.cnt) as count '
             'FROM ('
                 'SELECT DATE(dateandtime) as date, '
-                'session_id, count(*) as cnt '
+                'count(distinct session_id) as cnt '
                 'from rasa_ui.analytics '
                 'where DATE(dateandtime) >= CURRENT_DATE - :days '
-                'GROUP BY session_id, DATE(dateandtime)'
+                'GROUP BY DATE(dateandtime)'
             ') t '
             'GROUP BY t.date '
             'ORDER BY t.date')
