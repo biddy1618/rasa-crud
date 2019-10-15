@@ -30,17 +30,35 @@ def responseAction():
         ).first().intent_name
 
         if 'story_id' in data and 'new' not in data:
+            '''
+            Scenario 1:
+
+            Continuation of the story 'story_id'
+            '''
             
             print('Searching for action')
             pair = models.StoryPair.query\
                 .filter_by(intent_id=data['intent_id'], story_id=data['story_id'])\
                 .first()
             if pair is not None:
+                '''
+                Scenario 1-1
+
+                In this story, there exists given 'intent_id', therefore we
+                grab the action, that is tied to this 'intent_id', and simply
+                add response to that action
+                '''
                 print('Adding response')
                 action_id = pair.action_id
                 print(f'Found action ID: {action_id}\n')
                 addingResponse = True
             else:
+                '''
+                Scenario 1-2
+
+                In this story, there is no given 'intent_id', therefore we
+                create new action
+                '''
                 i=1
                 action_name='utter_'+intent_name+str(i)
                 results = models.Action.query.filter_by(action_name=action_name).all()
@@ -60,7 +78,12 @@ def responseAction():
                 print(f'Inserted action: {action_name}\n')
             
         else:
+            '''
+            Scenario 2
 
+            This case is either no story_id, or new, which means that we
+            have to create action anyways
+            ''' 
             i=1
             action_name='utter_'+intent_name+str(i)
             results = models.Action.query.filter_by(action_name=action_name).all()
@@ -82,6 +105,9 @@ def responseAction():
 
         assert(action_id is not None)
         
+        '''
+        Creating response
+        '''
         response=models.Response(
             intent_id=data['intent_id'],
             action_id=action_id,
@@ -93,10 +119,21 @@ def responseAction():
         print(f'Inserted response to action ID: {action_id}\n')
 
         if addingResponse:
+            '''
+            In case we have found action that already exists, we
+            simply add response to it, and finish
+            '''
             db.session.commit()
             return utils.result('success', 'Inserted response')
 
         if 'story_id' in data and 'new' not in data:
+            '''
+            Scenario 1-1
+
+            Continuation of the existing story, i.e. we
+            create new pair, and simply add it to existing story
+            '''
+            
             print(f'Inserting new pair into story ID: {data["story_id"]}')
             story_pair=models.StoryPair(
                 story_id=data['story_id'],
@@ -116,6 +153,13 @@ def responseAction():
             print(f'Added story pair to story ID: {story.story_id}\n')
         
         elif 'story_id' in data and 'new' in data:
+            '''
+            Scenario 1-2
+
+            Creating new story out of existing one, i.e. we
+            create new story based on existing with additional
+            story pair
+            '''
             print(f'Creating new story in continuiation to story {data["story_id"]}')
             storyOld = models.Story.query.filter_by(story_id=data['story_id']).first()
             
@@ -132,6 +176,7 @@ def responseAction():
             story_sequence = storyOld.story_sequence
             story_sequence.append([data['intent_id'], action_id])
             
+            # Creating new story
             storyNew = models.Story(
                 story_name=story_name,
                 story_sequence=story_sequence
@@ -143,6 +188,7 @@ def responseAction():
             print(f'New ID: {storyNew.story_id}')
             print('Inserted new story')
             
+            # Creating new pairs
             for pair in storyNew.story_sequence:
                 story_pair=models.StoryPair(
                     story_id=storyNew.story_id,
@@ -153,6 +199,12 @@ def responseAction():
                 print('Inserted new story pair')
 
         else:
+            '''
+            Scenario 1-3
+
+            Creating new empty story, i.e. we create new story with 
+            length 1 (1 story pair) for given intent
+            '''
             print('Create new story')
             i=1
             story_name = 'story '+intent_name+str(i)
@@ -255,6 +307,17 @@ def responseIntentRemove(response_id):
 
             results=db.session.query(models.Response.response_id)\
                 .filter_by(action_id=temp.action_id).distinct().all()
+            '''
+            results - the number of responses for this action
+
+            if action has more than 1 response then we can simply
+            delete that response and not touch stories and story pairs, 
+            because action has other response
+
+            if action has 1 response, it means that we are deleting this
+            only response, therefore we can delete the action 
+            (action with no response doesn't make sense)
+            '''
                 
             if len(results) == 1:
                 
